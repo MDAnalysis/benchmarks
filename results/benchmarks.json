@@ -1286,6 +1286,44 @@
         "version": "252de8a508db72096fb84cad267be871be5133ab5e2a35ea5b1dbf4d610c3f4e",
         "warmup_time": -1
     },
+    "selections.GeoSelectionBench.time_geometric_selections": {
+        "code": "class GeoSelectionBench:\n    def time_geometric_selections(self,\n                                  selection_string,\n                                  dynamic_selection,\n                                  periodic_selection):\n    \n        # set core flags for PBC accounting\n        MDAnalysis.core.flags['use_periodic_selections'] = periodic_selection[0]\n        MDAnalysis.core.flags['use_KDTree_routines'] = periodic_selection[1]\n    \n        if hasattr(MDAnalysis.Universe, 'select_atoms'):\n            self.u.select_atoms(selection_string, updating=dynamic_selection)\n        else:\n            self.u.selectAtoms(selection_string, updating=dynamic_selection)\n\n    def setup(self,\n              selection_string,\n              dynamic_selection,\n              periodic_selection):\n        self.u = MDAnalysis.Universe(GRO)",
+        "goal_time": 0.1,
+        "name": "selections.GeoSelectionBench.time_geometric_selections",
+        "number": 0,
+        "param_names": [
+            "selection_string",
+            "dynamic_selection",
+            "periodic_selection"
+        ],
+        "params": [
+            [
+                "'around 5.0 resid 1'",
+                "'sphlayer 2.4 6.0 (protein)'",
+                "'sphzone 6.0 (protein)'",
+                "'cylayer 5 10 10 -8 protein'",
+                "'cyzone 15 4 -8 protein'",
+                "'point 5.0 5.0 5.0 3.5'",
+                "'prop z >= 5.0'",
+                "'prop abs z <= 5.0'"
+            ],
+            [
+                "True",
+                "False"
+            ],
+            [
+                "[False, True]",
+                "[True, False]"
+            ]
+        ],
+        "pretty_name": "selections.GeoSelectionBench.time_geometric_selections",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "b1d29e5a574daee7de2e1c37536258165a3371b550cd29fc2f41c55e796001e1",
+        "warmup_time": -1
+    },
     "selections.SimpleSelectionBench.time_simple_selections": {
         "code": "class SimpleSelectionBench:\n    def time_simple_selections(self, selection_string):\n        \"\"\"Benchmark simple selections on the protein-based\n        standard test GRO file.\n        \"\"\"\n        if hasattr(MDAnalysis.Universe, 'select_atoms'):\n            self.u.select_atoms(selection_string)\n        else:\n            self.u.selectAtoms(selection_string)\n\n    def setup(self, selection_string):\n        self.u = MDAnalysis.Universe(GRO)",
         "goal_time": 0.1,
