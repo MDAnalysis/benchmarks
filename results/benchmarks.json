@@ -1286,6 +1286,68 @@
         "version": "252de8a508db72096fb84cad267be871be5133ab5e2a35ea5b1dbf4d610c3f4e",
         "warmup_time": -1
     },
+    "analysis.leaflet.LeafletBench.time_leafletfinder": {
+        "code": "class LeafletBench:\n    def time_leafletfinder(self, cutoff, sparse, pbc):\n        \"\"\"Benchmark LeafletFinder for test lipid\n        membrane system.\n        \"\"\"\n        leaflet.LeafletFinder(universe=self.u,\n                              selectionstring=self.headgroup_sel,\n                              cutoff=cutoff,\n                              pbc=pbc,\n                              sparse=sparse)\n\n    def setup(self, cutoff, sparse, pbc):\n        self.u = MDAnalysis.Universe(Martini_membrane_gro)\n        self.headgroup_sel = 'name PO4'",
+        "goal_time": 0.1,
+        "name": "analysis.leaflet.LeafletBench.time_leafletfinder",
+        "number": 0,
+        "param_names": [
+            "cutoff",
+            "sparse",
+            "pbc"
+        ],
+        "params": [
+            [
+                "7.0",
+                "15.0",
+                "23.0"
+            ],
+            [
+                "None",
+                "True",
+                "False"
+            ],
+            [
+                "True",
+                "False"
+            ]
+        ],
+        "pretty_name": "analysis.leaflet.LeafletBench.time_leafletfinder",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "7cc51105a1891b5d2b1fef3302766e183867f8867aa8b79557daa1cc472a6f4e",
+        "warmup_time": -1
+    },
+    "analysis.leaflet.LeafletOptimizeBench.time_optimize_cutoff": {
+        "code": "class LeafletOptimizeBench:\n    def time_optimize_cutoff(self, sparse, pbc):\n        \"\"\"Benchmark optimize_cutoff for test lipid\n        membrane system using default network distance\n        range.\n        \"\"\"\n        leaflet.optimize_cutoff(universe=self.u,\n                                selection=self.headgroup_sel,\n                                pbc=pbc,\n                                sparse=sparse)\n\n    def setup(self, sparse, pbc):\n        self.u = MDAnalysis.Universe(Martini_membrane_gro)\n        self.headgroup_sel = 'name PO4'",
+        "goal_time": 0.1,
+        "name": "analysis.leaflet.LeafletOptimizeBench.time_optimize_cutoff",
+        "number": 0,
+        "param_names": [
+            "sparse",
+            "pbc"
+        ],
+        "params": [
+            [
+                "None",
+                "True",
+                "False"
+            ],
+            [
+                "True",
+                "False"
+            ]
+        ],
+        "pretty_name": "analysis.leaflet.LeafletOptimizeBench.time_optimize_cutoff",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "c2594da2d6b564ca7b231a1e6c28e4d7b1c330259c6b64a9ede16bd1953450b7",
+        "warmup_time": -1
+    },
     "selections.GeoSelectionBench.time_geometric_selections": {
         "code": "class GeoSelectionBench:\n    def time_geometric_selections(self,\n                                  selection_string,\n                                  dynamic_selection,\n                                  periodic_selection):\n    \n        # set core flags for PBC accounting\n        MDAnalysis.core.flags['use_periodic_selections'] = periodic_selection[0]\n        MDAnalysis.core.flags['use_KDTree_routines'] = periodic_selection[1]\n    \n        if hasattr(MDAnalysis.Universe, 'select_atoms'):\n            self.u.select_atoms(selection_string, updating=dynamic_selection)\n        else:\n            self.u.selectAtoms(selection_string, updating=dynamic_selection)\n\n    def setup(self,\n              selection_string,\n              dynamic_selection,\n              periodic_selection):\n        self.u = MDAnalysis.Universe(GRO)",
         "goal_time": 0.1,
