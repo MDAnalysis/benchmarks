@@ -1348,6 +1348,104 @@
         "version": "c2594da2d6b564ca7b231a1e6c28e4d7b1c330259c6b64a9ede16bd1953450b7",
         "warmup_time": -1
     },
+    "analysis.rms.RmsdTrajBench.time_RMSD": {
+        "code": "class RmsdTrajBench:\n    def time_RMSD(self, select, weights):\n        \"\"\"Benchmark RMSD.run() method, which parses\n        over the entire trajectory.\n        \"\"\"\n        self.RMSD_inst.run()\n\n    def setup(self, select, weights):\n        self.u = MDAnalysis.Universe(PSF, DCD)\n        self.RMSD_inst = rms.RMSD(atomgroup=self.u,\n                                  reference=None,\n                                  select=select,\n                                  weights=weights)",
+        "goal_time": 0.1,
+        "name": "analysis.rms.RmsdTrajBench.time_RMSD",
+        "number": 0,
+        "param_names": [
+            "select",
+            "weights"
+        ],
+        "params": [
+            [
+                "'all'",
+                "'backbone'"
+            ],
+            [
+                "None",
+                "'mass'"
+            ]
+        ],
+        "pretty_name": "analysis.rms.RmsdTrajBench.time_RMSD",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "64836ac01572a5047b1dd99fff0059e19db814e8d869fba0f667e8ce391dab94",
+        "warmup_time": -1
+    },
+    "analysis.rms.RmsfTrajBench.time_RMSF": {
+        "code": "class RmsfTrajBench:\n    def time_RMSF(self, n_atoms, step, weights):\n        \"\"\"Benchmark RMSF.run() method, which parses\n        over the entire trajectory.\n        \"\"\"\n        self.RMSF_inst.run()\n\n    def setup(self, n_atoms, step, weights):\n        self.u = MDAnalysis.Universe(PSF, DCD)\n        self.ag = self.u.atoms[:n_atoms]\n        self.RMSF_inst = rms.RMSF(atomgroup=self.ag,\n                                  start=None,\n                                  stop=None,\n                                  step=step,\n                                  weights=weights)",
+        "goal_time": 0.1,
+        "name": "analysis.rms.RmsfTrajBench.time_RMSF",
+        "number": 0,
+        "param_names": [
+            "n_atoms",
+            "step",
+            "weights"
+        ],
+        "params": [
+            [
+                "100",
+                "500",
+                "2000"
+            ],
+            [
+                "None",
+                "3"
+            ],
+            [
+                "None",
+                "'mass'"
+            ]
+        ],
+        "pretty_name": "analysis.rms.RmsfTrajBench.time_RMSF",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "51fa8961bb7846d8b1a47b3169c16b28ce31a4a9888dcf935747cc9ae82eb9a4",
+        "warmup_time": -1
+    },
+    "analysis.rms.SimpleRmsBench.time_rmsd": {
+        "code": "class SimpleRmsBench:\n    def time_rmsd(self, num_atoms, weights, center, superposition):\n        \"\"\"Benchmark rmsd function using a setup similar to\n        its docstring example code along with several possible\n        permutations of parameters.\n        \"\"\"\n        rms.rmsd(a=self.A,\n                 b=self.B,\n                 weights=weights,\n                 center=center,\n                 superposition=superposition)\n\n    def setup(self, num_atoms, weights, center, superposition):\n        # mimic rmsd docstring example code\n        self.u = MDAnalysis.Universe(PSF, DCD)\n        # ag.positions is the new syntax\n        # but older commit hashes will need to use\n        # ag.coordinates()\n        try:\n            self.A = self.u.atoms.positions.copy()[:num_atoms]\n            self.u.trajectory[-1]\n            self.B = self.u.atoms.positions.copy()[:num_atoms]\n        except:\n            self.A = self.u.atoms.coordinates().copy()[:num_atoms]\n            self.u.trajectory[-1]\n            self.B = self.u.atoms.coordinates().copy()[:num_atoms]",
+        "goal_time": 0.1,
+        "name": "analysis.rms.SimpleRmsBench.time_rmsd",
+        "number": 0,
+        "param_names": [
+            "num_atoms",
+            "weights",
+            "center",
+            "superposition"
+        ],
+        "params": [
+            [
+                "100",
+                "500",
+                "2000"
+            ],
+            [
+                "None",
+                "[1.0, 0.5]"
+            ],
+            [
+                "False",
+                "True"
+            ],
+            [
+                "False",
+                "True"
+            ]
+        ],
+        "pretty_name": "analysis.rms.SimpleRmsBench.time_rmsd",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "3730cce32247fa610cb1fcb58e054dc42bd0d1dd6ee55a5d19e01cff3ade58d1",
+        "warmup_time": -1
+    },
     "selections.GeoSelectionBench.time_geometric_selections": {
         "code": "class GeoSelectionBench:\n    def time_geometric_selections(self,\n                                  selection_string,\n                                  dynamic_selection,\n                                  periodic_selection):\n    \n        # set core flags for PBC accounting\n        MDAnalysis.core.flags['use_periodic_selections'] = periodic_selection[0]\n        MDAnalysis.core.flags['use_KDTree_routines'] = periodic_selection[1]\n    \n        if hasattr(MDAnalysis.Universe, 'select_atoms'):\n            self.u.select_atoms(selection_string, updating=dynamic_selection)\n        else:\n            self.u.selectAtoms(selection_string, updating=dynamic_selection)\n\n    def setup(self,\n              selection_string,\n              dynamic_selection,\n              periodic_selection):\n        self.u = MDAnalysis.Universe(GRO)",
         "goal_time": 0.1,
