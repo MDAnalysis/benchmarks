@@ -1,0 +1,2735 @@
+{
+    "benchmarks": {
+        "GRO.GROReadBench.time_read_GRO_file": {
+            "code": "class GROReadBench:\n    def time_read_GRO_file(self):\n        \"\"\"Benchmark reading of standard test\n        suite GRO file.\n        \"\"\"\n        GROReader(GRO)",
+            "goal_time": 0.1,
+            "name": "GRO.GROReadBench.time_read_GRO_file",
+            "number": 0,
+            "param_names": [],
+            "params": [],
+            "pretty_name": "GRO.GROReadBench.time_read_GRO_file",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "2abb6fac26984d3cc4cee1b56b630a1e89a527336aa1795c49a9dadef130db3e",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_angle": {
+            "code": "class AtomGroupAttrsBench:\n    def time_angle(self, num_atoms):\n        \"\"\"Benchmark simple angle\n        calculation. Requires ag\n        with three atoms.\n        \"\"\"\n        self.ag[:3].angle\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_angle",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_angle",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "a83a2ce99c0673f57ac3eac16b49a9db026ae64b6fcaa4389bf47eed59124dbb",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_atomcount": {
+            "code": "class AtomGroupAttrsBench:\n    def time_atomcount(self, num_atoms):\n        \"\"\"Benchmark counting of atoms in\n        atomgroup.\n        \"\"\"\n        self.ag.n_atoms\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_atomcount",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_atomcount",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "d31f8341e31a7bc198133f258c72536b54ec904f97ac4f28a767f9970856818a",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_atoms": {
+            "code": "class AtomGroupAttrsBench:\n    def time_atoms(self, num_atoms):\n        \"\"\"Benchmark returning of identical\n        atomgroup.\n        \"\"\"\n        self.ag.atoms\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_atoms",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_atoms",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "6cd2f945901dc324d1dabcb388bc3fe0c3b5977d49056e5d7a7859c40e2c9af8",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_bond": {
+            "code": "class AtomGroupAttrsBench:\n    def time_bond(self, num_atoms):\n        \"\"\"Benchmark Bond object creation.\n        Requires ag of size 2.\n        \"\"\"\n        self.ag[:2].bond\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_bond",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_bond",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "3507b8355b5b01697e086a646c559412d09fde51fc7139f4524f7cb58aa7ae67",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_dihedral": {
+            "code": "class AtomGroupAttrsBench:\n    def time_dihedral(self, num_atoms):\n        \"\"\"Benchmark Dihedral object\n        creation time. Requires ag of\n        size 4.\n        \"\"\"\n        self.ag[:4].dihedral\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_dihedral",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_dihedral",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "5775f1a2f7666febcc47f94b77702bd75a2a7ccd7c9044265c965dbad779a351",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_forces": {
+            "code": "class AtomGroupAttrsBench:\n    def time_forces(self, num_atoms):\n        \"\"\"Benchmark atomgroup force\n        calculation.\n        \"\"\"\n        try:\n            self.ag.forces\n        except NoDataError:\n            pass\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_forces",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_forces",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "0186fc73e76b8e3f8cb39e7e11f7c6e9837d800b2379b14591432ee9e710d69e",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_improper": {
+            "code": "class AtomGroupAttrsBench:\n    def time_improper(self, num_atoms):\n        \"\"\"Benchmark improper dihedral\n        calculation. Requires ag of size\n        4.\n        \"\"\"\n        self.ag[:4].improper\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_improper",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_improper",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "d7ba217b21841225ff1df0b473d66794db6b2c92c56bbb3cb04c042fb43e967c",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_indices": {
+            "code": "class AtomGroupAttrsBench:\n    def time_indices(self, num_atoms):\n        \"\"\"Benchmark atom index calculation.\n        \"\"\"\n        self.ag.ix\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_indices",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_indices",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "8a27cd7f019ca3f35aa37d112e72f6b0311c37dee14a33adff3dffd8b6ee2602",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_positions": {
+            "code": "class AtomGroupAttrsBench:\n    def time_positions(self, num_atoms):\n        \"\"\"Benchmark returning the positions\n        of the atoms in the group.\n        \"\"\"\n        self.ag.positions\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_positions",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_positions",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "7f538e5ccf7c68b715cb9ba1f0a85764faa5e09216ba83be3b88804f26504dcd",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_residuecount": {
+            "code": "class AtomGroupAttrsBench:\n    def time_residuecount(self, num_atoms):\n        \"\"\"Benchmark counting of residues in\n        atomgroup.\n        \"\"\"\n        self.ag.n_residues\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_residuecount",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_residuecount",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "6ba8023af1d40da84022b2eba1e494b20eb80d1257fa5beabc2206f8d380b237",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_residues": {
+            "code": "class AtomGroupAttrsBench:\n    def time_residues(self, num_atoms):\n        \"\"\"Benchmark creation of the ResidueGroup\n        from the AtomGroup.\n        \"\"\"\n        self.ag.residues\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_residues",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_residues",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "72655f2bf91db254ada1b26646da826894a223384a4691f99b06b291107b938e",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_segmentcount": {
+            "code": "class AtomGroupAttrsBench:\n    def time_segmentcount(self, num_atoms):\n        \"\"\"Benchmark counting of segments in\n        atomgroup.\n        \"\"\"\n        self.ag.n_segments\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_segmentcount",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_segmentcount",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "ea9ccc59b78a3786c8ed142a014c476162b2d37437c8f93a4b05644dd851aede",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_segments": {
+            "code": "class AtomGroupAttrsBench:\n    def time_segments(self, num_atoms):\n        \"\"\"Benchmark determination of sorted\n        SegmentGroup from AtomGroup.\n        \"\"\"\n        self.ag.segments\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_segments",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_segments",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "ec21432839b2caac695337844d8b3feff546e74083cc61d846692523160bcf70",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_ts": {
+            "code": "class AtomGroupAttrsBench:\n    def time_ts(self, num_atoms):\n        \"\"\"Benchmark returning of a timestep\n        instance from atomgroup.\n        \"\"\"\n        self.ag.ts\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_ts",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_ts",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "0aadba3b29a020c1edbc55253049c8f9dc252759321e51f110ca895d99ce52a6",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_unique": {
+            "code": "class AtomGroupAttrsBench:\n    def time_unique(self, num_atoms):\n        \"\"\"Benchmark determination of unique\n        elements in atomgroup.\n        \"\"\"\n        self.ag.unique\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_unique",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_unique",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "1c2345530d78545ab7011e17420325ec0f2b12a472ade667a7253fd672a06f70",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupAttrsBench.time_velocity": {
+            "code": "class AtomGroupAttrsBench:\n    def time_velocity(self, num_atoms):\n        \"\"\"Benchmark atomgroup velocity\n        values return.\n        \"\"\"\n        try:\n            self.ag.velocities\n        except NoDataError:\n            pass\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupAttrsBench.time_velocity",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupAttrsBench.time_velocity",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "3841e8cfb0518bdc257c0479f3844b8bdf80ee1e2bf7b2245ba4ba95533e2ce8",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_bbox_no_pbc": {
+            "code": "class AtomGroupMethodsBench:\n    def time_bbox_no_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding box calculation\n        with pbc inactive.\n        \"\"\"\n        self.ag.bbox(pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_bbox_no_pbc",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_bbox_no_pbc",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "b13f09f921e8d1b3547c3ae8fd0cb3b4fba4746e2535728f647b28e2d39e8771",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_bbox_pbc": {
+            "code": "class AtomGroupMethodsBench:\n    def time_bbox_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding box calculation\n        with pbc active.\n        \"\"\"\n        self.ag.bbox(pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_bbox_pbc",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_bbox_pbc",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "a18324c53c11b7aa21428889531395b23a6ed680df364d8870cf805125985b04",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_bsphere_no_pbc": {
+            "code": "class AtomGroupMethodsBench:\n    def time_bsphere_no_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding sphere calculation\n        with pbc inactive.\n        \"\"\"\n        self.ag.bsphere(pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_bsphere_no_pbc",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_bsphere_no_pbc",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "462159b20c380fd2a72f198e059dd75a604e2ad5251253524c7ee78f59b8d4a1",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_bsphere_pbc": {
+            "code": "class AtomGroupMethodsBench:\n    def time_bsphere_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding sphere calculation\n        with pbc active.\n        \"\"\"\n        self.ag.bsphere(pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_bsphere_pbc",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_bsphere_pbc",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "ca1199ef4aafadf534247b69dee706f1a509faccffab75deb23a743f3bc5e39f",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_center_no_pbc": {
+            "code": "class AtomGroupMethodsBench:\n    def time_center_no_pbc(self, num_atoms):\n        \"\"\"Benchmark center calculation with\n        pbc inactive.\n        \"\"\"\n        self.ag.center(weights=self.weights,\n                       pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_center_no_pbc",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_center_no_pbc",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "a33f50328490f6b54e8ad57796bd6da48ce81e2af1d6ff7b6dc9ddb55270d612",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_center_pbc": {
+            "code": "class AtomGroupMethodsBench:\n    def time_center_pbc(self, num_atoms):\n        \"\"\"Benchmark center calculation with\n        pbc active.\n        \"\"\"\n        self.ag.center(weights=self.weights,\n                       pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_center_pbc",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_center_pbc",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "5445ea28992842878e2e020cb920daa4b87f10ea68ba6abbdc379e69ecd29a5a",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_centroid_no_pbc": {
+            "code": "class AtomGroupMethodsBench:\n    def time_centroid_no_pbc(self, num_atoms):\n        \"\"\"Benchmark centroid calculation with\n        pbc inactive.\n        \"\"\"\n        self.ag.centroid(pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_centroid_no_pbc",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_centroid_no_pbc",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "f941f327f6692f250060de8e3de49f414db194f030fa2f2e86b50a96f3d6f580",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_centroid_pbc": {
+            "code": "class AtomGroupMethodsBench:\n    def time_centroid_pbc(self, num_atoms):\n        \"\"\"Benchmark centroid calculation with\n        pbc active.\n        \"\"\"\n        self.ag.centroid(pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_centroid_pbc",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_centroid_pbc",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "94e61928db6101dcb12bef8d8f0c21cc8e8eb805ddf2abd0096fa60dd6fda1a5",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_concatenate": {
+            "code": "class AtomGroupMethodsBench:\n    def time_concatenate(self, num_atoms):\n        \"\"\"Benchmark atomgroup concatenation.\n        \"\"\"\n        self.ag.concatenate(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_concatenate",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_concatenate",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "08fff968d2569e3c626ab3f36d271b3cf297135df1817dc29466a74e9c5d5965",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_difference": {
+            "code": "class AtomGroupMethodsBench:\n    def time_difference(self, num_atoms):\n        \"\"\"Benchmark atomgroup difference\n        operation.\n        \"\"\"\n        self.ag.difference(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_difference",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_difference",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "8f0b13fd7cae0a5a7a8cc9e415a0c6d58230410e7b84d4e74eb3fa8cdd4adf18",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_groupby": {
+            "code": "class AtomGroupMethodsBench:\n    def time_groupby(self, num_atoms):\n        \"\"\"Benchmark atomgroup groupby\n        operation.\n        \"\"\"\n        self.ag.groupby('resnames')\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_groupby",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_groupby",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "109267e4cf4a02b7e4460ce5e1de2eebaeadc77610a858512167fb377d68d212",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_guess_bonds": {
+            "code": "class AtomGroupMethodsBench:\n    def time_guess_bonds(self, num_atoms):\n        \"\"\"Benchmark atomgroup bond guessing\n        with artificially-seeded vdw values.\n        \"\"\"\n        self.ag.guess_bonds(self.vdwradii)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_guess_bonds",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_guess_bonds",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "95b590f48cef5cb4b4cc65ecb884482e1df985417494daba2225ba8bd2bf8b88",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_intersection": {
+            "code": "class AtomGroupMethodsBench:\n    def time_intersection(self, num_atoms):\n        \"\"\"Benchmark ag intersection.\n        \"\"\"\n        self.ag.intersection(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_intersection",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_intersection",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "3007281b5a990c40e16f4d638bc27d207c0121ee4ae2bd559535e139906a7116",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_is_strict_subset": {
+            "code": "class AtomGroupMethodsBench:\n    def time_is_strict_subset(self, num_atoms):\n        \"\"\"Benchmark ag strict subset operation.\n        \"\"\"\n        self.ag.is_strict_subset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_is_strict_subset",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_is_strict_subset",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "07a48244c719831d730836e0d632ea051837548e8dcebf489cf83a7434fd3c70",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_is_strict_superset": {
+            "code": "class AtomGroupMethodsBench:\n    def time_is_strict_superset(self, num_atoms):\n        \"\"\"Benchmark ag strict superset operation.\n        \"\"\"\n        self.ag.is_strict_superset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_is_strict_superset",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_is_strict_superset",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "4509e22682291b68212a7d28d543479cf0eb06e2bdf24f4b1e56fcd101de33c4",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_isdisjoint": {
+            "code": "class AtomGroupMethodsBench:\n    def time_isdisjoint(self, num_atoms):\n        \"\"\"Benchmark disjoint operation between\n        atomgroups.\n        \"\"\"\n        self.ag.isdisjoint(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_isdisjoint",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_isdisjoint",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "e820b56a4be332d95e85ffda08a25081a5804ae36c99d49e47944fe7ef0681f0",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_issubset": {
+            "code": "class AtomGroupMethodsBench:\n    def time_issubset(self, num_atoms):\n        \"\"\"Benchmark subset operation between\n        atomgroups.\n        \"\"\"\n        self.ag.issubset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_issubset",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_issubset",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "d7d2fb1a556412daacc0591250615f8f4edd560ddce907bc37b152119592510a",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_issuperset": {
+            "code": "class AtomGroupMethodsBench:\n    def time_issuperset(self, num_atoms):\n        \"\"\"Benchmark superset operation between\n        atomgroups.\n        \"\"\"\n        self.ag.issuperset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_issuperset",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_issuperset",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "da1b751a6ac0b844aafb5acb4524b855af9ac6d19a85e3bfe3aa5c7c584e1073",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_pack_into_box": {
+            "code": "class AtomGroupMethodsBench:\n    def time_pack_into_box(self, num_atoms):\n        \"\"\"Benchmark shifting atoms of ag\n        into primary unit cell, using\n        default parameters.\n        \"\"\"\n        self.ag.pack_into_box()\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_pack_into_box",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_pack_into_box",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "20dcad012b1c84cac6934e6c4589008df0db8dc5bed3d9634f6420e378f4d4a5",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_rotate": {
+            "code": "class AtomGroupMethodsBench:\n    def time_rotate(self, num_atoms):\n        \"\"\"Benchmark simple rotation operation\n        on atomgroup.\n        \"\"\"\n        self.ag.rotate(self.rot_matrix)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_rotate",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_rotate",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "4fcd69bfa4ccdcf7ec26b4668d209c0f68fb3fa1cd5ca45bd420ba21ebec4f50",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_rotateby": {
+            "code": "class AtomGroupMethodsBench:\n    def time_rotateby(self, num_atoms):\n        \"\"\"Benchmark rotation by an angle\n        of the ag coordinates.\n        \"\"\"\n        self.ag.rotateby(angle=45,\n                         axis=[1,0,0])\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_rotateby",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_rotateby",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "148d833401af66968dc752ff9a891a57a372b0ba8491e3abbec882424c940a5c",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_split": {
+            "code": "class AtomGroupMethodsBench:\n    def time_split(self, num_atoms):\n        \"\"\"Benchmark ag splitting into\n        multiple ags based on a simple\n        criterion.\n        \"\"\"\n        self.ag.split('residue')\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_split",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_split",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "2d9fbbd08120214f9a6c21a4399c753bbf34baf01a5272e3e0bd5ce83ccab090",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_subtract": {
+            "code": "class AtomGroupMethodsBench:\n    def time_subtract(self, num_atoms):\n        \"\"\"Benchmark ag subtraction.\n        \"\"\"\n        self.ag.subtract(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_subtract",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_subtract",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "78fb61b55cffa02e23f514737586a4d9dbac9c7a0e817f7c6b461187b2c7698d",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_symmetric_difference": {
+            "code": "class AtomGroupMethodsBench:\n    def time_symmetric_difference(self, num_atoms):\n        \"\"\"Benchmark ag symmetric difference\n        operation.\n        \"\"\"\n        self.ag.symmetric_difference(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_symmetric_difference",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_symmetric_difference",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "4bd141ea906565a91d77df06f55db7973acab6c8489d4a325a0230dd53e008e1",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_transform": {
+            "code": "class AtomGroupMethodsBench:\n    def time_transform(self, num_atoms):\n        \"\"\"Benchmark application of transformation\n        matrix to atomgroup.\n        \"\"\"\n        self.ag.transform(self.trans)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_transform",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_transform",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "71a463da6e9b33d39b18282bdbc7a2923e6222ea434ddf4ef6c81338cc2cf179",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_translate": {
+            "code": "class AtomGroupMethodsBench:\n    def time_translate(self, num_atoms):\n        \"\"\"Benchmark the application of a\n        translation vector to the ag\n        coordinates.\n        \"\"\"\n        self.ag.translate([0,0.5,1])\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_translate",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_translate",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "701b2a4a83979b7aa99188328321c315dcacc0d96f8c782dd77eb30508672aad",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_union": {
+            "code": "class AtomGroupMethodsBench:\n    def time_union(self, num_atoms):\n        \"\"\"Benchmark union operation\n        on atomgroups.\n        \"\"\"\n        self.ag.union(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_union",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_union",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "bb3896f567a32ad58d0d73819b4d7dd7ad21cd6c2259afd9024b100091b85af0",
+            "warmup_time": -1
+        },
+        "ag_methods.AtomGroupMethodsBench.time_wrap": {
+            "code": "class AtomGroupMethodsBench:\n    def time_wrap(self, num_atoms):\n        \"\"\"Benchmark wrap() operation on\n        atomgroup with default params.\n        \"\"\"\n        self.ag.wrap()\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "goal_time": 0.1,
+            "name": "ag_methods.AtomGroupMethodsBench.time_wrap",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "ag_methods.AtomGroupMethodsBench.time_wrap",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "e7da7812425a7b20268e756fc12f62bd501c3a328ebdaebb8b373cc1fea3363c",
+            "warmup_time": -1
+        },
+        "analysis.distances.DistancesBench.time_between": {
+            "code": "class DistancesBench:\n    def time_between(self, num_atoms):\n        \"\"\"Benchmark determination of subgroup\n        of atomgroup that is within a specific\n        distance of two other atomgroups.\n        \"\"\"\n        distances.between(group=self.ag3,\n                          A=self.ag1,\n                          B=self.ag2,\n                          distance=15.0)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+            "goal_time": 0.1,
+            "name": "analysis.distances.DistancesBench.time_between",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "analysis.distances.DistancesBench.time_between",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "eb885148f4da07fe9037d6f5c72f6730a0389638e247a928686fcbd8a19214da",
+            "warmup_time": -1
+        },
+        "analysis.distances.DistancesBench.time_contact_matrix": {
+            "code": "class DistancesBench:\n    def time_contact_matrix(self, num_atoms):\n        \"\"\"Benchmark calculation of contacts within\n        a single numpy array using the default arguments\n        to contact_matrix.\n        \"\"\"\n        distances.contact_matrix(coord=self.coords_1,\n                                 cutoff=15.0,\n                                 returntype='numpy',\n                                 box=None)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+            "goal_time": 0.1,
+            "name": "analysis.distances.DistancesBench.time_contact_matrix",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "analysis.distances.DistancesBench.time_contact_matrix",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "6e4d4f50f6cb85908c188ebfd6de7c40fa3d3df6afef146e01518c709445ccd0",
+            "warmup_time": -1
+        },
+        "analysis.distances.DistancesBench.time_contact_matrix_sparse": {
+            "code": "class DistancesBench:\n    def time_contact_matrix_sparse(self, num_atoms):\n        \"\"\"Benchmark calculation of contacts within\n        a single numpy array using the slower reduced\n        memory implementation of contact_matrix intended\n        for larger systems.\n        \"\"\"\n        distances.contact_matrix(coord=self.coords_1,\n                                 cutoff=15.0,\n                                 returntype='sparse',\n                                 box=None)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+            "goal_time": 0.1,
+            "name": "analysis.distances.DistancesBench.time_contact_matrix_sparse",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "analysis.distances.DistancesBench.time_contact_matrix_sparse",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "4e6d14cd551f572db95de56c5260a5490105139c9c439440473639dcac59bf56",
+            "warmup_time": -1
+        },
+        "analysis.distances.DistancesBench.time_dist": {
+            "code": "class DistancesBench:\n    def time_dist(self, num_atoms):\n        \"\"\"Benchmark calculation of distances between\n        atoms in two atomgroups with no offsets\n        to resids.\n        \"\"\"\n        distances.dist(A=self.ag1,\n                       B=self.ag2,\n                       offset=0)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+            "goal_time": 0.1,
+            "name": "analysis.distances.DistancesBench.time_dist",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "analysis.distances.DistancesBench.time_dist",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "1e316d102d15001127985bbeadcda61a289f6b0c49edf8beb7c8ac292fc70883",
+            "warmup_time": -1
+        },
+        "analysis.distances.DistancesBench.time_dist_offsets": {
+            "code": "class DistancesBench:\n    def time_dist_offsets(self, num_atoms):\n        \"\"\"Benchmark calculation of distances between\n        atoms in two atomgroups with offsets\n        to resids.\n        \"\"\"\n        distances.dist(A=self.ag1,\n                       B=self.ag2,\n                       offset=20)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+            "goal_time": 0.1,
+            "name": "analysis.distances.DistancesBench.time_dist_offsets",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "analysis.distances.DistancesBench.time_dist_offsets",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "0766fec1b0ea981f2f91bc7b592c2c7faa4c27e5821747d0e3f7f27ad30f22e6",
+            "warmup_time": -1
+        },
+        "analysis.distances.DistancesBench.time_distance_array": {
+            "code": "class DistancesBench:\n    def time_distance_array(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        between two numpy arrays of coordinates,\n        using default arguments to distance_array.\n        \"\"\"\n        distances.distance_array(reference=self.coords_1,\n                                 configuration=self.coords_2,\n                                 box=None,\n                                 result=None,\n                                 backend='serial')\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+            "goal_time": 0.1,
+            "name": "analysis.distances.DistancesBench.time_distance_array",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "analysis.distances.DistancesBench.time_distance_array",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "6b47aceaee90f91587947029fdaef396adac215eb2ef3057c85f9e410a3e5fa7",
+            "warmup_time": -1
+        },
+        "analysis.distances.DistancesBench.time_distance_array_pre_allocated": {
+            "code": "class DistancesBench:\n    def time_distance_array_pre_allocated(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        between two numpy arrays of coordinates,\n        using distance_array with a preallocated\n        result array.\n        \"\"\"\n        distances.distance_array(reference=self.coords_1,\n                                 configuration=self.coords_2,\n                                 box=None,\n                                 result=self.allocated_array_2D,\n                                 backend='serial')\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+            "goal_time": 0.1,
+            "name": "analysis.distances.DistancesBench.time_distance_array_pre_allocated",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "analysis.distances.DistancesBench.time_distance_array_pre_allocated",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "3988cf77ee5eccd5483b603b31c7c25b63f73aa81b757689f2c8bdd9f062ae82",
+            "warmup_time": -1
+        },
+        "analysis.distances.DistancesBench.time_self_distance_array": {
+            "code": "class DistancesBench:\n    def time_self_distance_array(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        within a single numpy array of coordinates\n        using default parameters to self_distance_array.\n        \"\"\"\n        distances.self_distance_array(reference=self.coords_1,\n                                      box=None,\n                                      result=None,\n                                      backend='serial')\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+            "goal_time": 0.1,
+            "name": "analysis.distances.DistancesBench.time_self_distance_array",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "analysis.distances.DistancesBench.time_self_distance_array",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "c6dbef3ff4b6c03b07405740d628a4dbd6c5e558b910137a157196ed94020286",
+            "warmup_time": -1
+        },
+        "analysis.distances.DistancesBench.time_self_distance_array_pre_allocated": {
+            "code": "class DistancesBench:\n    def time_self_distance_array_pre_allocated(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        within a single numpy array of coordinates\n        using self_distance_array with preallocated\n        result array.\n        \"\"\"\n        distances.self_distance_array(reference=self.coords_1,\n                                      box=None,\n                                      result=self.allocated_array_1D,\n                                      backend='serial')\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+            "goal_time": 0.1,
+            "name": "analysis.distances.DistancesBench.time_self_distance_array_pre_allocated",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "pretty_name": "analysis.distances.DistancesBench.time_self_distance_array_pre_allocated",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "252de8a508db72096fb84cad267be871be5133ab5e2a35ea5b1dbf4d610c3f4e",
+            "warmup_time": -1
+        },
+        "analysis.leaflet.LeafletBench.time_leafletfinder": {
+            "code": "class LeafletBench:\n    def time_leafletfinder(self, cutoff, sparse, pbc):\n        \"\"\"Benchmark LeafletFinder for test lipid\n        membrane system.\n        \"\"\"\n        leaflet.LeafletFinder(universe=self.u,\n                              selectionstring=self.headgroup_sel,\n                              cutoff=cutoff,\n                              pbc=pbc,\n                              sparse=sparse)\n\n    def setup(self, cutoff, sparse, pbc):\n        self.u = MDAnalysis.Universe(Martini_membrane_gro)\n        self.headgroup_sel = 'name PO4'",
+            "goal_time": 0.1,
+            "name": "analysis.leaflet.LeafletBench.time_leafletfinder",
+            "number": 0,
+            "param_names": [
+                "cutoff",
+                "sparse",
+                "pbc"
+            ],
+            "params": [
+                [
+                    "7.0",
+                    "15.0",
+                    "23.0"
+                ],
+                [
+                    "None",
+                    "True",
+                    "False"
+                ],
+                [
+                    "True",
+                    "False"
+                ]
+            ],
+            "pretty_name": "analysis.leaflet.LeafletBench.time_leafletfinder",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "7cc51105a1891b5d2b1fef3302766e183867f8867aa8b79557daa1cc472a6f4e",
+            "warmup_time": -1
+        },
+        "analysis.leaflet.LeafletOptimizeBench.time_optimize_cutoff": {
+            "code": "class LeafletOptimizeBench:\n    def time_optimize_cutoff(self, sparse, pbc):\n        \"\"\"Benchmark optimize_cutoff for test lipid\n        membrane system using default network distance\n        range.\n        \"\"\"\n        leaflet.optimize_cutoff(universe=self.u,\n                                selection=self.headgroup_sel,\n                                pbc=pbc,\n                                sparse=sparse)\n\n    def setup(self, sparse, pbc):\n        self.u = MDAnalysis.Universe(Martini_membrane_gro)\n        self.headgroup_sel = 'name PO4'",
+            "goal_time": 0.1,
+            "name": "analysis.leaflet.LeafletOptimizeBench.time_optimize_cutoff",
+            "number": 0,
+            "param_names": [
+                "sparse",
+                "pbc"
+            ],
+            "params": [
+                [
+                    "None",
+                    "True",
+                    "False"
+                ],
+                [
+                    "True",
+                    "False"
+                ]
+            ],
+            "pretty_name": "analysis.leaflet.LeafletOptimizeBench.time_optimize_cutoff",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "c2594da2d6b564ca7b231a1e6c28e4d7b1c330259c6b64a9ede16bd1953450b7",
+            "warmup_time": -1
+        },
+        "analysis.psa.PSA_get_coord_axesBench.time_get_coord_axes": {
+            "code": "class PSA_get_coord_axesBench:\n    def time_get_coord_axes(self, time_steps, n_atoms):\n        \"\"\"Benchmark get_coord_axes in psa module\n        \"\"\"\n        psa.get_coord_axes(path=self.path)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        # only using condensed path input\n        # data structure for now\n        self.path = np.random.rand(time_steps,\n                                   n_atoms * 3)",
+            "goal_time": 0.1,
+            "name": "analysis.psa.PSA_get_coord_axesBench.time_get_coord_axes",
+            "number": 0,
+            "param_names": [
+                "time_steps",
+                "n_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000"
+                ],
+                [
+                    "5",
+                    "25",
+                    "50"
+                ]
+            ],
+            "pretty_name": "analysis.psa.PSA_get_coord_axesBench.time_get_coord_axes",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "86cb5086b8445a130e30b1506114ef9279166f177f3b89ad2641253d58117f93",
+            "warmup_time": -1
+        },
+        "analysis.psa.PSA_get_msd_matrixBench.time_get_msd_matrix": {
+            "code": "class PSA_get_msd_matrixBench:\n    def time_get_msd_matrix(self, time_steps, n_atoms):\n        \"\"\"Benchmark for get_msd_matrix in psa module\n        \"\"\"\n        # only default argument for axis is benchmarked\n        psa.get_msd_matrix(P=self.P,\n                           Q=self.Q,\n                           axis=None)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+            "goal_time": 0.1,
+            "name": "analysis.psa.PSA_get_msd_matrixBench.time_get_msd_matrix",
+            "number": 0,
+            "param_names": [
+                "time_steps",
+                "n_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000"
+                ],
+                [
+                    "5",
+                    "25",
+                    "50"
+                ]
+            ],
+            "pretty_name": "analysis.psa.PSA_get_msd_matrixBench.time_get_msd_matrix",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "9dcdda75f655ab20762a5a9c171d804a3f908f3b76043f3fb66e1c5e471aa2c0",
+            "warmup_time": -1
+        },
+        "analysis.psa.PSA_get_path_metric_funcBench.time_get_path_metric_func": {
+            "code": "class PSA_get_path_metric_funcBench:\n    def time_get_path_metric_func(self, path_metric):\n        \"\"\"Benchmark for get_path_metric_func in psa\n        module\n        \"\"\"\n        psa.get_path_metric_func(name=path_metric)",
+            "goal_time": 0.1,
+            "name": "analysis.psa.PSA_get_path_metric_funcBench.time_get_path_metric_func",
+            "number": 0,
+            "param_names": [
+                "path_metric"
+            ],
+            "params": [
+                [
+                    "'hausdorff'",
+                    "'weighted_average_hausdorff'",
+                    "'average_hausdorff'",
+                    "'hausdorff_neighbors'",
+                    "'discrete_frechet'"
+                ]
+            ],
+            "pretty_name": "analysis.psa.PSA_get_path_metric_funcBench.time_get_path_metric_func",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "fc71d48ec5e111b5f38e7d741ab5f63fc3c8615325be6916878225ada0d3e828",
+            "warmup_time": -1
+        },
+        "analysis.psa.PSA_metricBench.time_discrete_frechet": {
+            "code": "class PSA_metricBench:\n    def time_discrete_frechet(self, time_steps, n_atoms):\n        \"\"\"Benchmark for discrete_frechet() in psa module.\n        \"\"\"\n        psa.discrete_frechet(P=self.P,\n                             Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+            "goal_time": 0.1,
+            "name": "analysis.psa.PSA_metricBench.time_discrete_frechet",
+            "number": 0,
+            "param_names": [
+                "time_steps",
+                "n_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "200"
+                ],
+                [
+                    "5",
+                    "25",
+                    "50"
+                ]
+            ],
+            "pretty_name": "analysis.psa.PSA_metricBench.time_discrete_frechet",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "3bb3d861752ef9ed6f77ac94cad9ed2e42c56d8df988a838892b313d1104b7cb",
+            "warmup_time": -1
+        },
+        "analysis.psa.PSA_metricBench.time_hausdorff": {
+            "code": "class PSA_metricBench:\n    def time_hausdorff(self, time_steps, n_atoms):\n        \"\"\"Benchmark for hausdorff() in psa module.\n        \"\"\"\n        psa.hausdorff(P=self.P,\n                      Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+            "goal_time": 0.1,
+            "name": "analysis.psa.PSA_metricBench.time_hausdorff",
+            "number": 0,
+            "param_names": [
+                "time_steps",
+                "n_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "200"
+                ],
+                [
+                    "5",
+                    "25",
+                    "50"
+                ]
+            ],
+            "pretty_name": "analysis.psa.PSA_metricBench.time_hausdorff",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "e0c90539a3b87665619c0c5923a412b1457f5cf08564b891b2ea25345fc720fc",
+            "warmup_time": -1
+        },
+        "analysis.psa.PSA_metricBench.time_hausdorff_avg": {
+            "code": "class PSA_metricBench:\n    def time_hausdorff_avg(self, time_steps, n_atoms):\n        \"\"\"Benchmark for hausdorff_avg() in psa module.\n        \"\"\"\n        psa.hausdorff_avg(P=self.P,\n                          Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+            "goal_time": 0.1,
+            "name": "analysis.psa.PSA_metricBench.time_hausdorff_avg",
+            "number": 0,
+            "param_names": [
+                "time_steps",
+                "n_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "200"
+                ],
+                [
+                    "5",
+                    "25",
+                    "50"
+                ]
+            ],
+            "pretty_name": "analysis.psa.PSA_metricBench.time_hausdorff_avg",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "bda335edfdd48be1e40d51ba67bd57127dc22570ed81c79b25c9c34e98073cad",
+            "warmup_time": -1
+        },
+        "analysis.psa.PSA_metricBench.time_hausdorff_neighbors": {
+            "code": "class PSA_metricBench:\n    def time_hausdorff_neighbors(self, time_steps, n_atoms):\n        \"\"\"Benchmark for hausdorff_neighbors() in psa module.\n        \"\"\"\n        psa.hausdorff_neighbors(P=self.P,\n                                Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+            "goal_time": 0.1,
+            "name": "analysis.psa.PSA_metricBench.time_hausdorff_neighbors",
+            "number": 0,
+            "param_names": [
+                "time_steps",
+                "n_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "200"
+                ],
+                [
+                    "5",
+                    "25",
+                    "50"
+                ]
+            ],
+            "pretty_name": "analysis.psa.PSA_metricBench.time_hausdorff_neighbors",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "77321a9a92915cf788b65037e075327c72374c4f6dd8a105749c502756260a7a",
+            "warmup_time": -1
+        },
+        "analysis.psa.PSA_metricBench.time_hausdorff_wavg": {
+            "code": "class PSA_metricBench:\n    def time_hausdorff_wavg(self, time_steps, n_atoms):\n        \"\"\"Benchmark for hausdorff_wavg() in psa module.\n        \"\"\"\n        psa.hausdorff_wavg(P=self.P,\n                           Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+            "goal_time": 0.1,
+            "name": "analysis.psa.PSA_metricBench.time_hausdorff_wavg",
+            "number": 0,
+            "param_names": [
+                "time_steps",
+                "n_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "200"
+                ],
+                [
+                    "5",
+                    "25",
+                    "50"
+                ]
+            ],
+            "pretty_name": "analysis.psa.PSA_metricBench.time_hausdorff_wavg",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "162c1711b4953d5045859022df8b1477ad41b166cf80dc31e0b961c87761ed81",
+            "warmup_time": -1
+        },
+        "analysis.psa.PSA_sqnormBench.time_sqnorm": {
+            "code": "class PSA_sqnormBench:\n    def time_sqnorm(self, num_cols, num_rows, axis):\n        \"\"\"Benchmark sqnorm in psa module\n        \"\"\"\n        psa.sqnorm(v=self.v, axis=axis)\n\n    def setup(self, num_cols, num_rows, axis):\n        np.random.seed(170089)\n        self.v = np.random.rand(num_rows, num_cols)",
+            "goal_time": 0.1,
+            "name": "analysis.psa.PSA_sqnormBench.time_sqnorm",
+            "number": 0,
+            "param_names": [
+                "num_cols",
+                "num_rows",
+                "axis"
+            ],
+            "params": [
+                [
+                    "2",
+                    "3",
+                    "4"
+                ],
+                [
+                    "100",
+                    "1000",
+                    "10000"
+                ],
+                [
+                    "None",
+                    "0",
+                    "1",
+                    "-1"
+                ]
+            ],
+            "pretty_name": "analysis.psa.PSA_sqnormBench.time_sqnorm",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "5360f9d9650b651e056f22f98fd02bda2307b2f2eabb3fbe7c1c4b0dffe5f70b",
+            "warmup_time": -1
+        },
+        "analysis.rms.RmsdTrajBench.time_RMSD": {
+            "code": "class RmsdTrajBench:\n    def time_RMSD(self, select, weights):\n        \"\"\"Benchmark RMSD.run() method, which parses\n        over the entire trajectory.\n        \"\"\"\n        self.RMSD_inst.run()\n\n    def setup(self, select, weights):\n        self.u = MDAnalysis.Universe(PSF, DCD)\n        self.RMSD_inst = rms.RMSD(atomgroup=self.u,\n                                  reference=None,\n                                  select=select,\n                                  weights=weights)",
+            "goal_time": 0.1,
+            "name": "analysis.rms.RmsdTrajBench.time_RMSD",
+            "number": 0,
+            "param_names": [
+                "select",
+                "weights"
+            ],
+            "params": [
+                [
+                    "'all'",
+                    "'backbone'"
+                ],
+                [
+                    "None",
+                    "'mass'"
+                ]
+            ],
+            "pretty_name": "analysis.rms.RmsdTrajBench.time_RMSD",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "64836ac01572a5047b1dd99fff0059e19db814e8d869fba0f667e8ce391dab94",
+            "warmup_time": -1
+        },
+        "analysis.rms.RmsfTrajBench.time_RMSF": {
+            "code": "class RmsfTrajBench:\n    def time_RMSF(self, n_atoms, step, weights):\n        \"\"\"Benchmark RMSF.run() method, which parses\n        over the entire trajectory.\n        \"\"\"\n        self.RMSF_inst.run()\n\n    def setup(self, n_atoms, step, weights):\n        self.u = MDAnalysis.Universe(PSF, DCD)\n        self.ag = self.u.atoms[:n_atoms]\n        self.RMSF_inst = rms.RMSF(atomgroup=self.ag,\n                                  start=None,\n                                  stop=None,\n                                  step=step,\n                                  weights=weights)",
+            "goal_time": 0.1,
+            "name": "analysis.rms.RmsfTrajBench.time_RMSF",
+            "number": 0,
+            "param_names": [
+                "n_atoms",
+                "step",
+                "weights"
+            ],
+            "params": [
+                [
+                    "100",
+                    "500",
+                    "2000"
+                ],
+                [
+                    "None",
+                    "3"
+                ],
+                [
+                    "None",
+                    "'mass'"
+                ]
+            ],
+            "pretty_name": "analysis.rms.RmsfTrajBench.time_RMSF",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "51fa8961bb7846d8b1a47b3169c16b28ce31a4a9888dcf935747cc9ae82eb9a4",
+            "warmup_time": -1
+        },
+        "analysis.rms.SimpleRmsBench.time_rmsd": {
+            "code": "class SimpleRmsBench:\n    def time_rmsd(self, num_atoms, weights, center, superposition):\n        \"\"\"Benchmark rmsd function using a setup similar to\n        its docstring example code along with several possible\n        permutations of parameters.\n        \"\"\"\n        rms.rmsd(a=self.A,\n                 b=self.B,\n                 weights=weights,\n                 center=center,\n                 superposition=superposition)\n\n    def setup(self, num_atoms, weights, center, superposition):\n        # mimic rmsd docstring example code\n        self.u = MDAnalysis.Universe(PSF, DCD)\n        # ag.positions is the new syntax\n        # but older commit hashes will need to use\n        # ag.coordinates()\n        try:\n            self.A = self.u.atoms.positions.copy()[:num_atoms]\n            self.u.trajectory[-1]\n            self.B = self.u.atoms.positions.copy()[:num_atoms]\n        except:\n            self.A = self.u.atoms.coordinates().copy()[:num_atoms]\n            self.u.trajectory[-1]\n            self.B = self.u.atoms.coordinates().copy()[:num_atoms]",
+            "goal_time": 0.1,
+            "name": "analysis.rms.SimpleRmsBench.time_rmsd",
+            "number": 0,
+            "param_names": [
+                "num_atoms",
+                "weights",
+                "center",
+                "superposition"
+            ],
+            "params": [
+                [
+                    "100",
+                    "500",
+                    "2000"
+                ],
+                [
+                    "None",
+                    "[1.0, 0.5]"
+                ],
+                [
+                    "False",
+                    "True"
+                ],
+                [
+                    "False",
+                    "True"
+                ]
+            ],
+            "pretty_name": "analysis.rms.SimpleRmsBench.time_rmsd",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "3730cce32247fa610cb1fcb58e054dc42bd0d1dd6ee55a5d19e01cff3ade58d1",
+            "warmup_time": -1
+        },
+        "selections.GeoSelectionBench.time_geometric_selections": {
+            "code": "class GeoSelectionBench:\n    def time_geometric_selections(self,\n                                  selection_string,\n                                  dynamic_selection,\n                                  periodic_selection):\n    \n        # set core flags for PBC accounting\n        MDAnalysis.core.flags['use_periodic_selections'] = periodic_selection[0]\n        MDAnalysis.core.flags['use_KDTree_routines'] = periodic_selection[1]\n    \n        if hasattr(MDAnalysis.Universe, 'select_atoms'):\n            self.u.select_atoms(selection_string, updating=dynamic_selection)\n        else:\n            self.u.selectAtoms(selection_string, updating=dynamic_selection)\n\n    def setup(self,\n              selection_string,\n              dynamic_selection,\n              periodic_selection):\n        self.u = MDAnalysis.Universe(GRO)",
+            "goal_time": 0.1,
+            "name": "selections.GeoSelectionBench.time_geometric_selections",
+            "number": 0,
+            "param_names": [
+                "selection_string",
+                "dynamic_selection",
+                "periodic_selection"
+            ],
+            "params": [
+                [
+                    "'around 5.0 resid 1'",
+                    "'sphlayer 2.4 6.0 (protein)'",
+                    "'sphzone 6.0 (protein)'",
+                    "'cylayer 5 10 10 -8 protein'",
+                    "'cyzone 15 4 -8 protein'",
+                    "'point 5.0 5.0 5.0 3.5'",
+                    "'prop z >= 5.0'",
+                    "'prop abs z <= 5.0'"
+                ],
+                [
+                    "True",
+                    "False"
+                ],
+                [
+                    "[False, True]",
+                    "[True, False]"
+                ]
+            ],
+            "pretty_name": "selections.GeoSelectionBench.time_geometric_selections",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "b1d29e5a574daee7de2e1c37536258165a3371b550cd29fc2f41c55e796001e1",
+            "warmup_time": -1
+        },
+        "selections.SimpleSelectionBench.time_simple_selections": {
+            "code": "class SimpleSelectionBench:\n    def time_simple_selections(self, selection_string):\n        \"\"\"Benchmark simple selections on the protein-based\n        standard test GRO file.\n        \"\"\"\n        if hasattr(MDAnalysis.Universe, 'select_atoms'):\n            self.u.select_atoms(selection_string)\n        else:\n            self.u.selectAtoms(selection_string)\n\n    def setup(self, selection_string):\n        self.u = MDAnalysis.Universe(GRO)",
+            "goal_time": 0.1,
+            "name": "selections.SimpleSelectionBench.time_simple_selections",
+            "number": 0,
+            "param_names": [
+                "selection_string"
+            ],
+            "params": [
+                [
+                    "'protein'",
+                    "'backbone'",
+                    "'nucleic'",
+                    "'nucleicbackbone'",
+                    "'resid 1:10'",
+                    "'resnum 1:10'",
+                    "'resname LYS'",
+                    "'name CA'",
+                    "'bynum 0:10'"
+                ]
+            ],
+            "pretty_name": "selections.SimpleSelectionBench.time_simple_selections",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "3d7336e8388a8daf7d76bc3faec4ee662f2ddce17529d2b322ec539be91758c3",
+            "warmup_time": -1
+        },
+        "traj_reader.TrajReaderCreation.time_reads": {
+            "code": "class TrajReaderCreation:\n    def time_reads(self, traj_format):\n        \"\"\"Simple benchmark for reading traj file formats\n        from our standard test files.\n        \"\"\"\n        self.traj_reader(self.traj_file)\n\n    def setup(self, traj_format):\n        self.traj_dict = traj_dict\n        self.traj_file, self.traj_reader = self.traj_dict[traj_format]",
+            "goal_time": 0.1,
+            "name": "traj_reader.TrajReaderCreation.time_reads",
+            "number": 0,
+            "param_names": [
+                "traj_format"
+            ],
+            "params": [
+                [
+                    "'XTC'",
+                    "'TRR'",
+                    "'DCD'",
+                    "'NCDF'"
+                ]
+            ],
+            "pretty_name": "traj_reader.TrajReaderCreation.time_reads",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "4b030c7c2af116b5eaaec4c77913ed39dda95d0f355f11be9ee99403dfa71f93",
+            "warmup_time": -1
+        },
+        "traj_reader.TrajReaderIteration.time_strides": {
+            "code": "class TrajReaderIteration:\n    def time_strides(self, traj_format):\n        \"\"\"Benchmark striding over full trajectory\n        test files for each format.\n        \"\"\"\n        for ts in self.reader_object:\n            pass\n\n    def setup(self, traj_format):\n        self.traj_dict = traj_dict\n        self.traj_file, self.traj_reader = self.traj_dict[traj_format]\n        self.reader_object = self.traj_reader(self.traj_file)",
+            "goal_time": 0.1,
+            "name": "traj_reader.TrajReaderIteration.time_strides",
+            "number": 0,
+            "param_names": [
+                "traj_format"
+            ],
+            "params": [
+                [
+                    "'XTC'",
+                    "'TRR'",
+                    "'DCD'",
+                    "'NCDF'"
+                ]
+            ],
+            "pretty_name": "traj_reader.TrajReaderIteration.time_strides",
+            "repeat": 0,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "d2890f87c636b5336c33c4ede5c97f90f26b52ea890f4514459dee27de3b92fc",
+            "warmup_time": -1
+        }
+    },
+    "graph_param_list": [
+        {
+            "Cython": "",
+            "MDAnalysisTests": "",
+            "arch": "x86_64",
+            "branch": "develop",
+            "cpu": "Intel(R) Core(TM) i9-7900X CPU @ 3.30GHz",
+            "machine": "gp160",
+            "mock": "",
+            "nose": "",
+            "numpy": "",
+            "os": "Linux 4.10.0-35-generic",
+            "psutil": "",
+            "pytest": "",
+            "python": "2.7",
+            "ram": "128GB",
+            "scipy": "",
+            "six": ""
+        },
+        {
+            "Cython": "",
+            "MDAnalysisTests": "",
+            "arch": "x86_64",
+            "branch": "develop",
+            "cpu": "Intel(R) Xeon(R) CPU E3-1226 v3 @ 3.30GHz",
+            "machine": "c3potato",
+            "mock": "",
+            "nose": "",
+            "numpy": "",
+            "os": "Linux 3.16.0-4-amd64",
+            "psutil": "",
+            "pytest": "",
+            "python": "2.7",
+            "ram": "16GB",
+            "scipy": "",
+            "six": ""
+        },
+        {
+            "Cython": "",
+            "MDAnalysisTests": "",
+            "arch": "x86_64",
+            "branch": "develop",
+            "cpu": "Intel(R) Xeon(R) CPU E3-1226 v3 @ 3.30GHz",
+            "machine": "c3potato",
+            "mock": "",
+            "nose": "",
+            "numpy": "",
+            "os": "Linux 3.16.0-4-amd64",
+            "psutil": "",
+            "pytest": "",
+            "python": "2.7",
+            "ram": "16428936",
+            "scipy": "",
+            "six": ""
+        }
+    ],
+    "hash_length": 8,
+    "machines": {
+        "c3potato": {
+            "arch": "x86_64",
+            "cpu": "Intel(R) Xeon(R) CPU E3-1226 v3 @ 3.30GHz",
+            "machine": "c3potato",
+            "os": "Linux 3.16.0-4-amd64",
+            "ram": "16GB",
+            "version": 1
+        },
+        "gp160": {
+            "arch": "x86_64",
+            "cpu": "Intel(R) Core(TM) i9-7900X CPU @ 3.30GHz",
+            "machine": "gp160",
+            "os": "Linux 4.10.0-35-generic",
+            "ram": "128GB",
+            "version": 1
+        }
+    },
+    "pages": [
+        [
+            "",
+            "Grid view",
+            "Display as a agrid"
+        ],
+        [
+            "summarylist",
+            "List view",
+            "Display as a list"
+        ],
+        [
+            "regressions",
+            "Show regressions",
+            "Display information about recent regressions"
+        ]
+    ],
+    "params": {
+        "Cython": [
+            ""
+        ],
+        "MDAnalysisTests": [
+            ""
+        ],
+        "arch": [
+            "x86_64"
+        ],
+        "branch": [
+            "develop"
+        ],
+        "cpu": [
+            "Intel(R) Core(TM) i9-7900X CPU @ 3.30GHz",
+            "Intel(R) Xeon(R) CPU E3-1226 v3 @ 3.30GHz"
+        ],
+        "machine": [
+            "c3potato",
+            "gp160"
+        ],
+        "mock": [
+            ""
+        ],
+        "nose": [
+            ""
+        ],
+        "numpy": [
+            ""
+        ],
+        "os": [
+            "Linux 3.16.0-4-amd64",
+            "Linux 4.10.0-35-generic"
+        ],
+        "psutil": [
+            ""
+        ],
+        "pytest": [
+            ""
+        ],
+        "python": [
+            "2.7"
+        ],
+        "ram": [
+            "128GB",
+            "16428936",
+            "16GB"
+        ],
+        "scipy": [
+            ""
+        ],
+        "six": [
+            ""
+        ]
+    },
+    "project": "mdanalysis",
+    "project_url": "https://www.mdanalysis.org/",
+    "revision_to_date": {
+        "82": 1201780717000,
+        "104": 1219452708000,
+        "139": 1247569053000,
+        "152": 1268263654000,
+        "154": 1270166496000,
+        "170": 1272729077000,
+        "205": 1274971759000,
+        "256": 1278587092000,
+        "283": 1284632442000,
+        "289": 1284913073000,
+        "350": 1288443967000,
+        "381": 1289009538000,
+        "429": 1297167036000,
+        "483": 1301573309000,
+        "554": 1306020417000,
+        "604": 1315432549000,
+        "605": 1315433712000,
+        "609": 1315928538000,
+        "680": 1329008993000,
+        "698": 1329404137000,
+        "810": 1341429339000,
+        "964": 1368301504000,
+        "1046": 1382055233000,
+        "1096": 1388223959000,
+        "1105": 1388423982000,
+        "1122": 1388509446000,
+        "1133": 1389822644000,
+        "1142": 1390620955000,
+        "1163": 1392152849000,
+        "1188": 1396359721000,
+        "1337": 1426589646000,
+        "1357": 1427488168000,
+        "1389": 1429539975000,
+        "1482": 1433176801000,
+        "1537": 1434412780000,
+        "1645": 1436989891000,
+        "1800": 1440848551000,
+        "1834": 1441624556000,
+        "1841": 1441737924000,
+        "1854": 1441997103000,
+        "1863": 1442045095000,
+        "1864": 1442045246000,
+        "1867": 1442049990000,
+        "1869": 1442054103000,
+        "1875": 1442103620000,
+        "1880": 1442266756000,
+        "1883": 1442381474000,
+        "1907": 1442875738000,
+        "1909": 1442876766000,
+        "1915": 1442878773000,
+        "1919": 1443066760000,
+        "1934": 1443486804000,
+        "1935": 1443486860000,
+        "1942": 1443509207000,
+        "1946": 1443558015000,
+        "1955": 1443713146000,
+        "1965": 1443738579000,
+        "1969": 1443774779000,
+        "1972": 1443816006000,
+        "1991": 1443935853000,
+        "1998": 1443970790000,
+        "2004": 1444065166000,
+        "2007": 1444066337000,
+        "2014": 1444089083000,
+        "2024": 1444172843000,
+        "2030": 1444285291000,
+        "2045": 1444449568000,
+        "2053": 1444671518000,
+        "2066": 1445083639000,
+        "2069": 1445202653000,
+        "2079": 1445266712000,
+        "2081": 1445267989000,
+        "2093": 1445358426000,
+        "2094": 1445358701000,
+        "2104": 1445409854000,
+        "2106": 1445488015000,
+        "2110": 1445547554000,
+        "2112": 1445548588000,
+        "2123": 1445813998000,
+        "2130": 1446225814000,
+        "2132": 1446228925000,
+        "2136": 1446236459000,
+        "2156": 1446576113000,
+        "2157": 1446576494000,
+        "2162": 1446606497000,
+        "2166": 1446754911000,
+        "2170": 1447091890000,
+        "2174": 1447097967000,
+        "2175": 1447098034000,
+        "2179": 1447144046000,
+        "2183": 1447261660000,
+        "2195": 1447347881000,
+        "2196": 1447348883000,
+        "2202": 1447357379000,
+        "2206": 1447393590000,
+        "2217": 1447623752000,
+        "2228": 1447910880000,
+        "2231": 1447959310000,
+        "2235": 1448307318000,
+        "2242": 1449007159000,
+        "2253": 1449119075000,
+        "2267": 1449189577000,
+        "2280": 1449232580000,
+        "2327": 1449527495000,
+        "2344": 1449531731000,
+        "2348": 1449542085000,
+        "2357": 1449601853000,
+        "2373": 1449680734000,
+        "2374": 1449680884000,
+        "2377": 1449689157000,
+        "2423": 1449882924000,
+        "2433": 1450089122000,
+        "2435": 1450103858000,
+        "2438": 1450131686000,
+        "2440": 1450133552000,
+        "2446": 1450206992000,
+        "2447": 1450208064000,
+        "2451": 1450222265000,
+        "2531": 1451903957000,
+        "2534": 1451911528000,
+        "2537": 1452073198000,
+        "2547": 1452162050000,
+        "2560": 1452198807000,
+        "2577": 1452374289000,
+        "2587": 1452673341000,
+        "2595": 1452760815000,
+        "2601": 1452882568000,
+        "2605": 1452889163000,
+        "2608": 1452892771000,
+        "2612": 1452895915000,
+        "2614": 1452897852000,
+        "2619": 1453027038000,
+        "2621": 1453029329000,
+        "2690": 1453042236000,
+        "2700": 1453196084000,
+        "2708": 1453210983000,
+        "2712": 1453219384000,
+        "2719": 1453230048000,
+        "2722": 1453234865000,
+        "2733": 1453244868000,
+        "2737": 1453293532000,
+        "2749": 1453376942000,
+        "2753": 1453406176000,
+        "2762": 1453473989000,
+        "2767": 1453475378000,
+        "2770": 1453480125000,
+        "2778": 1453502135000,
+        "2800": 1453720272000,
+        "2810": 1453810371000,
+        "2812": 1453811418000,
+        "2821": 1453876181000,
+        "2823": 1453894552000,
+        "2826": 1453905275000,
+        "2829": 1453908353000,
+        "2837": 1453978533000,
+        "2843": 1454059520000,
+        "2848": 1454066093000,
+        "2857": 1454104552000,
+        "2876": 1454325702000,
+        "2879": 1454336016000,
+        "2881": 1454337527000,
+        "2890": 1454357605000,
+        "2907": 1454494191000,
+        "2916": 1454666715000,
+        "2923": 1454777100000,
+        "2926": 1454784372000,
+        "2941": 1454846852000,
+        "2950": 1454962182000,
+        "2953": 1454965390000,
+        "2956": 1455014150000,
+        "2970": 1455145834000,
+        "2976": 1455204196000,
+        "2993": 1455225073000,
+        "2998": 1455279146000,
+        "3002": 1455300380000,
+        "3012": 1455461805000,
+        "3015": 1455480327000,
+        "3021": 1455529957000,
+        "3039": 1455894447000,
+        "3051": 1456183302000,
+        "3056": 1456259017000,
+        "3073": 1456515503000,
+        "3081": 1456585421000,
+        "3084": 1456594127000,
+        "3090": 1456666141000,
+        "3116": 1456738313000,
+        "3119": 1456807961000,
+        "3123": 1456848096000,
+        "3143": 1457339430000,
+        "3156": 1457472400000,
+        "3165": 1457686795000,
+        "3172": 1457857979000,
+        "3185": 1458129668000,
+        "3198": 1458316583000,
+        "3204": 1458425021000,
+        "3213": 1458467283000,
+        "3218": 1458490678000,
+        "3221": 1458542293000,
+        "3229": 1458580272000,
+        "3231": 1458586393000,
+        "3249": 1459106269000,
+        "3254": 1459136471000,
+        "3274": 1459456590000,
+        "3280": 1459611888000,
+        "3343": 1460069188000,
+        "3348": 1460145885000,
+        "3370": 1460569510000,
+        "3387": 1460964555000,
+        "3388": 1460964681000,
+        "3394": 1461022783000,
+        "3398": 1461040235000,
+        "3408": 1461292240000,
+        "3410": 1461305410000,
+        "3417": 1461519419000,
+        "3421": 1461564898000,
+        "3422": 1461565432000,
+        "3428": 1461967013000,
+        "3439": 1462456149000,
+        "3443": 1462561375000,
+        "3451": 1462781647000,
+        "3466": 1463147863000,
+        "3471": 1463325047000,
+        "3474": 1463343595000,
+        "3496": 1463984114000,
+        "3501": 1464083737000,
+        "3524": 1465161746000,
+        "3530": 1465248049000,
+        "3534": 1465820518000,
+        "3545": 1467276554000,
+        "3612": 1467851695000,
+        "3688": 1468255092000,
+        "3711": 1469007691000,
+        "3716": 1469051421000,
+        "3726": 1469185894000,
+        "3729": 1469203680000,
+        "3740": 1469470621000,
+        "3787": 1469830265000,
+        "3817": 1470126869000,
+        "3825": 1470225304000,
+        "3891": 1471124084000,
+        "3965": 1471194091000,
+        "3996": 1471432855000,
+        "4000": 1471437174000,
+        "4027": 1471682488000,
+        "4035": 1471898267000,
+        "4040": 1471949171000,
+        "4046": 1472047354000,
+        "4052": 1472129808000,
+        "4242": 1474615724000,
+        "4251": 1474635053000,
+        "4367": 1476262567000,
+        "4553": 1478247585000,
+        "4557": 1478516896000,
+        "4567": 1478873054000,
+        "4580": 1479154412000,
+        "4598": 1479594540000,
+        "4622": 1480415610000,
+        "4625": 1480416223000,
+        "4628": 1480428226000,
+        "4641": 1480509461000,
+        "4657": 1480686055000,
+        "4669": 1480918957000,
+        "4674": 1481059805000,
+        "4678": 1481142802000,
+        "4722": 1482373531000,
+        "4724": 1482506739000,
+        "4725": 1482506875000,
+        "4728": 1482518033000,
+        "4733": 1482703264000,
+        "4745": 1483051148000,
+        "4754": 1483439972000,
+        "4760": 1483535700000,
+        "4764": 1483809413000,
+        "4787": 1484060278000,
+        "4815": 1484258314000,
+        "4819": 1484372406000,
+        "4837": 1484492853000,
+        "4838": 1484493092000,
+        "4841": 1484546719000,
+        "4852": 1484741064000,
+        "4863": 1484843991000,
+        "4876": 1484897052000,
+        "4913": 1485437487000,
+        "4954": 1485678414000,
+        "4968": 1485814126000,
+        "5033": 1486192950000,
+        "5039": 1486479422000,
+        "5063": 1486734902000,
+        "5093": 1487036484000,
+        "5098": 1487088986000,
+        "5110": 1487366689000,
+        "5117": 1487842314000,
+        "5127": 1488035266000,
+        "5230": 1489620343000,
+        "5236": 1489686742000,
+        "5254": 1490248893000,
+        "5255": 1490249019000,
+        "5424": 1491806560000,
+        "5427": 1491835426000,
+        "5432": 1491861800000,
+        "5467": 1492465297000,
+        "5552": 1493969358000,
+        "5560": 1494186159000,
+        "5636": 1495375738000,
+        "5644": 1495601286000,
+        "5663": 1495788578000,
+        "5703": 1496522184000,
+        "5705": 1496553813000,
+        "5723": 1497389364000,
+        "5728": 1497398618000,
+        "5730": 1497399372000,
+        "5872": 1498140544000,
+        "5891": 1498301788000,
+        "5939": 1498558564000,
+        "6011": 1499110816000,
+        "6120": 1499513875000,
+        "6126": 1499580917000,
+        "6130": 1499590711000,
+        "6231": 1500024907000,
+        "6275": 1500389822000,
+        "6318": 1500496404000,
+        "6349": 1500702090000,
+        "6472": 1501633259000,
+        "6530": 1501929305000,
+        "6541": 1501961625000,
+        "6560": 1502173813000,
+        "6561": 1502175408000,
+        "6588": 1502345536000,
+        "6594": 1502476033000,
+        "6595": 1502476117000,
+        "6625": 1502776628000,
+        "6626": 1502776847000,
+        "6627": 1502777228000,
+        "6769": 1503661938000,
+        "6786": 1503846474000,
+        "6842": 1504655244000,
+        "6848": 1504701282000,
+        "6868": 1505240035000,
+        "6872": 1505304122000,
+        "6888": 1505743125000,
+        "6923": 1507183402000,
+        "6939": 1507832513000,
+        "6944": 1508278658000,
+        "6949": 1508625283000,
+        "7025": 1511010257000,
+        "7043": 1511472473000,
+        "7055": 1511802087000,
+        "7064": 1512502224000,
+        "7096": 1512656411000,
+        "7118": 1512998376000,
+        "7120": 1512998620000,
+        "7129": 1513170797000,
+        "7130": 1513170824000
+    },
+    "revision_to_hash": {
+        "82": "f892b792eefe06cb1c1e60883174230f3fde1653",
+        "104": "9c1b6d1cb29988077ebc0cbce68ab09b65cebbfe",
+        "139": "4b3474bff9bbcd21d9cd5449c161c4359ecdc444",
+        "152": "e6c76e248dc30ccc02bca8906f75ceec02da2d09",
+        "154": "347c152e86aa9c53f73264a84064f927a9baafca",
+        "170": "222fcb10ac56fde93c253eb8b693c1bd582bba55",
+        "205": "9b8ffe9fc449bb0025c89a64d85cdcf4e01d8065",
+        "256": "f6b38a452d1084b1da070199c80840211ea47cca",
+        "283": "2329ec691b91b1fee0a8c6ce66492976f8a1bb78",
+        "289": "5b66e28da25ea637bd900ed925791546e42c9bf2",
+        "350": "189ba23e94225361427cdc2a725013b0403b9e1e",
+        "381": "aad2ad58e3521fc3907601413236b65dd6ad58a5",
+        "429": "69470856800716de88bd3cc6bcc1a46d11c8e768",
+        "483": "727c4697724513edcbdcaaec5a1011da145ea3ea",
+        "554": "f2a497bfbed5d236a6c00b3d654b39ee65108d77",
+        "604": "ab5e9e1bb2b615d8d11edeebf25e9a1a83bcba00",
+        "605": "c6bdc545a53b9a762668ef194cf6aa07244296c5",
+        "609": "1d65d5c162ed7edf5f5b4ee86b600efdeafa851f",
+        "680": "e52b313495af066f70c83c439b0d1d9da40747f2",
+        "698": "7387d8e5de9c6ec68becbbbacc3cad0442c126a2",
+        "810": "365d54cdcb9bf812a3b83c11ebc84274deec3619",
+        "964": "3c9ae52e59f647b9ea1908697dae0afcc5fba62c",
+        "1046": "91ed793b9774061fd0b9f64ceadc2a14a0c1f1ef",
+        "1096": "012da8137735bcef25449d5928b3d959b5d17e1a",
+        "1105": "5f12ae537be7cd6258cc5a45cf61665ed3111f20",
+        "1122": "6ed015c6491b0fb7e9acfacea49f6e5ce17c17b1",
+        "1133": "aa544f563ab68fbc20cf8934e0f9aadda491833b",
+        "1142": "e649a95825cc8091de86141c8da6ae94fc6daa3c",
+        "1163": "bd6ccf18e27a720a5179d02d0e007e20680ecb98",
+        "1188": "1e17fa62feff31559dc2c6817b8c94d51628cdf5",
+        "1337": "128a5c1e1d51d8b7b0532bd07abdfb12e7641318",
+        "1357": "1f1b48f3d9a4382483d8376542194e2e7f092e03",
+        "1389": "1f8e35fac6fd69a2f82d868b465096247c55b248",
+        "1482": "06c93bc0f6e664232e6ccbe401efc2ae02167e32",
+        "1537": "72fe0c1bb1624ff37dec75a2048f3f58218a1766",
+        "1645": "2f5cdcd0c8f1651aa77675474ee3cf526840ccc8",
+        "1800": "c457cfc4864922b9e704124e1393a21d4ec07c6d",
+        "1834": "de97ccc10ecade5e6b255c644c83327f8eaf2d4c",
+        "1841": "48a4641c7805a6e1221d13eb46eef7cc63b2a945",
+        "1854": "f8bdc80656da45c2b35ba052b4ad3ab1104a7503",
+        "1863": "0a81b3f39e6ea7e32343d80618827af0c7c2db40",
+        "1864": "f6a8bb057bd786ea9c2d503ef8c541ffd807522e",
+        "1867": "df0a40e054e7ad54631a3704ece7c129fdb30d02",
+        "1869": "04b7a208ace659209f2f6c4cbe6287d1d90e4eab",
+        "1875": "c3f3a63d800e8d75904ca76217a47741e58edaa9",
+        "1880": "d4351b1353a7ab6f98f7a8cf43b21b39dde9afb7",
+        "1883": "ef3f62e1d31b19e84e35362fc874fe88b73e0db3",
+        "1907": "4a3f08c277f6810dd4681230bdfe3c0fe2b07b70",
+        "1909": "58484f51a3f7145d93a350762ed7f4199e1c62bf",
+        "1915": "915c0fdf1e452da3d29003b1403b1ce6ace49e50",
+        "1919": "25ea3da8c6ae61687d2725848aff5f1fec1b14f2",
+        "1934": "11851bf04fd248760f9e572f0873632182b8ad8d",
+        "1935": "0ff135ac834fe1a85983fde0782feda06a0f0990",
+        "1942": "5b27b509bcb60026ca6c16dd3597d038bbb5ce7e",
+        "1946": "43046345c98a650828da2b67558e1447a7148e84",
+        "1955": "5a7d0e5dc48ba8b6cd6d2f82b57bc10c47dd68f4",
+        "1965": "3c5c3b640b4293a72fd4a20e3d1b41b31cf34dda",
+        "1969": "54c6d2c2ac68c4bc90569aa31fc886749ceb5068",
+        "1972": "339c110dca04516bdb93b84db3218eb0ea6c7607",
+        "1991": "f4185f657547ad6052812d302e14e51750b08e5e",
+        "1998": "e44331c6bd9675b55c9017cab3d8e81485d67f84",
+        "2004": "2d2ae28ccb879554e4181415d38ef0f9c736f298",
+        "2007": "53cdffa9f889a9fad331274b4aad1c10060d3781",
+        "2014": "68df27fa74a5e63d483b02f4ce01affb09b81901",
+        "2024": "893f661196bc78a8a014fb068324b92b28d504b5",
+        "2030": "a6269607ffe456fc1f9f899a6a11d834d63982dd",
+        "2045": "fb1e050f9393fdcee75c3a7b734fa86bfe5be3e4",
+        "2053": "7eafcdf751b5b11ffb69472598a990e6dccd0699",
+        "2066": "f4bc620f58ada3fa2432a631022b780c15d11ee2",
+        "2069": "c2a309ebd491c25e49bbcde05922c2e5d30c039c",
+        "2079": "9da0edf48d84578615ec5218eb6e5f1f5407366e",
+        "2081": "1bb94ffbdd6bab91d067840898fa7ef26fcc4c74",
+        "2093": "f081661673da0f38c41dad7ddf4d2f784479cfbd",
+        "2094": "9fc21313ec019321d96d3c30dddee9162c4b82b1",
+        "2104": "1cda12930e33b4715b93e4a35c9c16c2434a7c59",
+        "2106": "aee590176d4e6c398cd0e5fca5b68120eeea37cb",
+        "2110": "a222aa6d30c8d970b72837a9d8031e1855bf61c9",
+        "2112": "cfdf38b954fd9abdbebd6b58bcea48e730af4d50",
+        "2123": "96e3ce9c289d784eae9ea6b0f7c70d05915cf170",
+        "2130": "cf317f68b9261ee0075a47c801a7e9e0f26e6c3a",
+        "2132": "86bf68966063010e5888c3c1635819a8d87cd9ed",
+        "2136": "aac24f9b0faa61ae085d4cc858b13a39d940d861",
+        "2156": "35fb1b0fa959354258f7d135443cdc067bb320bb",
+        "2157": "11cf991dacac180347975c79a03a06d7f64a874c",
+        "2162": "23e0f724d8a2f6f6b6688b4f9d5fc0301bff402d",
+        "2166": "c675da750c83886eff0e393c5f4a88f5a5e75798",
+        "2170": "b34326a32514ecd408691a44c5d0455c2e27e8e4",
+        "2174": "99f2cc0ce84cdcb5d4a710d1b02be184975b4c06",
+        "2175": "946692ef7a5fba4d7dc05cd31ff1aab6d616bfb2",
+        "2179": "d66927039e1357da34dfc10631d66254c2c2fff7",
+        "2183": "e4d258a8c98c69f74a689147cd39b701de4c41d5",
+        "2195": "d168f86f2b429e6be24539c81a98bcb0defe6fa3",
+        "2196": "37540592e1fa3edfc343dd42cb198eb3e5a6b674",
+        "2202": "20d7e7bec3bc8e2bc431b11d47f0d4195f038d8f",
+        "2206": "c779eac63d741a0bb9f24af6a41640aadd42c4e0",
+        "2217": "0995e04858047d3dfed42241cc959673c9047eb2",
+        "2228": "06ec4b64a379fed89b5d6b014dc9095b826e2afe",
+        "2231": "82ce412a0d44c1a10ade4f698b80acb73fd31fc6",
+        "2235": "0c3aa90cf0a748642a9aab5e50562ca1b9fedc18",
+        "2242": "9d56a863eb3ba2d9b52c18358ec005a6d6f0c1de",
+        "2253": "d424ccf9e4a522e756dea74839f00e7f95d9871d",
+        "2267": "b7a143d2ddfd832b441c1beaf168560f0a8f65f5",
+        "2280": "b47596b69b72f5af088d4ec2b12cdb6e0dcc2dd9",
+        "2327": "1a8047d298e15d3d59dc0a2c14149d9aaa091e13",
+        "2344": "e203b806ad6ef16184bc5ff44da0f9b8dfec0035",
+        "2348": "80ec06ca507843b915793fab32216bb625a247d5",
+        "2357": "05fdf570c05daf3d46fe7e23aec61064ebe219ab",
+        "2373": "afb6e8d4c01ec2ecd15c5d990d5808e130a184fd",
+        "2374": "29031fe2fde7205789efe8f44b3987a82e4036be",
+        "2377": "e354507e91c2f33c8dd5b659c6653c7530dfa4da",
+        "2423": "4a7e3cfa89f583ceabc314420bd9c65271b3cbd7",
+        "2433": "554edc9e79e43672c66f7e382c4e4cd70e7fd830",
+        "2435": "b01f97445084323cfc66f4bb556fb721ab2c7778",
+        "2438": "6c5ea32a6ba29b2ac895e149fa244f857d311a50",
+        "2440": "526b9db1b2bd923e266f8fc81ce5386195c8948c",
+        "2446": "2410a49960493f800b633e38fa51dd8ee1a3a9d6",
+        "2447": "11f87078f53ffd9b4897e1ee92edbf84176a2b23",
+        "2451": "798f3a7eb6e9a51a63da517f31a1a99316a83ee5",
+        "2531": "0371edc6dd25237350a6dea1a75079f54f6496d7",
+        "2534": "d91e6c712d78bee6b788b69143b0bbcf96447727",
+        "2537": "0c80d93425f847b01457e9f356d0c03e1ec19fc1",
+        "2547": "30d0766f731f2fc22d4f56d72271b30396efe32a",
+        "2560": "0d6fbd815d894cf3e8dd1c526afbd8baff2b7e4a",
+        "2577": "2744af369e6969a77d92320a11a1b916604edf5f",
+        "2587": "8bb02d40e4a344f1ec1495e1ccad1dd9790bf095",
+        "2595": "7b91b2a33b01d7d098af2e7847d4a718f5ec8b85",
+        "2601": "5437ca7865302785db1401fb22ed6a793e473511",
+        "2605": "5044e906bb52f8ae758980b5a7a5ad267c63dd57",
+        "2608": "960d9ba79f7be52a97c1e2dccef3dca240624ca1",
+        "2612": "d826144e411dc66bce16e514c8e08ec13f3323d5",
+        "2614": "57934b628a5d61538a08670a60abc617270aeb42",
+        "2619": "9cb2162d895135eb2331822474ff2ddc4ef40785",
+        "2621": "9a80de068cd9057e7e3dc665345840c28ab247fd",
+        "2690": "b91e0abf5c3df5917e5e22d985e3e8d055aaec67",
+        "2700": "4fdc9be5e42f246abeb29cb644db854eeede629d",
+        "2708": "ae755d8da449d73d8f3ecff4d8015affa742d236",
+        "2712": "ac500caaa04b2e7aab37f9d131b5e456b6007f85",
+        "2719": "fedf0a2b0ef31d144ebf6fda7c43d4e9b125981e",
+        "2722": "7c907c247832b7d396510fc568e5bc891b69591d",
+        "2733": "af0e2e13643790e0dd8261bf999627e52d63432f",
+        "2737": "804d5d27e8f780a6ff8cf45f2393f5683acf2a96",
+        "2749": "7c25ebbe79ded36fd20cba8a58d74511427963e8",
+        "2753": "40831d942c4bda65fec8987f4627ede2c643de0e",
+        "2762": "5dc4fde0704486d5fa4c7fc03359087d8ee7a873",
+        "2767": "848aedf4adb368be061135f7a4b29e02a8382494",
+        "2770": "6e7c7da1f3ecc24f4edb785fe946ad430f6a3b8c",
+        "2778": "f13d8c8b327ff9e0ff93555e90090109c35aee1a",
+        "2800": "5330a7c7a7e0e780824f10a445567757c9355862",
+        "2810": "ebc2f591cb9ea604e78a380b93d582174c6e0d0e",
+        "2812": "926007fa8e5b006273a58638980df3cccd210d30",
+        "2821": "3f2ca5b86180035ce95bf37643dd2341ae4611d2",
+        "2823": "448cd70eca3df8b49438fb76c02ee1a61f14151e",
+        "2826": "9b70936c1b18baf6159a439f91a162b0359a8ca5",
+        "2829": "6e1f26d7d8c1228cacf65f4c2f636e3c1d89cb6f",
+        "2837": "a5548e0a90441038a8507b657a9bc049bae39c1e",
+        "2843": "dd384fd4f25ff0c5584e9350b367fe054574c2f2",
+        "2848": "481b5608738455450b743c1cf7ddb7f263f32b77",
+        "2857": "4e4f0fac998a6f5e846943ed07720be1df350afe",
+        "2876": "68b587a54e09b0eb8d2f6823c130a8ed9b2ee1e3",
+        "2879": "6b7839bdb74a3e9047391c032849c96695536028",
+        "2881": "34ce8fa44a1250853eac4cec0d36840aec429dee",
+        "2890": "ac8a98c4900b52fb3e8e175d7b03d7bdeb54abc3",
+        "2907": "0c918f4dc7e4edb9a20bfbd1723b5c02096e2397",
+        "2916": "21ca62b41a37c6d83f08361348a9d8a1dc1cce66",
+        "2923": "2da2f848683a749cb84ae8c0000ce2b4b894752c",
+        "2926": "73d6f59fca6fbd1491d5d1701b1ca603a3d2df40",
+        "2941": "795e5737f2a1f5c1a16eec8a0e749191344dc616",
+        "2950": "8bd70bf8df0d7dc28dca2ce176780f098abdc020",
+        "2953": "41c86ed12af3da2f2ed72e6073f14185b394fedb",
+        "2956": "eee993292a1686b1c9328ec56c1c5601a375449b",
+        "2970": "4c0070109bc5fcf7af86570950a2bfa87e591129",
+        "2976": "8e06aa505ed7e864cce65f05c95144160d5eadf9",
+        "2993": "419d7aa2b56377413cadb5021ec4de91e5b5f0dd",
+        "2998": "17159a20d3ffcb8dd28c193bf17290b3da046bb8",
+        "3002": "173ff26522717af14c798106a87d5c328416336f",
+        "3012": "36d2482da7124f0f8a772260136c52274199dfb9",
+        "3015": "42defaadceef5d848a2f18ac25b8b3fb721e61d3",
+        "3021": "4d06f6540d1c77c99e7b460d9a6af29b6f033de6",
+        "3039": "1b8b6244c2a26e25e517a552ee58ab93d5808508",
+        "3051": "c81ece31f7cffc73c8b146bb4c8854789c0a02c1",
+        "3056": "b6bd755f876ff85baa9321f7715b15fd5a928f27",
+        "3073": "b877c3becea806f9dbcb10d92ef5e774b900fdcc",
+        "3081": "277afec87897125668c4e5020c73a598cd1413fa",
+        "3084": "df5c2420284f3705ec3a6104a94491fdfbeda1f6",
+        "3090": "13a97e481a49cedf6d5e45041f96db35cf563880",
+        "3116": "a4ee46b31139978cca3bee5a7b25a84853d73b01",
+        "3119": "c824225b4a1ad95dc27af2c53b49a5a421939722",
+        "3123": "00163359d1bfc57d93f550ddc347133ea5d82b7b",
+        "3143": "622ebf3a8fd9b99f937ce88643469ddbcc2e228b",
+        "3156": "05a8aa600915290596a70f983350bcc45517fc41",
+        "3165": "33b563bc935f0f9fd47a115768ef873c7a250928",
+        "3172": "247424b8ec67eb2dc4b69ab7a88b03d84fd2ac96",
+        "3185": "e39ace4adc3d60499cfa95552d4ed4cdd101bed2",
+        "3198": "e3a345d07bd7afbfa95694c5773478e6f165fe8c",
+        "3204": "b27e41d7f5124214529cec5778e7789b5de55ae9",
+        "3213": "3de4db6cecfe61919578d43588bc219cdcfb26b6",
+        "3218": "2cc1cc31d3e9af2a773b85ef986d6443521d652c",
+        "3221": "feefee668aa9b10ce04ade61e3e46636dbfaf61d",
+        "3229": "c282d663fcd0f80279bd35cd4459d58fd94eb5c8",
+        "3231": "bddbd81c6e784aceb8d38b51b211ba1dce4c66bd",
+        "3249": "58f13b1ab80981554d38da123f29e33e8a4b6d99",
+        "3254": "7a329b9e7d28cd2ef21088e0dc58cbbba73ff67e",
+        "3274": "b739cecf217505d7a4a64e9e0c2845ebebcf4f2c",
+        "3280": "ee9210f1477139d805cbb66affa51b14a0577b1c",
+        "3343": "86d1eae41418a94d8bf5b79e8354ab010227c66d",
+        "3348": "78331d5435a5287322c04203aeeecab4edb1d9fc",
+        "3370": "96c927262daeb21d00c33b9112e5be283f45b78a",
+        "3387": "432498e375bc26d7b20ece0f7c6c2c4c1a5931c1",
+        "3388": "aa7e871550b16864dd378115d8a1330253b37143",
+        "3394": "a4c31d46749a9253586a98c4e55f66e54d37f3c3",
+        "3398": "9e049f68e8292f68c854687e6a3587877276f72a",
+        "3408": "9ce60e67f84046babd408b0624aae13056fd6562",
+        "3410": "ba2fd3a3944c93cc8031c7276929ef74cc340078",
+        "3417": "2de12903198343ade57274e118de954259ead68c",
+        "3421": "2bd06e54b8d9cede15782fbd25f456a64938877a",
+        "3422": "2567a1aa36ff2cfd7d5814677a632ed96a3ea202",
+        "3428": "5ccd344baf9ec35496117ac55bd7bae86ea8937f",
+        "3439": "a7fb274141173d9a1bec27c43273a3509a9d7be7",
+        "3443": "f914568f4a48e91afe486e4bda0e369d127cfb47",
+        "3451": "b750c24e90121e852451c7015401775c2c1aea22",
+        "3466": "aa27b03e70773be81f935558cd084f8733e4d700",
+        "3471": "69039dfb9d9ea2f1795e69ad0897f341d61595a2",
+        "3474": "cc64b450601fd556b638e38c37db5d134d499cf9",
+        "3496": "aa3d19b68f9a924a204698517db95702618ddd16",
+        "3501": "d68cf73efca409f5c7718290fc88d6147bcdd8fc",
+        "3524": "ca51e1db1991b1b2523af74ed32e2eaedd5f2f39",
+        "3530": "debae2b9e92e88bce9eff6c8bc9c242029a0d1ed",
+        "3534": "9c1f8fb99f5504d8d5726a856ed91ebadd8cb03e",
+        "3545": "01e4d45cdfcc8ccfd116080e93f77cfcbe6cc27f",
+        "3612": "5d78f0302bf55180c34a80fa897dc2a960cd298a",
+        "3688": "98d5c1076147ecb48834ee289328088c741c20cc",
+        "3711": "6c6510c87fa63678158a12ca8e7d5d330ecc78b2",
+        "3716": "9a632a91f23efb7f20a23c750eced293cd930494",
+        "3726": "3f934d705720b9f9fce29ae24e7d8a06d1ddcd51",
+        "3729": "abbb7d33965a48251bac3786c489fd0e01f529df",
+        "3740": "e5c98deb0c21a9acf7c88debab83f0cb6c697e1c",
+        "3787": "df6cec8d5521311817b619608ab53d748f397b2d",
+        "3817": "a1aa84449f45ef967c96a7b95ad31d3bfce4db66",
+        "3825": "89f094eef7b3187ea9986324ae205a82fdf2c126",
+        "3891": "54d48dbaf1af9360af550bfc6f10c5d4e432f527",
+        "3965": "b375b4b74bf42e716eaa35d65e5a39ed20762b46",
+        "3996": "843530c5ecf5c1171896d7917948bff3233f13a9",
+        "4000": "06c3e14c6e2c8df0e5dd18451e4bea2f61075d69",
+        "4027": "8f803a45b70375adfa584e2d62b9d3f96f2a5852",
+        "4035": "7e5b003299810c54240853473c4f3a8162983706",
+        "4040": "6a383dcfc32bbd2db54308020ebaf6a2b4f9e19d",
+        "4046": "ffa4835ff6caee39af5845e6883ce0861fad1bf7",
+        "4052": "39b4324c0abe3952aee0afde1e282480f0992707",
+        "4242": "e6bf1f9dbf169dcf2c32f827201dad150e5d5ab9",
+        "4251": "bda971f5da41c5e17d0c1633fcd64f6bf02242ba",
+        "4367": "fc2400542d23ff2f8bee6e61a485ad0b0c717ffb",
+        "4553": "168e592a28e2d642c6d5be92eba5504302b779e3",
+        "4557": "94f1d75a378677a2ebc6ba4e9f242b5b64cfb277",
+        "4567": "9912e153a5a7095a1d7a6ff1f63f5922d1bf165f",
+        "4580": "66987a66acfdb0927fa295505c3b6725279c8045",
+        "4598": "4722e070a0f7394975d3a6bee2fce1f37dc07fe6",
+        "4622": "d080250554d89504641b762bd84cd275eae57c4e",
+        "4625": "bff425cbc672245dcfbd6f236732e213bc1e19b6",
+        "4628": "df97b5054980f2c96e4f7ca122d95088a053cb5e",
+        "4641": "a6a6db3f9147500f05e61bc8a8e1629be46a3505",
+        "4657": "69f9a950a99b1bf078c02c7eedd66e3d2d77408b",
+        "4669": "efaf156a923507623ea0669176065458bbe60bff",
+        "4674": "4a1113df3baa316c1b073245f2dc7859df6331e0",
+        "4678": "8891fcb11cefcc5fb755c3a96db59e084a11c35d",
+        "4722": "ca690007daa33e60a72a5ab0c97fba1febf44612",
+        "4724": "6a4e42fd925e925e389bc879432f9605b22f9c76",
+        "4725": "6eece4d2774d8aa37498576d99ea7c42a005e9e3",
+        "4728": "c6050648f526436cbe4fee944e2d0828eb9daa60",
+        "4733": "bc05a221dae97085dd2ac49a80d89c16b20a9737",
+        "4745": "bf378bf72fbfe1211e41355d3abd328504b39806",
+        "4754": "58200c876b381a006b42285c44e762defc332241",
+        "4760": "e15836f0c31115824611b70cb23c6f102b0ba590",
+        "4764": "cd2f1aaa4ec840db8b78290e8c57e2801c9abb03",
+        "4787": "5838d5f482b43ea3ed1c7d4400e4dbdc712fd8b0",
+        "4815": "39c29e5154d316f41ef0f47910cb04c6c7c0ba1f",
+        "4819": "d88567f1842ca059088f0b47f986ffc3f80ef95c",
+        "4837": "789a96c73c35292110e07f8f0ee2e92753c77c92",
+        "4838": "e35660492586d587d500a056bfadb4d2239ab7b6",
+        "4841": "f24df4a202c4248405b52695c377845543102a30",
+        "4852": "9ef4db2baf18de6ea5f4ee7b493458a9be5463bf",
+        "4863": "9ded575784673baefc181161f80bfb91b5f7c2be",
+        "4876": "ebacb4f2b7a18a43ea41aebb640dae066c19e90f",
+        "4913": "dad6b32f29d89cd91688588426a256d0495b2a6a",
+        "4954": "e879b4221a673a50a2b5ce3e22b431970b580ec4",
+        "4968": "94f91804815b9b531bba38cad6e67240d59a3009",
+        "5033": "da70c1f5b685e7ad4e5d6b2f7b1bac1675be04c8",
+        "5039": "180f3144976a6394503ff9b6e4ba9656f81c848a",
+        "5063": "39d5daa10556ac00dd0de03945bc9d75fd302462",
+        "5093": "bb5d106a64056e542e1a9e49f45d9bebd5630a44",
+        "5098": "e45493d45ab0abd9a279a4b6554b61a3f07291ae",
+        "5110": "232a4e77378a7a01f6fb9fab12dddd920b7e7245",
+        "5117": "803d8134b994a225a0337c9be652d14f307cc365",
+        "5127": "4d0f3e3127c1a6ade53c04bf7f93d916cebcef39",
+        "5230": "1b165be7a06b7c6505a4430dcca98503c7102e5a",
+        "5236": "f3db4fa7ceeec5017153d061cdc4649dc61aa850",
+        "5254": "e9af1719429bb8996802721ff0a3ddef32fd596c",
+        "5255": "6f337060483ce49edcc9f1dbf863e3a9376eedc4",
+        "5424": "6a274d7a42a16ceb30db3523a4c1a02ebd15729e",
+        "5427": "445d679e598e6287f1bcb1cdf10855ab0f0a2524",
+        "5432": "2521d78b7bf4b480fc993ede0bcc365177a702f9",
+        "5467": "ca30efa938a0123b546429ec295e8d6a151bb8fd",
+        "5552": "afe690bad8657b442cfcd5487c01870e8fe7fe1e",
+        "5560": "d5667ae9b52c1f14d9cc0fe3cb77799c9a5635c2",
+        "5636": "f6bc4861a0b997f2e29979101a6265f263e4a382",
+        "5644": "ad5ff75c26bb4caa2191a37e1391b32d72b77507",
+        "5663": "e12a64749ffc690918e97b682982c0ede77cca63",
+        "5703": "723cd8985052e359bc0cf1c47dc45e70c0f6951a",
+        "5705": "805c6c222a6176c1866156d8f852523804ca7776",
+        "5723": "3e4a973c7f2946bc54f8e8b9720f80d8a60c69fa",
+        "5728": "6e6aa9d0c7e9436ec07e4da979589d8d8a8bedbf",
+        "5730": "ebe2b84e64456aa7ef9d665a281f096f4dbfbb00",
+        "5872": "853447cad69746f7c3cd93ba717a6c4806b5db3a",
+        "5891": "3cb61d67c0ff40f4ee744886c1304b0110feda50",
+        "5939": "ea708b09d75ded215e541175c023276a9afc72f7",
+        "6011": "566bcca95dcc98e75c0b6c2dc855ef4939b4cd43",
+        "6120": "742d7c460badd2e0f73c49fe30bdc4fa62b9dc3b",
+        "6126": "6ea0eb129e16b5e50b2b338dc87bd89c13c6ce47",
+        "6130": "cc34959fa025981472cc815b05c355d66c091b51",
+        "6231": "277127c8ace815235784e15a6f154913852023e2",
+        "6275": "3dd9d3c2c01fff6992cbfd200a6c182b3f02f78f",
+        "6318": "301c7eb1577cbeda4493b744ce85115e8f1b75d6",
+        "6349": "e0bc3034042411ecfb9eb123e5bb207c593eba28",
+        "6472": "d8af6c76ec65bff71a8638d9c0bed500f7855c82",
+        "6530": "60d013bb8f7226e7a4273337ecd63db6807f0e79",
+        "6541": "8f5d4db8c91a3891b0f810a68e62b6efb068b457",
+        "6560": "76f98c50c2406d1f6aef95622446c2baa3cef9d5",
+        "6561": "6a856aa7168a0ac048136108370e28938d9105cd",
+        "6588": "ed17728516801a1002e607a4c606c400fccbd4d5",
+        "6594": "4fde59649831972fb4112f4094a9c68041b8d519",
+        "6595": "d98f063799e2f72999ae96dc4025fcc4c0d5d0c0",
+        "6625": "4c465e91e697c050a54492a9462a185cf0ddb173",
+        "6626": "7b383c1acaf1639a4b70b3b088147d06c29b22af",
+        "6627": "69730f4a5f19e3bed621a70de5f0b89cd69b0b6b",
+        "6769": "93a8d8c3929738f1b67a4940f78f06a14e1e39bd",
+        "6786": "ec1e983d87d232520248ee266313cdde668110fe",
+        "6842": "5e2d0ba207b09646ff8957298fa444d20c050d3d",
+        "6848": "bc36840e81ea48ec182f0e57fe11d48572ab2996",
+        "6868": "50c24e432d9621bcef58978f46d4d1d8b0415848",
+        "6872": "0d673de3560f6193535fc4c6c578b9b7ff97f23e",
+        "6888": "65a6d6be8b497433ca27cd00fb2d092dbcad9651",
+        "6923": "d5dec2b6f2be00fac35ee8f9be0106a244d6cc45",
+        "6939": "3eb900ce609f34829def4239a2e4b91701a2f38d",
+        "6944": "d833bedd830b6314d8f23dcf79204f341a5b4924",
+        "6949": "2e22d06e356449723ad04623311d25f2591b8106",
+        "7025": "9ba1ab964920acfc986d8e264f78c965e062e9d0",
+        "7043": "9b074d53ce84f40de11c9599349d75cdfc12fa8c",
+        "7055": "1322f55d8de7f45f0dc30bb89cb6550078c13365",
+        "7064": "1e11a67c39e35e3fd4775a6ac759440eb0f8cabc",
+        "7096": "54d5bab1b2aa27b7f914078cc3e5a892e79ef479",
+        "7118": "88676469bfc4db0b16f7f3f0cca5260f6e6b2bc6",
+        "7120": "eb3678da955b768e71f94a70f7622f1f82345666",
+        "7129": "f878fbf3279fdd576a6e28975cc378b7a1a660fd",
+        "7130": "a35ce016fb8301d40cd6505171907ea0af9cd584"
+    },
+    "show_commit_url": "https://github.com/MDAnalysis/mdanalysis/commit/",
+    "tags": {
+        "RotamerConvolveMD-1.0": 1133,
+        "data-0-7-4": 605,
+        "pre-release-0-7-0-rc3": 350,
+        "pre-sub-trr": 964,
+        "prerelease-0-6-0-rc2": 152,
+        "prerelease-0-6-rc1": 139,
+        "prerelease-0.8.0-pre-1": 1046,
+        "rel-0-5-0": 82,
+        "release-0-5-1": 104,
+        "release-0-6-0": 154,
+        "release-0-6-1": 170,
+        "release-0-6-2": 205,
+        "release-0-6-3": 256,
+        "release-0-6-4": 283,
+        "release-0-6-4-1": 289,
+        "release-0-7-0": 381,
+        "release-0-7-1": 429,
+        "release-0-7-2": 483,
+        "release-0-7-3": 554,
+        "release-0-7-4": 604,
+        "release-0.10.0": 1482,
+        "release-0.11.0": 1834,
+        "release-0.12.0": 2004,
+        "release-0.12.1": 2045,
+        "release-0.13.0": 2621,
+        "release-0.14.0": 3090,
+        "release-0.15.0": 3474,
+        "release-0.16.0": 5424,
+        "release-0.16.1": 5703,
+        "release-0.16.2": 5939,
+        "release-0.7.5": 680,
+        "release-0.7.5.1": 698,
+        "release-0.7.6": 810,
+        "release-0.8.0": 1142,
+        "release-0.8.0rc2": 1096,
+        "release-0.8.0rc3": 1105,
+        "release-0.8.0rc4": 1122,
+        "release-0.8.1": 1188,
+        "release-0.8.1rc1": 1163,
+        "release-0.9.0": 1337,
+        "release-0.9.1": 1357,
+        "release-0.9.2": 1389,
+        "testdata-0-7-4": 609
+    }
+}
