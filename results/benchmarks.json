@@ -1348,6 +1348,270 @@
         "version": "c2594da2d6b564ca7b231a1e6c28e4d7b1c330259c6b64a9ede16bd1953450b7",
         "warmup_time": -1
     },
+    "analysis.psa.PSA_get_coord_axesBench.time_get_coord_axes": {
+        "code": "class PSA_get_coord_axesBench:\n    def time_get_coord_axes(self, time_steps, n_atoms):\n        \"\"\"Benchmark get_coord_axes in psa module\n        \"\"\"\n        psa.get_coord_axes(path=self.path)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        # only using condensed path input\n        # data structure for now\n        self.path = np.random.rand(time_steps,\n                                   n_atoms * 3)",
+        "goal_time": 0.1,
+        "name": "analysis.psa.PSA_get_coord_axesBench.time_get_coord_axes",
+        "number": 0,
+        "param_names": [
+            "time_steps",
+            "n_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "1000"
+            ],
+            [
+                "5",
+                "25",
+                "50"
+            ]
+        ],
+        "pretty_name": "analysis.psa.PSA_get_coord_axesBench.time_get_coord_axes",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "86cb5086b8445a130e30b1506114ef9279166f177f3b89ad2641253d58117f93",
+        "warmup_time": -1
+    },
+    "analysis.psa.PSA_get_msd_matrixBench.time_get_msd_matrix": {
+        "code": "class PSA_get_msd_matrixBench:\n    def time_get_msd_matrix(self, time_steps, n_atoms):\n        \"\"\"Benchmark for get_msd_matrix in psa module\n        \"\"\"\n        # only default argument for axis is benchmarked\n        psa.get_msd_matrix(P=self.P,\n                           Q=self.Q,\n                           axis=None)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+        "goal_time": 0.1,
+        "name": "analysis.psa.PSA_get_msd_matrixBench.time_get_msd_matrix",
+        "number": 0,
+        "param_names": [
+            "time_steps",
+            "n_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "1000"
+            ],
+            [
+                "5",
+                "25",
+                "50"
+            ]
+        ],
+        "pretty_name": "analysis.psa.PSA_get_msd_matrixBench.time_get_msd_matrix",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "9dcdda75f655ab20762a5a9c171d804a3f908f3b76043f3fb66e1c5e471aa2c0",
+        "warmup_time": -1
+    },
+    "analysis.psa.PSA_get_path_metric_funcBench.time_get_path_metric_func": {
+        "code": "class PSA_get_path_metric_funcBench:\n    def time_get_path_metric_func(self, path_metric):\n        \"\"\"Benchmark for get_path_metric_func in psa\n        module\n        \"\"\"\n        psa.get_path_metric_func(name=path_metric)",
+        "goal_time": 0.1,
+        "name": "analysis.psa.PSA_get_path_metric_funcBench.time_get_path_metric_func",
+        "number": 0,
+        "param_names": [
+            "path_metric"
+        ],
+        "params": [
+            [
+                "'hausdorff'",
+                "'weighted_average_hausdorff'",
+                "'average_hausdorff'",
+                "'hausdorff_neighbors'",
+                "'discrete_frechet'"
+            ]
+        ],
+        "pretty_name": "analysis.psa.PSA_get_path_metric_funcBench.time_get_path_metric_func",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "fc71d48ec5e111b5f38e7d741ab5f63fc3c8615325be6916878225ada0d3e828",
+        "warmup_time": -1
+    },
+    "analysis.psa.PSA_metricBench.time_discrete_frechet": {
+        "code": "class PSA_metricBench:\n    def time_discrete_frechet(self, time_steps, n_atoms):\n        \"\"\"Benchmark for discrete_frechet() in psa module.\n        \"\"\"\n        psa.discrete_frechet(P=self.P,\n                             Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+        "goal_time": 0.1,
+        "name": "analysis.psa.PSA_metricBench.time_discrete_frechet",
+        "number": 0,
+        "param_names": [
+            "time_steps",
+            "n_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "200"
+            ],
+            [
+                "5",
+                "25",
+                "50"
+            ]
+        ],
+        "pretty_name": "analysis.psa.PSA_metricBench.time_discrete_frechet",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "3bb3d861752ef9ed6f77ac94cad9ed2e42c56d8df988a838892b313d1104b7cb",
+        "warmup_time": -1
+    },
+    "analysis.psa.PSA_metricBench.time_hausdorff": {
+        "code": "class PSA_metricBench:\n    def time_hausdorff(self, time_steps, n_atoms):\n        \"\"\"Benchmark for hausdorff() in psa module.\n        \"\"\"\n        psa.hausdorff(P=self.P,\n                      Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+        "goal_time": 0.1,
+        "name": "analysis.psa.PSA_metricBench.time_hausdorff",
+        "number": 0,
+        "param_names": [
+            "time_steps",
+            "n_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "200"
+            ],
+            [
+                "5",
+                "25",
+                "50"
+            ]
+        ],
+        "pretty_name": "analysis.psa.PSA_metricBench.time_hausdorff",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "e0c90539a3b87665619c0c5923a412b1457f5cf08564b891b2ea25345fc720fc",
+        "warmup_time": -1
+    },
+    "analysis.psa.PSA_metricBench.time_hausdorff_avg": {
+        "code": "class PSA_metricBench:\n    def time_hausdorff_avg(self, time_steps, n_atoms):\n        \"\"\"Benchmark for hausdorff_avg() in psa module.\n        \"\"\"\n        psa.hausdorff_avg(P=self.P,\n                          Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+        "goal_time": 0.1,
+        "name": "analysis.psa.PSA_metricBench.time_hausdorff_avg",
+        "number": 0,
+        "param_names": [
+            "time_steps",
+            "n_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "200"
+            ],
+            [
+                "5",
+                "25",
+                "50"
+            ]
+        ],
+        "pretty_name": "analysis.psa.PSA_metricBench.time_hausdorff_avg",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "bda335edfdd48be1e40d51ba67bd57127dc22570ed81c79b25c9c34e98073cad",
+        "warmup_time": -1
+    },
+    "analysis.psa.PSA_metricBench.time_hausdorff_neighbors": {
+        "code": "class PSA_metricBench:\n    def time_hausdorff_neighbors(self, time_steps, n_atoms):\n        \"\"\"Benchmark for hausdorff_neighbors() in psa module.\n        \"\"\"\n        psa.hausdorff_neighbors(P=self.P,\n                                Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+        "goal_time": 0.1,
+        "name": "analysis.psa.PSA_metricBench.time_hausdorff_neighbors",
+        "number": 0,
+        "param_names": [
+            "time_steps",
+            "n_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "200"
+            ],
+            [
+                "5",
+                "25",
+                "50"
+            ]
+        ],
+        "pretty_name": "analysis.psa.PSA_metricBench.time_hausdorff_neighbors",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "77321a9a92915cf788b65037e075327c72374c4f6dd8a105749c502756260a7a",
+        "warmup_time": -1
+    },
+    "analysis.psa.PSA_metricBench.time_hausdorff_wavg": {
+        "code": "class PSA_metricBench:\n    def time_hausdorff_wavg(self, time_steps, n_atoms):\n        \"\"\"Benchmark for hausdorff_wavg() in psa module.\n        \"\"\"\n        psa.hausdorff_wavg(P=self.P,\n                           Q=self.Q)\n\n    def setup(self, time_steps, n_atoms):\n        np.random.seed(170089)\n        self.P = np.random.rand(time_steps,\n                                n_atoms,\n                                3)\n        np.random.seed(971132)\n        self.Q = np.random.rand(time_steps,\n                                n_atoms,\n                                3)",
+        "goal_time": 0.1,
+        "name": "analysis.psa.PSA_metricBench.time_hausdorff_wavg",
+        "number": 0,
+        "param_names": [
+            "time_steps",
+            "n_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "200"
+            ],
+            [
+                "5",
+                "25",
+                "50"
+            ]
+        ],
+        "pretty_name": "analysis.psa.PSA_metricBench.time_hausdorff_wavg",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "162c1711b4953d5045859022df8b1477ad41b166cf80dc31e0b961c87761ed81",
+        "warmup_time": -1
+    },
+    "analysis.psa.PSA_sqnormBench.time_sqnorm": {
+        "code": "class PSA_sqnormBench:\n    def time_sqnorm(self, num_cols, num_rows, axis):\n        \"\"\"Benchmark sqnorm in psa module\n        \"\"\"\n        psa.sqnorm(v=self.v, axis=axis)\n\n    def setup(self, num_cols, num_rows, axis):\n        np.random.seed(170089)\n        self.v = np.random.rand(num_rows, num_cols)",
+        "goal_time": 0.1,
+        "name": "analysis.psa.PSA_sqnormBench.time_sqnorm",
+        "number": 0,
+        "param_names": [
+            "num_cols",
+            "num_rows",
+            "axis"
+        ],
+        "params": [
+            [
+                "2",
+                "3",
+                "4"
+            ],
+            [
+                "100",
+                "1000",
+                "10000"
+            ],
+            [
+                "None",
+                "0",
+                "1",
+                "-1"
+            ]
+        ],
+        "pretty_name": "analysis.psa.PSA_sqnormBench.time_sqnorm",
+        "repeat": 0,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "5360f9d9650b651e056f22f98fd02bda2307b2f2eabb3fbe7c1c4b0dffe5f70b",
+        "warmup_time": -1
+    },
     "analysis.rms.RmsdTrajBench.time_RMSD": {
         "code": "class RmsdTrajBench:\n    def time_RMSD(self, select, weights):\n        \"\"\"Benchmark RMSD.run() method, which parses\n        over the entire trajectory.\n        \"\"\"\n        self.RMSD_inst.run()\n\n    def setup(self, select, weights):\n        self.u = MDAnalysis.Universe(PSF, DCD)\n        self.RMSD_inst = rms.RMSD(atomgroup=self.u,\n                                  reference=None,\n                                  select=select,\n                                  weights=weights)",
         "goal_time": 0.1,
