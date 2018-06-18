@@ -96,7 +96,7 @@ $(document).ready(function() {
     }
 
 
-    function display_benchmark(bm_name, state_selection, sub_benchmark_idx, highlight_revisions) {
+    function display_benchmark(bm_name, state_selection, highlight_revisions) {
         setup_benchmark_graph_display();
 
         $('#graph-display').show();
@@ -112,7 +112,7 @@ $(document).ready(function() {
         current_benchmark = bm_name;
         highlighted_revisions = highlight_revisions;
         $("#title").text(bm_name);
-        setup_benchmark_params(state_selection, sub_benchmark_idx);
+        setup_benchmark_params(state_selection);
         replace_graphs();
     }
 
@@ -185,7 +185,7 @@ $(document).ready(function() {
                 });
             }
 
-            var name = bm.pretty_name || bm.name || parts[parts.length - 1];
+            var name = bm.pretty_name || parts[parts.length - 1];
             var top = $('<li><a href="#' + bm_name + '">' + name + '</li>');
             stack[stack.length - 1].append(top);
 
@@ -207,7 +207,7 @@ $(document).ready(function() {
             $('#reference').removeClass('active');
             $('#zoom-y-axis').removeClass('active');
             reference = 1.0;
-            update_graphs();
+            update_state_url({'y-axis': log_scale ? ['log']: []});
         });
 
         $('#zoom-y-axis').on('click', function(evt) {
@@ -217,7 +217,7 @@ $(document).ready(function() {
             $('#reference').removeClass('active');
             $('#log-scale').removeClass('active');
             reference = 1.0;
-            update_graphs();
+            update_state_url({'y-axis': zoom_y_axis ? ['zoom'] : []});
         });
 
         $('#reference').on('click', function(evt) {
@@ -243,14 +243,14 @@ $(document).ready(function() {
             even_spacing = !evt.target.classList.contains("active");
             date_scale = false;
             $('#date-scale').removeClass('active');
-            update_graphs();
+            update_state_url({'x-axis': even_spacing ? ['even'] : []});
         });
 
         $('#date-scale').on('click', function(evt) {
             date_scale = !evt.target.classList.contains("active");
             even_spacing = false;
             $('#even-spacing').removeClass('active');
-            update_graphs();
+            update_state_url({'x-axis': date_scale ? ['date'] : []});
         });
 
         tooltip = $("<div></div>");
@@ -324,7 +324,7 @@ $(document).ready(function() {
         });
     }
 
-    function setup_benchmark_params(state_selection, sub_benchmark_idx) {
+    function setup_benchmark_params(state_selection) {
         if (!current_benchmark) {
             x_coordinate_axis = 0;
             x_coordinate_is_category = false;
@@ -373,25 +373,29 @@ $(document).ready(function() {
         /* Default plot: time series */
         x_coordinate_axis = 0;
 
-        if (sub_benchmark_idx !== null) {
-            /* Only a single parameter set */
-            benchmark_param_selection = $.asv.param_selection_from_flat_idx(params, sub_benchmark_idx);
-        }
-        else {
-            /* Default plot: up to 8 lines */
-            benchmark_param_selection = [[null]];
-            if (params.length >= 1) {
-                var count = 1;
-                var max_curves = 8;
+        /* Default plot: up to 8 lines */
+        benchmark_param_selection = [[null]];
+        if (params.length >= 1) {
+            var count = 1;
+            var max_curves = 8;
 
-                for (var k = 0; k < params.length; ++k) {
-                    var item = [];
-                    for (var j = 0; j < params[k].length && (j+1)*count <= max_curves; ++j) {
+            for (var k = 0; k < params.length; ++k) {
+                var param_name = param_names[k]
+                var param_values = params[k]
+                var item = [];
+                if (state_selection['p-'+param_name] !== undefined) {
+                    for (var j = 0; j < param_values.length; ++j) {
+                        if (state_selection['p-'+param_name].includes(param_values[j])) {
+                            item.push(j);
+                        }
+                    }
+                } else {
+                    for (var j = 0; j < param_values.length && (j+1)*count <= max_curves; ++j) {
                         item.push(j);
                     }
-                    count = count * item.length;
-                    benchmark_param_selection.push(item);
                 }
+                count = count * item.length;
+                benchmark_param_selection.push(item);
             }
         }
 
@@ -400,7 +404,7 @@ $(document).ready(function() {
         replace_benchmark_params_ui();
     }
 
-    function update_state_url() {
+    function update_state_url(params) {
         var info = $.asv.parse_hash_string(window.location.hash);
         $.each($.asv.master_json.params, function(param, values) {
             if (values.length > 1) {
@@ -411,6 +415,9 @@ $(document).ready(function() {
                     delete info.params[param];
                 }
             }
+        });
+        $.each(params || {}, function(key, value) {
+            info.params[key] = value;
         });
         window.location.hash = $.asv.format_hash_string(info);
     }
@@ -616,8 +623,11 @@ $(document).ready(function() {
                         }
                     }
                     benchmark_param_selection[param_idx+1] = new_selection;
-                    replace_graphs();
-                    update_graphs();
+                    var new_selection_params = {};
+                    new_selection_params['p-'+param_names[param_idx]] = new_selection.map(function(k) {
+                        return params[param_idx][k];
+                    });
+                    update_state_url(new_selection_params);
                 });
             });
         });
@@ -1111,7 +1121,11 @@ $(document).ready(function() {
                 mode: "x"
             },
             legend: {
-                position: "nw"
+                position: "nw",
+                labelFormatter: function(label, series) {
+                    // Ensure HTML escaping
+                    return $("<span>").text(label).html();
+                }
             }
         };
 
@@ -1270,14 +1284,8 @@ $(document).ready(function() {
 
     $.asv.register_page('graphdisplay', function(params) {
         var benchmark = params['benchmark'];
-        var sub_benchmark_idx = null;
         var highlight_revisions = null;
         var state_selection = null;
-
-        if (params['idx']) {
-            sub_benchmark_idx = parseInt(params['idx'][0]);
-            delete params['idx'];
-        }
 
         if (params['commits']) {
             highlight_revisions = [];
@@ -1293,10 +1301,32 @@ $(document).ready(function() {
             delete params['commits'];
         }
 
+        if (params['y-axis']) {
+            if (params['y-axis'][0] === 'log') {
+                $('#log-scale').addClass('active');
+                log_scale = true;
+            } else if (params['y-axis'][0] === 'zoom') {
+                $('#zoom-y-axis').addClass('active');
+                zoom_y_axis = true;
+            }
+            delete params['y-axis'];
+        }
+
+        if (params['x-axis']) {
+            if (params['x-axis'][0] === 'even') {
+                $('#even-spacing').addClass('active');
+                even_spacing = true;
+            } else if (params['x-axis'][0] === 'date') {
+                $('#date-scale').addClass('active');
+                date_scale = true;
+            }
+            delete params['x-axis'];
+        }
+
         if (Object.keys(params).length > 0) {
             state_selection = params;
         }
 
-        display_benchmark(benchmark, state_selection, sub_benchmark_idx, highlight_revisions);
+        display_benchmark(benchmark, state_selection, highlight_revisions);
     });
 });
