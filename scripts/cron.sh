@@ -60,8 +60,9 @@ cd ${ASV_RUN_DIR}
 # (not used here because the machine might try to do other things during benchmarks....)
 asv run -e --config ${ASV_CONFIG} NEW || true
 
-# kill after 22h so that it does not interfere with a new run
-timeout 22h asv run -e -j 4 --config ${ASV_CONFIG} "release-0.11.0..HEAD --merges" --skip-existing-commits || true
+# kill after 20h so that it does not interfere with a new run (and other cron jobs)
+# (even if killed, this task will keep working on missing commits, night after night)
+timeout 20h asv run -e -j 4 --config ${ASV_CONFIG} "release-0.11.0..HEAD --merges" --skip-existing-commits || true
 
 # We split the benchmarks from the results benchmarks are with the main code,
 # results are in separate repo.
