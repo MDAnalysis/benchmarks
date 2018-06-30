@@ -69,6 +69,7 @@ timeout 22h asv run -e -j 4 --config ${ASV_CONFIG} "release-0.11.0..HEAD --merge
 cd ${ASV_BENCHMARK_REPO}
 
 git add results/$MACHINE
+git pull
 git commit -m "New results from $MACHINE" || { echo "No new results: will not update site"; exit 0; }
 git push -q origin master
 
