@@ -69,12 +69,13 @@ timeout 22h asv run -e -j 4 --config ${ASV_CONFIG} "release-0.11.0..HEAD --merge
 cd ${ASV_BENCHMARK_REPO}
 
 git add results/$MACHINE
-git commit -m "New results from $MACHINE"
+git commit -m "New results from $MACHINE" || { echo "No new results: will not update site"; exit 0; }
 git push -q origin master
 
-cd ${ASV_RUN_DIR}
-asv --config ${ASV_CONFIG} gh-pages --no-push
+# For the following to work we need a second version of the
+# config file in the top level of the ASV_BENCHMARK_REPO, which
+# has all the correct paths relative to ASV_BENCHMARK_REPO.
+asv gh-pages --no-push
 
-cd ${ASV_BENCHMARK_REPO}
 git push -q origin +gh-pages
 
