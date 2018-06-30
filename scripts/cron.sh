@@ -26,6 +26,7 @@ ASV_BENCHMARK_REPO=`dirname ${ASV_RESULTS_DIR}`
 
 MACHINE=`python -c "from asv.machine import Machine; print(Machine.load('~/.asv-machine.json').machine)"`
 
+set +x
 echo "asv: "`asv --version`
 echo "Machine:        $MACHINE"
 echo "repository:     ${REPO}"
@@ -33,6 +34,7 @@ echo "ASV config:     ${ASV_CONFIG}"
 echo "run directory:  ${ASV_RUN_DIR}"
 echo "results_dir:    ${ASV_RESULTS_DIR}"
 echo "ASV repository: ${ASV_BENCHMARK_REPO}"
+set -x
 
 cd ${REPO}
 
@@ -68,8 +70,11 @@ cd ${ASV_BENCHMARK_REPO}
 
 git add results/$MACHINE
 git commit -m "New results from $MACHINE"
-git push origin master
+git push -q origin master
 
-asv gh-pages --no-push
-git push origin +gh-pages
+cd ${ASV_RUN_DIR}
+asv --config ${ASV_CONFIG} gh-pages --no-push
+
+cd ${ASV_BENCHMARK_REPO}
+git push -q origin +gh-pages
 
