@@ -1,8 +1,8 @@
 {
     "benchmarks": {
-        "GRO.GROReadBench.time_read_GRO_file": {
-            "code": "class GROReadBench:\n    def time_read_GRO_file(self):\n        \"\"\"Benchmark reading of standard test\n        suite GRO file.\n        \"\"\"\n        GROReader(GRO)",
-            "name": "GRO.GROReadBench.time_read_GRO_file",
+        "GRO.GROReadBench.time_create_GRO_universe": {
+            "code": "class GROReadBench:\n    def time_create_GRO_universe(self):\n        \"\"\"Time to create MDA Universe of GRO\"\"\"\n        u = mda.Universe(GRO)",
+            "name": "GRO.GROReadBench.time_create_GRO_universe",
             "number": 0,
             "param_names": [],
             "params": [],
@@ -11,7 +11,35 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "2abb6fac26984d3cc4cee1b56b630a1e89a527336aa1795c49a9dadef130db3e",
+            "version": "85e9386a1154d866631322425b43e682903a28a89efb74527110189dcbd24a4a",
+            "warmup_time": -1
+        },
+        "GRO.GROReadBench.time_parse_GRO_file": {
+            "code": "class GROReadBench:\n    def time_parse_GRO_file(self):\n        \"\"\"Time to create topology from GRO file\"\"\"\n        p = GROParser(GRO)\n        top = p.parse()",
+            "name": "GRO.GROReadBench.time_parse_GRO_file",
+            "number": 0,
+            "param_names": [],
+            "params": [],
+            "repeat": 0,
+            "sample_time": 0.1,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "7d0bec284a3cc88727c887e20b4d7a7a6fb3dc8b9a3fed98a8bee728f5920227",
+            "warmup_time": -1
+        },
+        "GRO.GROReadBench.time_read_GRO_coordinates": {
+            "code": "class GROReadBench:\n    def time_read_GRO_coordinates(self):\n        \"\"\"Benchmark reading of standard testsuite GRO file.\"\"\"\n        GROReader(GRO)",
+            "name": "GRO.GROReadBench.time_read_GRO_coordinates",
+            "number": 0,
+            "param_names": [],
+            "params": [],
+            "repeat": 0,
+            "sample_time": 0.1,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "987e7a4b2431ce8645e1a4d7c1135f76c9b35e5eb29b0f6818860f96531be147",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupAttrsBench.time_angle": {
@@ -2335,7 +2363,10 @@
         "7545": 1531331386000,
         "7550": 1531347634000,
         "7555": 1530990756000,
-        "7556": 1516575460000
+        "7556": 1516575460000,
+        "7574": 1531416485000,
+        "7577": 1531424368000,
+        "7578": 1531425109000
     },
     "revision_to_hash": {
         "82": "f892b792eefe06cb1c1e60883174230f3fde1653",
@@ -2745,7 +2776,10 @@
         "7545": "86983294f1021aae5369412363c4edec495ff514",
         "7550": "1d6e67032654471cabc5c83553be70b3a8e7a653",
         "7555": "89d6f2b3298f84b58737d733400f6468e2581684",
-        "7556": "bba488a8a284528fe2f011ba4be1850b5be542d6"
+        "7556": "bba488a8a284528fe2f011ba4be1850b5be542d6",
+        "7574": "28404e26ce56355a461bbfed2b4c6ebcdc72c6e8",
+        "7577": "4be325c3b46ded353a17dadec9cfa94558f17080",
+        "7578": "675252af36128aca242af3e2d4a9cbbf554f8d3b"
     },
     "show_commit_url": "https://github.com/MDAnalysis/mdanalysis/commit/",
     "tags": {
