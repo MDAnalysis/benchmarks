@@ -1,7 +1,7 @@
 {
-    "GRO.GROReadBench.time_read_GRO_file": {
-        "code": "class GROReadBench:\n    def time_read_GRO_file(self):\n        \"\"\"Benchmark reading of standard test\n        suite GRO file.\n        \"\"\"\n        GROReader(GRO)",
-        "name": "GRO.GROReadBench.time_read_GRO_file",
+    "GRO.GROReadBench.time_create_GRO_universe": {
+        "code": "class GROReadBench:\n    def time_create_GRO_universe(self):\n        \"\"\"Time to create MDA Universe of GRO\"\"\"\n        u = mda.Universe(GRO)",
+        "name": "GRO.GROReadBench.time_create_GRO_universe",
         "number": 0,
         "param_names": [],
         "params": [],
@@ -10,7 +10,35 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "2abb6fac26984d3cc4cee1b56b630a1e89a527336aa1795c49a9dadef130db3e",
+        "version": "85e9386a1154d866631322425b43e682903a28a89efb74527110189dcbd24a4a",
+        "warmup_time": -1
+    },
+    "GRO.GROReadBench.time_parse_GRO_file": {
+        "code": "class GROReadBench:\n    def time_parse_GRO_file(self):\n        \"\"\"Time to create topology from GRO file\"\"\"\n        p = GROParser(GRO)\n        top = p.parse()",
+        "name": "GRO.GROReadBench.time_parse_GRO_file",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "7d0bec284a3cc88727c887e20b4d7a7a6fb3dc8b9a3fed98a8bee728f5920227",
+        "warmup_time": -1
+    },
+    "GRO.GROReadBench.time_read_GRO_coordinates": {
+        "code": "class GROReadBench:\n    def time_read_GRO_coordinates(self):\n        \"\"\"Benchmark reading of standard testsuite GRO file.\"\"\"\n        GROReader(GRO)",
+        "name": "GRO.GROReadBench.time_read_GRO_coordinates",
+        "number": 0,
+        "param_names": [],
+        "params": [],
+        "repeat": 0,
+        "sample_time": 0.1,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "987e7a4b2431ce8645e1a4d7c1135f76c9b35e5eb29b0f6818860f96531be147",
         "warmup_time": -1
     },
     "ag_methods.AtomGroupAttrsBench.time_angle": {
