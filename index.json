@@ -411,7 +411,7 @@
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_bbox_no_pbc": {
-            "code": "class AtomGroupMethodsBench:\n    def time_bbox_no_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding box calculation\n        with pbc inactive.\n        \"\"\"\n        self.ag.bbox(pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_bbox_no_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding box calculation\n        with pbc inactive.\n        \"\"\"\n        self.ag.bbox(pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_bbox_no_pbc",
             "number": 0,
             "param_names": [
@@ -430,11 +430,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "b13f09f921e8d1b3547c3ae8fd0cb3b4fba4746e2535728f647b28e2d39e8771",
+            "version": "f4d3c92e8dc5efa1a09726e3c1dea49453d5625ee6952475869546919575a0ed",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_bbox_pbc": {
-            "code": "class AtomGroupMethodsBench:\n    def time_bbox_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding box calculation\n        with pbc active.\n        \"\"\"\n        self.ag.bbox(pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_bbox_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding box calculation\n        with pbc active.\n        \"\"\"\n        self.ag.bbox(pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_bbox_pbc",
             "number": 0,
             "param_names": [
@@ -453,11 +453,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "a18324c53c11b7aa21428889531395b23a6ed680df364d8870cf805125985b04",
+            "version": "02deed74348541e19fd7811f9aa232bd53410903de3a1432d7cc090a3184198e",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_bsphere_no_pbc": {
-            "code": "class AtomGroupMethodsBench:\n    def time_bsphere_no_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding sphere calculation\n        with pbc inactive.\n        \"\"\"\n        self.ag.bsphere(pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_bsphere_no_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding sphere calculation\n        with pbc inactive.\n        \"\"\"\n        self.ag.bsphere(pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_bsphere_no_pbc",
             "number": 0,
             "param_names": [
@@ -476,11 +476,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "462159b20c380fd2a72f198e059dd75a604e2ad5251253524c7ee78f59b8d4a1",
+            "version": "7f229e23767623d3052357b0d2e36620742990cbec01fa9df982997a64d0b558",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_bsphere_pbc": {
-            "code": "class AtomGroupMethodsBench:\n    def time_bsphere_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding sphere calculation\n        with pbc active.\n        \"\"\"\n        self.ag.bsphere(pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_bsphere_pbc(self, num_atoms):\n        \"\"\"Benchmark bounding sphere calculation\n        with pbc active.\n        \"\"\"\n        self.ag.bsphere(pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_bsphere_pbc",
             "number": 0,
             "param_names": [
@@ -499,11 +499,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "ca1199ef4aafadf534247b69dee706f1a509faccffab75deb23a743f3bc5e39f",
+            "version": "669f068c60e5023f28ea98225386244efdd0907ea6895c590088cfd170bef050",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_center_no_pbc": {
-            "code": "class AtomGroupMethodsBench:\n    def time_center_no_pbc(self, num_atoms):\n        \"\"\"Benchmark center calculation with\n        pbc inactive.\n        \"\"\"\n        self.ag.center(weights=self.weights,\n                       pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_center_no_pbc(self, num_atoms):\n        \"\"\"Benchmark center calculation with\n        pbc inactive.\n        \"\"\"\n        self.ag.center(weights=self.weights,\n                       pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_center_no_pbc",
             "number": 0,
             "param_names": [
@@ -522,11 +522,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "a33f50328490f6b54e8ad57796bd6da48ce81e2af1d6ff7b6dc9ddb55270d612",
+            "version": "5499bbde1d376804c4c410b7cac45ebc709dc4065d374891ccaca4c67b497d8d",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_center_pbc": {
-            "code": "class AtomGroupMethodsBench:\n    def time_center_pbc(self, num_atoms):\n        \"\"\"Benchmark center calculation with\n        pbc active.\n        \"\"\"\n        self.ag.center(weights=self.weights,\n                       pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_center_pbc(self, num_atoms):\n        \"\"\"Benchmark center calculation with\n        pbc active.\n        \"\"\"\n        self.ag.center(weights=self.weights,\n                       pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_center_pbc",
             "number": 0,
             "param_names": [
@@ -545,11 +545,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "5445ea28992842878e2e020cb920daa4b87f10ea68ba6abbdc379e69ecd29a5a",
+            "version": "9e281b5399aef60e0a823b2a228dee94c0e31bd95d8806c1e15b861cf23d83b6",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_centroid_no_pbc": {
-            "code": "class AtomGroupMethodsBench:\n    def time_centroid_no_pbc(self, num_atoms):\n        \"\"\"Benchmark centroid calculation with\n        pbc inactive.\n        \"\"\"\n        self.ag.centroid(pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_centroid_no_pbc(self, num_atoms):\n        \"\"\"Benchmark centroid calculation with\n        pbc inactive.\n        \"\"\"\n        self.ag.centroid(pbc=False)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_centroid_no_pbc",
             "number": 0,
             "param_names": [
@@ -568,11 +568,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "f941f327f6692f250060de8e3de49f414db194f030fa2f2e86b50a96f3d6f580",
+            "version": "56366be992afa8468328495085d4bd7f270fe821af6b4412e097e071a5841aba",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_centroid_pbc": {
-            "code": "class AtomGroupMethodsBench:\n    def time_centroid_pbc(self, num_atoms):\n        \"\"\"Benchmark centroid calculation with\n        pbc active.\n        \"\"\"\n        self.ag.centroid(pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_centroid_pbc(self, num_atoms):\n        \"\"\"Benchmark centroid calculation with\n        pbc active.\n        \"\"\"\n        self.ag.centroid(pbc=True)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_centroid_pbc",
             "number": 0,
             "param_names": [
@@ -591,11 +591,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "94e61928db6101dcb12bef8d8f0c21cc8e8eb805ddf2abd0096fa60dd6fda1a5",
+            "version": "7ce43af0540e7c4b35689a263dfc228d0a4a2d2d92727d2d44b1e397c32a8726",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_concatenate": {
-            "code": "class AtomGroupMethodsBench:\n    def time_concatenate(self, num_atoms):\n        \"\"\"Benchmark atomgroup concatenation.\n        \"\"\"\n        self.ag.concatenate(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_concatenate(self, num_atoms):\n        \"\"\"Benchmark atomgroup concatenation.\n        \"\"\"\n        self.ag.concatenate(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_concatenate",
             "number": 0,
             "param_names": [
@@ -614,11 +614,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "08fff968d2569e3c626ab3f36d271b3cf297135df1817dc29466a74e9c5d5965",
+            "version": "d5249c87dfce2c91bde201106b2e4198849051c93364564de86ce872159c1428",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_difference": {
-            "code": "class AtomGroupMethodsBench:\n    def time_difference(self, num_atoms):\n        \"\"\"Benchmark atomgroup difference\n        operation.\n        \"\"\"\n        self.ag.difference(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_difference(self, num_atoms):\n        \"\"\"Benchmark atomgroup difference\n        operation.\n        \"\"\"\n        self.ag.difference(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_difference",
             "number": 0,
             "param_names": [
@@ -637,11 +637,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "8f0b13fd7cae0a5a7a8cc9e415a0c6d58230410e7b84d4e74eb3fa8cdd4adf18",
+            "version": "56ce3f2f2c4257dee720e7b07315ce2595afc66137f7324b405ebfb060e65dd3",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_groupby": {
-            "code": "class AtomGroupMethodsBench:\n    def time_groupby(self, num_atoms):\n        \"\"\"Benchmark atomgroup groupby\n        operation.\n        \"\"\"\n        self.ag.groupby('resnames')\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_groupby(self, num_atoms):\n        \"\"\"Benchmark atomgroup groupby\n        operation.\n        \"\"\"\n        self.ag.groupby('resnames')\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_groupby",
             "number": 0,
             "param_names": [
@@ -660,11 +660,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "109267e4cf4a02b7e4460ce5e1de2eebaeadc77610a858512167fb377d68d212",
+            "version": "e42dfd364b2726e568511c4eae084feead8bd62e3ac3d2046ca6c0ae2a061363",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_guess_bonds": {
-            "code": "class AtomGroupMethodsBench:\n    def time_guess_bonds(self, num_atoms):\n        \"\"\"Benchmark atomgroup bond guessing\n        with artificially-seeded vdw values.\n        \"\"\"\n        self.ag.guess_bonds(self.vdwradii)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_guess_bonds(self, num_atoms):\n        \"\"\"Benchmark atomgroup bond guessing\n        with artificially-seeded vdw values.\n        \"\"\"\n        self.ag.guess_bonds(self.vdwradii)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_guess_bonds",
             "number": 0,
             "param_names": [
@@ -683,11 +683,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "95b590f48cef5cb4b4cc65ecb884482e1df985417494daba2225ba8bd2bf8b88",
+            "version": "b22111561b487e88b079412e82b48de4d70d39b0c868ec64305cebdcdf3ecd0b",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_intersection": {
-            "code": "class AtomGroupMethodsBench:\n    def time_intersection(self, num_atoms):\n        \"\"\"Benchmark ag intersection.\n        \"\"\"\n        self.ag.intersection(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_intersection(self, num_atoms):\n        \"\"\"Benchmark ag intersection.\n        \"\"\"\n        self.ag.intersection(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_intersection",
             "number": 0,
             "param_names": [
@@ -706,11 +706,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "3007281b5a990c40e16f4d638bc27d207c0121ee4ae2bd559535e139906a7116",
+            "version": "af81d67c8ba6789db6632156d5ee37d16c1d7145bc51d97faf62f5a44e71a216",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_is_strict_subset": {
-            "code": "class AtomGroupMethodsBench:\n    def time_is_strict_subset(self, num_atoms):\n        \"\"\"Benchmark ag strict subset operation.\n        \"\"\"\n        self.ag.is_strict_subset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_is_strict_subset(self, num_atoms):\n        \"\"\"Benchmark ag strict subset operation.\n        \"\"\"\n        self.ag.is_strict_subset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_is_strict_subset",
             "number": 0,
             "param_names": [
@@ -729,11 +729,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "07a48244c719831d730836e0d632ea051837548e8dcebf489cf83a7434fd3c70",
+            "version": "4dff2b0102568196662f408ec7682e479b1f28f3c0811e1d09928f67803ff1fd",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_is_strict_superset": {
-            "code": "class AtomGroupMethodsBench:\n    def time_is_strict_superset(self, num_atoms):\n        \"\"\"Benchmark ag strict superset operation.\n        \"\"\"\n        self.ag.is_strict_superset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_is_strict_superset(self, num_atoms):\n        \"\"\"Benchmark ag strict superset operation.\n        \"\"\"\n        self.ag.is_strict_superset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_is_strict_superset",
             "number": 0,
             "param_names": [
@@ -752,11 +752,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "4509e22682291b68212a7d28d543479cf0eb06e2bdf24f4b1e56fcd101de33c4",
+            "version": "2c81f4e274971df7fb627c5c8e82a821572d65175a56f86824b9a5d644170653",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_isdisjoint": {
-            "code": "class AtomGroupMethodsBench:\n    def time_isdisjoint(self, num_atoms):\n        \"\"\"Benchmark disjoint operation between\n        atomgroups.\n        \"\"\"\n        self.ag.isdisjoint(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_isdisjoint(self, num_atoms):\n        \"\"\"Benchmark disjoint operation between\n        atomgroups.\n        \"\"\"\n        self.ag.isdisjoint(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_isdisjoint",
             "number": 0,
             "param_names": [
@@ -775,11 +775,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "e820b56a4be332d95e85ffda08a25081a5804ae36c99d49e47944fe7ef0681f0",
+            "version": "9573a798d7d80b64066ae7114626b83b763312b43c4435eac392b8c0d3fb8a08",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_issubset": {
-            "code": "class AtomGroupMethodsBench:\n    def time_issubset(self, num_atoms):\n        \"\"\"Benchmark subset operation between\n        atomgroups.\n        \"\"\"\n        self.ag.issubset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_issubset(self, num_atoms):\n        \"\"\"Benchmark subset operation between\n        atomgroups.\n        \"\"\"\n        self.ag.issubset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_issubset",
             "number": 0,
             "param_names": [
@@ -798,11 +798,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "d7d2fb1a556412daacc0591250615f8f4edd560ddce907bc37b152119592510a",
+            "version": "f6bd03304591ed1af9f0654198f07148f408505a8ba8d1ec24c4613d5980686b",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_issuperset": {
-            "code": "class AtomGroupMethodsBench:\n    def time_issuperset(self, num_atoms):\n        \"\"\"Benchmark superset operation between\n        atomgroups.\n        \"\"\"\n        self.ag.issuperset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_issuperset(self, num_atoms):\n        \"\"\"Benchmark superset operation between\n        atomgroups.\n        \"\"\"\n        self.ag.issuperset(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_issuperset",
             "number": 0,
             "param_names": [
@@ -821,11 +821,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "da1b751a6ac0b844aafb5acb4524b855af9ac6d19a85e3bfe3aa5c7c584e1073",
+            "version": "da0c4343c5544f68e3ee19e45eb427df5f51ad6fdf3d3a1380d864a310e832f1",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_pack_into_box": {
-            "code": "class AtomGroupMethodsBench:\n    def time_pack_into_box(self, num_atoms):\n        \"\"\"Benchmark shifting atoms of ag\n        into primary unit cell, using\n        default parameters.\n        \"\"\"\n        self.ag.pack_into_box()\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_pack_into_box(self, num_atoms):\n        \"\"\"Benchmark shifting atoms of ag\n        into primary unit cell, using\n        default parameters.\n        \"\"\"\n        self.ag.pack_into_box()\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_pack_into_box",
             "number": 0,
             "param_names": [
@@ -844,11 +844,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "20dcad012b1c84cac6934e6c4589008df0db8dc5bed3d9634f6420e378f4d4a5",
+            "version": "54f8934b8fe61ba797a7909743b108e39de31f183b1e1ae485cf0f6ce32462c7",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_rotate": {
-            "code": "class AtomGroupMethodsBench:\n    def time_rotate(self, num_atoms):\n        \"\"\"Benchmark simple rotation operation\n        on atomgroup.\n        \"\"\"\n        self.ag.rotate(self.rot_matrix)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_rotate(self, num_atoms):\n        \"\"\"Benchmark simple rotation operation\n        on atomgroup.\n        \"\"\"\n        self.ag.rotate(self.rot_matrix)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_rotate",
             "number": 0,
             "param_names": [
@@ -867,11 +867,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "4fcd69bfa4ccdcf7ec26b4668d209c0f68fb3fa1cd5ca45bd420ba21ebec4f50",
+            "version": "6e1749c80e708a81dc9b1c9e930f935e6c602721ffd2c8aaef3124f78895e3fc",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_rotateby": {
-            "code": "class AtomGroupMethodsBench:\n    def time_rotateby(self, num_atoms):\n        \"\"\"Benchmark rotation by an angle\n        of the ag coordinates.\n        \"\"\"\n        self.ag.rotateby(angle=45,\n                         axis=[1,0,0])\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_rotateby(self, num_atoms):\n        \"\"\"Benchmark rotation by an angle\n        of the ag coordinates.\n        \"\"\"\n        self.ag.rotateby(angle=45,\n                         axis=[1,0,0])\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_rotateby",
             "number": 0,
             "param_names": [
@@ -890,11 +890,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "148d833401af66968dc752ff9a891a57a372b0ba8491e3abbec882424c940a5c",
+            "version": "3a363526876a2804ba8aa888ffe51737d852a4f374b4afcea48089e448dd31cb",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_split": {
-            "code": "class AtomGroupMethodsBench:\n    def time_split(self, num_atoms):\n        \"\"\"Benchmark ag splitting into\n        multiple ags based on a simple\n        criterion.\n        \"\"\"\n        self.ag.split('residue')\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_split(self, num_atoms):\n        \"\"\"Benchmark ag splitting into\n        multiple ags based on a simple\n        criterion.\n        \"\"\"\n        self.ag.split('residue')\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_split",
             "number": 0,
             "param_names": [
@@ -913,11 +913,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "2d9fbbd08120214f9a6c21a4399c753bbf34baf01a5272e3e0bd5ce83ccab090",
+            "version": "416f626f3c7231a69b7aeff75fba459fe50c0154712be099617e3bbb6e5916d4",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_subtract": {
-            "code": "class AtomGroupMethodsBench:\n    def time_subtract(self, num_atoms):\n        \"\"\"Benchmark ag subtraction.\n        \"\"\"\n        self.ag.subtract(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_subtract(self, num_atoms):\n        \"\"\"Benchmark ag subtraction.\n        \"\"\"\n        self.ag.subtract(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_subtract",
             "number": 0,
             "param_names": [
@@ -936,11 +936,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "78fb61b55cffa02e23f514737586a4d9dbac9c7a0e817f7c6b461187b2c7698d",
+            "version": "a850d565fa6aecc39128e9d35a85496508288f8b8989d9fdb21f77796d838786",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_symmetric_difference": {
-            "code": "class AtomGroupMethodsBench:\n    def time_symmetric_difference(self, num_atoms):\n        \"\"\"Benchmark ag symmetric difference\n        operation.\n        \"\"\"\n        self.ag.symmetric_difference(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_symmetric_difference(self, num_atoms):\n        \"\"\"Benchmark ag symmetric difference\n        operation.\n        \"\"\"\n        self.ag.symmetric_difference(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_symmetric_difference",
             "number": 0,
             "param_names": [
@@ -959,11 +959,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "4bd141ea906565a91d77df06f55db7973acab6c8489d4a325a0230dd53e008e1",
+            "version": "0f5ae06c5f76555fb6a63e41f85fd32373e10d49a309803a4b06be75e05ec0a9",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_transform": {
-            "code": "class AtomGroupMethodsBench:\n    def time_transform(self, num_atoms):\n        \"\"\"Benchmark application of transformation\n        matrix to atomgroup.\n        \"\"\"\n        self.ag.transform(self.trans)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_transform(self, num_atoms):\n        \"\"\"Benchmark application of transformation\n        matrix to atomgroup.\n        \"\"\"\n        self.ag.transform(self.trans)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_transform",
             "number": 0,
             "param_names": [
@@ -982,11 +982,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "71a463da6e9b33d39b18282bdbc7a2923e6222ea434ddf4ef6c81338cc2cf179",
+            "version": "6dc5031197d6b02edba0f8d4bd19cec798be5c5b740547575f7cade39a38b391",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_translate": {
-            "code": "class AtomGroupMethodsBench:\n    def time_translate(self, num_atoms):\n        \"\"\"Benchmark the application of a\n        translation vector to the ag\n        coordinates.\n        \"\"\"\n        self.ag.translate([0,0.5,1])\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_translate(self, num_atoms):\n        \"\"\"Benchmark the application of a\n        translation vector to the ag\n        coordinates.\n        \"\"\"\n        self.ag.translate([0,0.5,1])\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_translate",
             "number": 0,
             "param_names": [
@@ -1005,11 +1005,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "701b2a4a83979b7aa99188328321c315dcacc0d96f8c782dd77eb30508672aad",
+            "version": "97a8195e6e8cd22f3b5cfa3a9f162d518b497d64e2cd734e91212b74e9620d3a",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_union": {
-            "code": "class AtomGroupMethodsBench:\n    def time_union(self, num_atoms):\n        \"\"\"Benchmark union operation\n        on atomgroups.\n        \"\"\"\n        self.ag.union(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_union(self, num_atoms):\n        \"\"\"Benchmark union operation\n        on atomgroups.\n        \"\"\"\n        self.ag.union(self.ag)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_union",
             "number": 0,
             "param_names": [
@@ -1028,11 +1028,11 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "bb3896f567a32ad58d0d73819b4d7dd7ad21cd6c2259afd9024b100091b85af0",
+            "version": "3e19a73408a52eca4f12d1df1f083093bf51de80adc8a78f3448451658ae113b",
             "warmup_time": -1
         },
         "ag_methods.AtomGroupMethodsBench.time_wrap": {
-            "code": "class AtomGroupMethodsBench:\n    def time_wrap(self, num_atoms):\n        \"\"\"Benchmark wrap() operation on\n        atomgroup with default params.\n        \"\"\"\n        self.ag.wrap()\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'NA':1.0,\n                         'M':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
+            "code": "class AtomGroupMethodsBench:\n    def time_wrap(self, num_atoms):\n        \"\"\"Benchmark wrap() operation on\n        atomgroup with default params.\n        \"\"\"\n        self.ag.wrap()\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.weights = np.ones(num_atoms)\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}\n        self.rot_matrix = np.ones((3,3))\n        self.trans = np.ones((4,4))",
             "name": "ag_methods.AtomGroupMethodsBench.time_wrap",
             "number": 0,
             "param_names": [
@@ -1051,7 +1051,7 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "e7da7812425a7b20268e756fc12f62bd501c3a328ebdaebb8b373cc1fea3363c",
+            "version": "e17b327697d267cf044412cc544be3b2e309edad29b10d0ab5af64a7b847d269",
             "warmup_time": -1
         },
         "analysis.distances.DistancesBench.time_between": {
@@ -1778,6 +1778,29 @@
             "version": "3d7336e8388a8daf7d76bc3faec4ee662f2ddce17529d2b322ec539be91758c3",
             "warmup_time": -1
         },
+        "topology.TopologyGuessBench.time_guessbonds": {
+            "code": "class TopologyGuessBench:\n    def time_guessbonds(self, num_atoms):\n        \"\"\"Benchmark for guessing bonds\"\"\"\n        guessers.guess_bonds(self.ag, self.ag.positions,\n                             box=self.ag.dimensions,\n                             vdwradii=self.vdwradii)\n\n    def setup(self, num_atoms):\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag = self.u.atoms[:num_atoms]\n        self.vdwradii = {'H':1.0,\n                         'C':1.0,\n                         'N':1.0,\n                         'O':1.0,\n                         'DUMMY':1.0}",
+            "name": "topology.TopologyGuessBench.time_guessbonds",
+            "number": 0,
+            "param_names": [
+                "num_atoms"
+            ],
+            "params": [
+                [
+                    "10",
+                    "100",
+                    "1000",
+                    "10000"
+                ]
+            ],
+            "repeat": 0,
+            "sample_time": 0.1,
+            "timeout": 60.0,
+            "type": "time",
+            "unit": "seconds",
+            "version": "c8b85b9228a93b83692b65e61c7a9fdd017ca22d7702f18034d1a5f2c068bcb7",
+            "warmup_time": -1
+        },
         "traj_reader.TrajReaderCreation.time_reads": {
             "code": "class TrajReaderCreation:\n    def time_reads(self, traj_format):\n        \"\"\"Simple benchmark for reading traj file formats\n        from our standard test files.\n        \"\"\"\n        self.traj_reader(self.traj_file)\n\n    def setup(self, traj_format):\n        self.traj_dict = traj_dict\n        self.traj_file, self.traj_reader = self.traj_dict[traj_format]",
             "name": "traj_reader.TrajReaderCreation.time_reads",
@@ -2430,20 +2453,22 @@
         "7797": 1532883338000,
         "7813": 1532900224000,
         "7821": 1533242201000,
-        "7837": 1533388522000,
-        "7855": 1533487809000,
-        "7858": 1533490432000,
-        "7862": 1533498311000,
-        "7864": 1533498569000,
-        "7919": 1533561920000,
-        "7926": 1533568466000,
-        "7937": 1533586971000,
-        "7948": 1533645015000,
-        "7953": 1533678243000,
-        "8010": 1533745943000,
-        "8032": 1533920335000,
-        "8035": 1533932770000,
-        "8084": 1534146822000
+        "7840": 1533388522000,
+        "7863": 1533487809000,
+        "7866": 1533490432000,
+        "7870": 1533498311000,
+        "7872": 1533498569000,
+        "7927": 1533561920000,
+        "7934": 1533568466000,
+        "7945": 1533586971000,
+        "7956": 1533645015000,
+        "7961": 1533678243000,
+        "8024": 1533745943000,
+        "8044": 1533920335000,
+        "8047": 1533932770000,
+        "8088": 1534146822000,
+        "8094": 1534167738000,
+        "8095": 1534167809000
     },
     "revision_to_hash": {
         "82": "f892b792eefe06cb1c1e60883174230f3fde1653",
@@ -2869,20 +2894,22 @@
         "7797": "50f4300546894db3f1d36c0c9bc6bb09abca1cc4",
         "7813": "5455500094820e267689aaea30d1e2973b06dee3",
         "7821": "3331c8df1f706159665b016160756fdb0e7bd03c",
-        "7837": "c00a04a454da92acc6bf866a0b357f7987aefd20",
-        "7855": "2c9d6c50dfeb75b07f8aa87e299a717536b51931",
-        "7858": "bf424a5d3ee43844d66fed219841ccf6acded692",
-        "7862": "6b74bac909141477a6576b4560755708db50c632",
-        "7864": "f92ec5da70805897bd6f874204e822fe76cb8722",
-        "7919": "bf03cd4571dab9ab16d95348dd6805de9ffd24f3",
-        "7926": "10e16c07b3c8ed8fc43ba7f5816496a8aa288fda",
-        "7937": "e90dfd2445f2927a40a9f8e8b0317f485875e267",
-        "7948": "e2c2b560fd198558a1be797e2dda06e968b449f4",
-        "7953": "0f18f489ff4d413f97bce9bab077d895751372a9",
-        "8010": "10fb62d95f52e7b6b77870a53a35e7adbc477658",
-        "8032": "dbad72cfdc0ceb2d16e0f91c978acf8615b6e8dd",
-        "8035": "388346d38370d833b48152f61405a18942d25251",
-        "8084": "85ec60acd0f868005d66faead77c957b54b0d7be"
+        "7840": "c00a04a454da92acc6bf866a0b357f7987aefd20",
+        "7863": "2c9d6c50dfeb75b07f8aa87e299a717536b51931",
+        "7866": "bf424a5d3ee43844d66fed219841ccf6acded692",
+        "7870": "6b74bac909141477a6576b4560755708db50c632",
+        "7872": "f92ec5da70805897bd6f874204e822fe76cb8722",
+        "7927": "bf03cd4571dab9ab16d95348dd6805de9ffd24f3",
+        "7934": "10e16c07b3c8ed8fc43ba7f5816496a8aa288fda",
+        "7945": "e90dfd2445f2927a40a9f8e8b0317f485875e267",
+        "7956": "e2c2b560fd198558a1be797e2dda06e968b449f4",
+        "7961": "0f18f489ff4d413f97bce9bab077d895751372a9",
+        "8024": "10fb62d95f52e7b6b77870a53a35e7adbc477658",
+        "8044": "dbad72cfdc0ceb2d16e0f91c978acf8615b6e8dd",
+        "8047": "388346d38370d833b48152f61405a18942d25251",
+        "8088": "85ec60acd0f868005d66faead77c957b54b0d7be",
+        "8094": "67d064a4515cc46404b9f15e0bab90c5db59a971",
+        "8095": "d2e22ffb0cb46af5266e39b940d7f00c1ca293c1"
     },
     "show_commit_url": "https://github.com/MDAnalysis/mdanalysis/commit/",
     "tags": {
