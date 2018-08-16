@@ -1577,12 +1577,13 @@
             "warmup_time": -1
         },
         "analysis.rdf.SimpleRdfBench.time_interrdf": {
-            "code": "class SimpleRdfBench:\n    def time_interrdf(self, nbins, range_val):\n        \"\"\"Benchmark a full trajectory parse\n        by MDAnalysis.analysis.rdf.InterRDF\n        \"\"\"\n        self.rdf.run()\n\n    def setup(self, nbins, range_val):\n    \n        self.sel_str = 'name OW'\n    \n        self.u = MDAnalysis.Universe(TPR, XTC)\n    \n        try:\n            self.sel = self.u.select_atoms(self.sel_str)[:200]\n        except AttributeError:\n            self.sel = self.u.selectAtoms(self.sel_str)[:200]\n    \n        # do not include initialization of the\n        # InterRDF object in the benchmark itself\n    \n        self.rdf = InterRDF(g1=self.sel,\n                            g2=self.sel,\n                            nbins=nbins,\n                            range=range_val)",
+            "code": "class SimpleRdfBench:\n    def time_interrdf(self, nbins, range_val):\n        \"\"\"Benchmark a full trajectory parse\n        by MDAnalysis.analysis.rdf.InterRDF\n        \"\"\"\n        self.rdf.run()\n\n    def setup(self, nbins, range_val, natoms):\n    \n        self.sel_str = 'name OW'\n    \n        self.u = MDAnalysis.Universe(TPR, XTC)\n    \n        try:\n            self.sel = self.u.select_atoms(self.sel_str)[:natoms]\n        except AttributeError:\n            self.sel = self.u.selectAtoms(self.sel_str)[:natoms]\n    \n        # do not include initialization of the\n        # InterRDF object in the benchmark itself\n    \n        self.rdf = InterRDF(g1=self.sel,\n                            g2=self.sel,\n                            nbins=nbins,\n                            range=range_val)",
             "name": "analysis.rdf.SimpleRdfBench.time_interrdf",
             "number": 0,
             "param_names": [
                 "nbins",
-                "range_val"
+                "range_val",
+                "natoms"
             ],
             "params": [
                 [
@@ -1594,6 +1595,12 @@
                     "[0, 5]",
                     "[0, 15]",
                     "[0, 20]"
+                ],
+                [
+                    "1",
+                    "100",
+                    "1000",
+                    "10000"
                 ]
             ],
             "repeat": 0,
@@ -1601,7 +1608,7 @@
             "timeout": 60.0,
             "type": "time",
             "unit": "seconds",
-            "version": "5cb602af15664651433ff9bdd41fbc7e32560dec3a31f1a29d8f755d4dc65477",
+            "version": "9ebb9a21c33cde32547d998c7529ce6b477a31146f92a21cb7ddcd869f059292",
             "warmup_time": -1
         },
         "analysis.rms.RmsdTrajBench.time_RMSD": {
@@ -2472,7 +2479,8 @@
         "8110": 1534255980000,
         "8115": 1534036880000,
         "8125": 1534279531000,
-        "8130": 1534290615000
+        "8130": 1534290615000,
+        "8142": 1534338404000
     },
     "revision_to_hash": {
         "82": "f892b792eefe06cb1c1e60883174230f3fde1653",
@@ -2917,7 +2925,8 @@
         "8110": "e3966303776577e15a043daeceff5a591370398a",
         "8115": "6f34d3cb6e5e464724e991b3703051e1d99b8f5f",
         "8125": "5cf8c5599e1a27c53e774c436b4e03fe71080f7a",
-        "8130": "57d77d80a3236e9503473e2609ece2bdb59bc07e"
+        "8130": "57d77d80a3236e9503473e2609ece2bdb59bc07e",
+        "8142": "e9ee6be5179c0589bb729774cddb7393df490f5f"
     },
     "show_commit_url": "https://github.com/MDAnalysis/mdanalysis/commit/",
     "tags": {
