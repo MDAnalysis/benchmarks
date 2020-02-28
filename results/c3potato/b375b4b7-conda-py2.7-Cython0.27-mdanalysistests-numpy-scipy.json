@@ -47,7 +47,7 @@
         "ag_methods.AtomGroupMethodsBench.time_translate": "97a8195e6e8cd22f3b5cfa3a9f162d518b497d64e2cd734e91212b74e9620d3a",
         "ag_methods.AtomGroupMethodsBench.time_union": "3e19a73408a52eca4f12d1df1f083093bf51de80adc8a78f3448451658ae113b",
         "ag_methods.AtomGroupMethodsBench.time_wrap": "e17b327697d267cf044412cc544be3b2e309edad29b10d0ab5af64a7b847d269",
-        "ag_methods.FragmentFinding.time_find_fragments": "30d9977ef852161af490300a497314485153ae3c56e08d08cd7baab78f324eea",
+        "ag_methods.FragmentFinding.time_find_fragments": "7629f34633e0ba4daad90ab0adc33965e3f05cd82382570a2941d46085851b39",
         "analysis.distances.DistancesBench.time_between": "eb885148f4da07fe9037d6f5c72f6730a0389638e247a928686fcbd8a19214da",
         "analysis.distances.DistancesBench.time_contact_matrix": "6e4d4f50f6cb85908c188ebfd6de7c40fa3d3df6afef146e01518c709445ccd0",
         "analysis.distances.DistancesBench.time_contact_matrix_sparse": "4e6d14cd551f572db95de56c5260a5490105139c9c439440473639dcac59bf56",
@@ -68,7 +68,7 @@
         "analysis.psa.PSA_metricBench.time_hausdorff_neighbors": "77321a9a92915cf788b65037e075327c72374c4f6dd8a105749c502756260a7a",
         "analysis.psa.PSA_metricBench.time_hausdorff_wavg": "162c1711b4953d5045859022df8b1477ad41b166cf80dc31e0b961c87761ed81",
         "analysis.psa.PSA_sqnormBench.time_sqnorm": "5360f9d9650b651e056f22f98fd02bda2307b2f2eabb3fbe7c1c4b0dffe5f70b",
-        "analysis.rdf.SimpleRdfBench.time_interrdf": "9ebb9a21c33cde32547d998c7529ce6b477a31146f92a21cb7ddcd869f059292",
+        "analysis.rdf.SimpleRdfBench.time_interrdf": "834273d73c592c18978de979c278573fc8d7997972d1e690ed8efbbeadf8ca08",
         "analysis.rms.RmsdTrajBench.time_RMSD": "64836ac01572a5047b1dd99fff0059e19db814e8d869fba0f667e8ce391dab94",
         "analysis.rms.RmsfTrajBench.time_RMSF": "99e0776f38969e49506709a4f7297c981a8d81c0febde80cbbc90d2f0f163b4c",
         "analysis.rms.SimpleRmsBench.time_rmsd": "3730cce32247fa610cb1fcb58e054dc42bd0d1dd6ee55a5d19e01cff3ade58d1",
@@ -129,7 +129,7 @@
         "ag_methods.AtomGroupMethodsBench.time_translate": 1534307526000,
         "ag_methods.AtomGroupMethodsBench.time_union": 1534307530000,
         "ag_methods.AtomGroupMethodsBench.time_wrap": 1534307541000,
-        "ag_methods.FragmentFinding.time_find_fragments": 1573911741000,
+        "ag_methods.FragmentFinding.time_find_fragments": 1582857304000,
         "analysis.distances.DistancesBench.time_between": 1531700555000,
         "analysis.distances.DistancesBench.time_contact_matrix": 1531700566000,
         "analysis.distances.DistancesBench.time_contact_matrix_sparse": 1531700636000,
@@ -150,7 +150,7 @@
         "analysis.psa.PSA_metricBench.time_hausdorff_neighbors": 1531700843000,
         "analysis.psa.PSA_metricBench.time_hausdorff_wavg": 1531700856000,
         "analysis.psa.PSA_sqnormBench.time_sqnorm": 1531700911000,
-        "analysis.rdf.SimpleRdfBench.time_interrdf": 1534435748000,
+        "analysis.rdf.SimpleRdfBench.time_interrdf": 1582857501000,
         "analysis.rms.RmsdTrajBench.time_RMSD": 1531700937000,
         "analysis.rms.RmsfTrajBench.time_RMSF": 1557533465000,
         "analysis.rms.SimpleRmsBench.time_rmsd": 1531700970000,
@@ -2564,27 +2564,59 @@
         "ag_methods.FragmentFinding.time_find_fragments": {
             "params": [
                 [
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/adk_oplsaa.tpr'",
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/adk_oplsaa.xtc'"
-                ],
-                [
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/adk.psf'",
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/adk_dims.dcd'"
-                ],
-                [
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/trz_psf.psf'",
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/trzfile.trz'"
+                    "'large_fragment_small_solvents'",
+                    "'large_fragment'",
+                    "'polymer_chains'"
                 ]
             ],
             "result": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
+                0.2668684980000001,
+                7.282472116356078e-07,
+                0.10866249900000002
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.26644984800000016,
+                        0.2672871480000001
+                    ],
+                    "max": 0.2672871480000001,
+                    "mean": 0.2668684980000001,
+                    "min": 0.26644984800000016,
+                    "n": 2,
+                    "q_25": 0.26665917300000014,
+                    "q_75": 0.2670778230000001,
+                    "std": 0.0004186499999999649,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        7.262977122908108e-07,
+                        7.356718982884701e-07
+                    ],
+                    "max": 7.356718982884701e-07,
+                    "mean": 7.293328081705334e-07,
+                    "min": 7.262977122908108e-07,
+                    "n": 7,
+                    "q_25": 7.265217192329625e-07,
+                    "q_75": 7.310346982564598e-07,
+                    "std": 3.4095484840100777e-09,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.10816680449999999,
+                        0.11182967749999995
+                    ],
+                    "max": 0.11427810199999988,
+                    "mean": 0.10933619911111113,
+                    "min": 0.10809425799999994,
+                    "n": 9,
+                    "q_25": 0.108384217,
+                    "q_75": 0.10930724599999997,
+                    "std": 0.0018011495183602217,
+                    "systematic": 0.0
+                }
             ]
         },
         "analysis.distances.DistancesBench.time_between": {
@@ -4934,41 +4966,430 @@
                 ]
             ],
             "result": [
+                0.026982231999999967,
+                0.028404533249999975,
+                0.1510075634999999,
+                11.659923175,
+                0.026991074124999986,
+                0.028407511750000003,
+                0.16080094350000007,
+                12.762056333,
+                0.02687780349999999,
+                0.02853763712499996,
+                0.1754562595,
+                14.130357979,
+                0.027461524999999987,
+                0.028394730624999948,
+                0.15216669400000016,
+                11.662198401,
+                0.02716455824999997,
+                0.028434005375000015,
+                0.16320211900000003,
+                12.753517451,
+                0.02745452512499999,
+                0.028914091000000003,
+                0.17462627200000003,
+                14.14889945,
+                0.02736672887499994,
+                0.02843036662500001,
+                0.15243014600000004,
+                11.712056246000001,
+                0.027005714125000024,
+                0.028708481875000025,
+                0.1640621579999998,
+                12.761457564999999,
+                0.027715352625000078,
+                0.028728697125000036,
+                0.17724936800000013,
+                14.119088347000002
+            ],
+            "stats": [
+                {
+                    "ci_99": [
+                        0.026957648499999987,
+                        0.027006815499999948
+                    ],
+                    "max": 0.027006815499999948,
+                    "mean": 0.026982231999999967,
+                    "min": 0.026957648499999987,
+                    "n": 2,
+                    "q_25": 0.026969940249999977,
+                    "q_75": 0.026994523749999957,
+                    "std": 2.458349999998055e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.02835205374999994,
+                        0.02845701275000001
+                    ],
+                    "max": 0.02845701275000001,
+                    "mean": 0.028404533249999975,
+                    "min": 0.02835205374999994,
+                    "n": 2,
+                    "q_25": 0.028378293499999957,
+                    "q_75": 0.028430772999999993,
+                    "std": 5.247950000003554e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.15003311200000002,
+                        0.15198201499999975
+                    ],
+                    "max": 0.15198201499999975,
+                    "mean": 0.1510075634999999,
+                    "min": 0.15003311200000002,
+                    "n": 2,
+                    "q_25": 0.15052033774999996,
+                    "q_75": 0.15149478924999982,
+                    "std": 0.0009744514999998621,
+                    "systematic": 0.0
+                },
                 null,
+                {
+                    "ci_99": [
+                        0.026987721249999985,
+                        0.026994426999999988
+                    ],
+                    "max": 0.026994426999999988,
+                    "mean": 0.026991074124999986,
+                    "min": 0.026987721249999985,
+                    "n": 2,
+                    "q_25": 0.026989397687499986,
+                    "q_75": 0.026992750562499987,
+                    "std": 3.352875000001143e-06,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.028334335749999995,
+                        0.02848068775000001
+                    ],
+                    "max": 0.02848068775000001,
+                    "mean": 0.028407511750000003,
+                    "min": 0.028334335749999995,
+                    "n": 2,
+                    "q_25": 0.02837092375,
+                    "q_75": 0.028444099750000007,
+                    "std": 7.317600000000812e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.1605751769999999,
+                        0.16102671000000024
+                    ],
+                    "max": 0.16102671000000024,
+                    "mean": 0.16080094350000007,
+                    "min": 0.1605751769999999,
+                    "n": 2,
+                    "q_25": 0.16068806025,
+                    "q_75": 0.16091382675000016,
+                    "std": 0.0002257665000001685,
+                    "systematic": 0.0
+                },
                 null,
+                {
+                    "ci_99": [
+                        0.02684715124999998,
+                        0.026908455750000004
+                    ],
+                    "max": 0.026908455750000004,
+                    "mean": 0.02687780349999999,
+                    "min": 0.02684715124999998,
+                    "n": 2,
+                    "q_25": 0.026862477374999985,
+                    "q_75": 0.026893129624999998,
+                    "std": 3.0652250000012815e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.028476690749999922,
+                        0.028598583499999997
+                    ],
+                    "max": 0.028598583499999997,
+                    "mean": 0.02853763712499996,
+                    "min": 0.028476690749999922,
+                    "n": 2,
+                    "q_25": 0.02850716393749994,
+                    "q_75": 0.028568110312499978,
+                    "std": 6.094637500003719e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.17491462700000016,
+                        0.17599789199999982
+                    ],
+                    "max": 0.17599789199999982,
+                    "mean": 0.1754562595,
+                    "min": 0.17491462700000016,
+                    "n": 2,
+                    "q_25": 0.17518544325000007,
+                    "q_75": 0.1757270757499999,
+                    "std": 0.0005416324999998334,
+                    "systematic": 0.0
+                },
                 null,
+                {
+                    "ci_99": [
+                        0.027139910999999906,
+                        0.027783139000000068
+                    ],
+                    "max": 0.027783139000000068,
+                    "mean": 0.027461524999999987,
+                    "min": 0.027139910999999906,
+                    "n": 2,
+                    "q_25": 0.027300717999999946,
+                    "q_75": 0.027622332000000027,
+                    "std": 0.0003216140000000811,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.028316349249999984,
+                        0.02847311199999991
+                    ],
+                    "max": 0.02847311199999991,
+                    "mean": 0.028394730624999948,
+                    "min": 0.028316349249999984,
+                    "n": 2,
+                    "q_25": 0.028355539937499966,
+                    "q_75": 0.02843392131249993,
+                    "std": 7.8381374999964e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.15121280400000003,
+                        0.15312058400000028
+                    ],
+                    "max": 0.15312058400000028,
+                    "mean": 0.15216669400000016,
+                    "min": 0.15121280400000003,
+                    "n": 2,
+                    "q_25": 0.1516897490000001,
+                    "q_75": 0.15264363900000022,
+                    "std": 0.0009538900000001238,
+                    "systematic": 0.0
+                },
                 null,
+                {
+                    "ci_99": [
+                        0.027107992499999956,
+                        0.027221123999999985
+                    ],
+                    "max": 0.027221123999999985,
+                    "mean": 0.02716455824999997,
+                    "min": 0.027107992499999956,
+                    "n": 2,
+                    "q_25": 0.027136275374999963,
+                    "q_75": 0.027192841124999978,
+                    "std": 5.656575000001496e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.028387006500000034,
+                        0.028481004249999997
+                    ],
+                    "max": 0.028481004249999997,
+                    "mean": 0.028434005375000015,
+                    "min": 0.028387006500000034,
+                    "n": 2,
+                    "q_25": 0.028410505937500025,
+                    "q_75": 0.028457504812500006,
+                    "std": 4.699887499998168e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.16274926600000006,
+                        0.163654972
+                    ],
+                    "max": 0.163654972,
+                    "mean": 0.16320211900000003,
+                    "min": 0.16274926600000006,
+                    "n": 2,
+                    "q_25": 0.16297569250000005,
+                    "q_75": 0.16342854550000002,
+                    "std": 0.0004528529999999753,
+                    "systematic": 0.0
+                },
                 null,
+                {
+                    "ci_99": [
+                        0.026920995000000003,
+                        0.027988055249999977
+                    ],
+                    "max": 0.027988055249999977,
+                    "mean": 0.02745452512499999,
+                    "min": 0.026920995000000003,
+                    "n": 2,
+                    "q_25": 0.027187760062499997,
+                    "q_75": 0.027721290187499983,
+                    "std": 0.0005335301249999869,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.028565101500000023,
+                        0.029263080499999983
+                    ],
+                    "max": 0.029263080499999983,
+                    "mean": 0.028914091000000003,
+                    "min": 0.028565101500000023,
+                    "n": 2,
+                    "q_25": 0.028739596250000013,
+                    "q_75": 0.029088585749999993,
+                    "std": 0.00034898949999997986,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.1745376809999999,
+                        0.17471486300000016
+                    ],
+                    "max": 0.17471486300000016,
+                    "mean": 0.17462627200000003,
+                    "min": 0.1745376809999999,
+                    "n": 2,
+                    "q_25": 0.17458197649999996,
+                    "q_75": 0.1746705675000001,
+                    "std": 8.859100000013775e-05,
+                    "systematic": 0.0
+                },
                 null,
+                {
+                    "ci_99": [
+                        0.027028418249999964,
+                        0.027705039499999917
+                    ],
+                    "max": 0.027705039499999917,
+                    "mean": 0.02736672887499994,
+                    "min": 0.027028418249999964,
+                    "n": 2,
+                    "q_25": 0.027197573562499952,
+                    "q_75": 0.02753588418749993,
+                    "std": 0.00033831062499997677,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.028424265000000004,
+                        0.028436468250000013
+                    ],
+                    "max": 0.028436468250000013,
+                    "mean": 0.02843036662500001,
+                    "min": 0.028424265000000004,
+                    "n": 2,
+                    "q_25": 0.028427315812500006,
+                    "q_75": 0.02843341743750001,
+                    "std": 6.101625000004551e-06,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.15155949400000002,
+                        0.15330079800000007
+                    ],
+                    "max": 0.15330079800000007,
+                    "mean": 0.15243014600000004,
+                    "min": 0.15155949400000002,
+                    "n": 2,
+                    "q_25": 0.15199482000000003,
+                    "q_75": 0.15286547200000006,
+                    "std": 0.0008706520000000273,
+                    "systematic": 0.0
+                },
                 null,
+                {
+                    "ci_99": [
+                        0.0269714405,
+                        0.02703998775000005
+                    ],
+                    "max": 0.02703998775000005,
+                    "mean": 0.027005714125000024,
+                    "min": 0.0269714405,
+                    "n": 2,
+                    "q_25": 0.02698857731250001,
+                    "q_75": 0.027022850937500037,
+                    "std": 3.427362500002529e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.028560739250000022,
+                        0.028856224500000027
+                    ],
+                    "max": 0.028856224500000027,
+                    "mean": 0.028708481875000025,
+                    "min": 0.028560739250000022,
+                    "n": 2,
+                    "q_25": 0.028634610562500024,
+                    "q_75": 0.028782353187500026,
+                    "std": 0.00014774262500000246,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.16352482499999987,
+                        0.1645994909999997
+                    ],
+                    "max": 0.1645994909999997,
+                    "mean": 0.1640621579999998,
+                    "min": 0.16352482499999987,
+                    "n": 2,
+                    "q_25": 0.16379349149999983,
+                    "q_75": 0.16433082449999975,
+                    "std": 0.0005373329999999177,
+                    "systematic": 0.0
+                },
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
+                {
+                    "ci_99": [
+                        0.02709329150000006,
+                        0.028337413750000096
+                    ],
+                    "max": 0.028337413750000096,
+                    "mean": 0.027715352625000078,
+                    "min": 0.02709329150000006,
+                    "n": 2,
+                    "q_25": 0.02740432206250007,
+                    "q_75": 0.028026383187500087,
+                    "std": 0.0006220611250000174,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.028655907750000043,
+                        0.02880148650000003
+                    ],
+                    "max": 0.02880148650000003,
+                    "mean": 0.028728697125000036,
+                    "min": 0.028655907750000043,
+                    "n": 2,
+                    "q_25": 0.02869230243750004,
+                    "q_75": 0.028765091812500032,
+                    "std": 7.278937499999305e-05,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.17554902300000008,
+                        0.17894971300000018
+                    ],
+                    "max": 0.17894971300000018,
+                    "mean": 0.17724936800000013,
+                    "min": 0.17554902300000008,
+                    "n": 2,
+                    "q_25": 0.1763991955000001,
+                    "q_75": 0.17809954050000015,
+                    "std": 0.0017003450000000475,
+                    "systematic": 0.0
+                },
                 null
             ]
         },
@@ -6144,7 +6565,7 @@
         "ag_methods.AtomGroupMethodsBench.time_translate": 1534307515000,
         "ag_methods.AtomGroupMethodsBench.time_union": 1534307526000,
         "ag_methods.AtomGroupMethodsBench.time_wrap": 1534307530000,
-        "ag_methods.FragmentFinding.time_find_fragments": 1573911739000,
+        "ag_methods.FragmentFinding.time_find_fragments": 1582857297000,
         "analysis.distances.DistancesBench.time_between": 1531700552000,
         "analysis.distances.DistancesBench.time_contact_matrix": 1531700555000,
         "analysis.distances.DistancesBench.time_contact_matrix_sparse": 1531700566000,
@@ -6165,7 +6586,7 @@
         "analysis.psa.PSA_metricBench.time_hausdorff_neighbors": 1531700829000,
         "analysis.psa.PSA_metricBench.time_hausdorff_wavg": 1531700843000,
         "analysis.psa.PSA_sqnormBench.time_sqnorm": 1531700856000,
-        "analysis.rdf.SimpleRdfBench.time_interrdf": 1534435715000,
+        "analysis.rdf.SimpleRdfBench.time_interrdf": 1582857304000,
         "analysis.rms.RmsdTrajBench.time_RMSD": 1531700935000,
         "analysis.rms.RmsfTrajBench.time_RMSF": 1557533461000,
         "analysis.rms.SimpleRmsBench.time_rmsd": 1531700941000,
