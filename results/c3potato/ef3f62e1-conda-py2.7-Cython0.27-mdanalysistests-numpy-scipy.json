@@ -47,7 +47,7 @@
         "ag_methods.AtomGroupMethodsBench.time_translate": "97a8195e6e8cd22f3b5cfa3a9f162d518b497d64e2cd734e91212b74e9620d3a",
         "ag_methods.AtomGroupMethodsBench.time_union": "3e19a73408a52eca4f12d1df1f083093bf51de80adc8a78f3448451658ae113b",
         "ag_methods.AtomGroupMethodsBench.time_wrap": "e17b327697d267cf044412cc544be3b2e309edad29b10d0ab5af64a7b847d269",
-        "ag_methods.FragmentFinding.time_find_fragments": "30d9977ef852161af490300a497314485153ae3c56e08d08cd7baab78f324eea",
+        "ag_methods.FragmentFinding.time_find_fragments": "7629f34633e0ba4daad90ab0adc33965e3f05cd82382570a2941d46085851b39",
         "analysis.distances.DistancesBench.time_between": "eb885148f4da07fe9037d6f5c72f6730a0389638e247a928686fcbd8a19214da",
         "analysis.distances.DistancesBench.time_contact_matrix": "6e4d4f50f6cb85908c188ebfd6de7c40fa3d3df6afef146e01518c709445ccd0",
         "analysis.distances.DistancesBench.time_contact_matrix_sparse": "4e6d14cd551f572db95de56c5260a5490105139c9c439440473639dcac59bf56",
@@ -68,7 +68,7 @@
         "analysis.psa.PSA_metricBench.time_hausdorff_neighbors": "77321a9a92915cf788b65037e075327c72374c4f6dd8a105749c502756260a7a",
         "analysis.psa.PSA_metricBench.time_hausdorff_wavg": "162c1711b4953d5045859022df8b1477ad41b166cf80dc31e0b961c87761ed81",
         "analysis.psa.PSA_sqnormBench.time_sqnorm": "5360f9d9650b651e056f22f98fd02bda2307b2f2eabb3fbe7c1c4b0dffe5f70b",
-        "analysis.rdf.SimpleRdfBench.time_interrdf": "9ebb9a21c33cde32547d998c7529ce6b477a31146f92a21cb7ddcd869f059292",
+        "analysis.rdf.SimpleRdfBench.time_interrdf": "834273d73c592c18978de979c278573fc8d7997972d1e690ed8efbbeadf8ca08",
         "analysis.rms.RmsdTrajBench.time_RMSD": "64836ac01572a5047b1dd99fff0059e19db814e8d869fba0f667e8ce391dab94",
         "analysis.rms.RmsfTrajBench.time_RMSF": "99e0776f38969e49506709a4f7297c981a8d81c0febde80cbbc90d2f0f163b4c",
         "analysis.rms.SimpleRmsBench.time_rmsd": "3730cce32247fa610cb1fcb58e054dc42bd0d1dd6ee55a5d19e01cff3ade58d1",
@@ -129,7 +129,7 @@
         "ag_methods.AtomGroupMethodsBench.time_translate": 1534387943000,
         "ag_methods.AtomGroupMethodsBench.time_union": 1534387946000,
         "ag_methods.AtomGroupMethodsBench.time_wrap": 1534387956000,
-        "ag_methods.FragmentFinding.time_find_fragments": 1573917509000,
+        "ag_methods.FragmentFinding.time_find_fragments": 1582917984000,
         "analysis.distances.DistancesBench.time_between": 1532039964000,
         "analysis.distances.DistancesBench.time_contact_matrix": 1532039974000,
         "analysis.distances.DistancesBench.time_contact_matrix_sparse": 1532040044000,
@@ -150,7 +150,7 @@
         "analysis.psa.PSA_metricBench.time_hausdorff_neighbors": 1532040159000,
         "analysis.psa.PSA_metricBench.time_hausdorff_wavg": 1532040161000,
         "analysis.psa.PSA_sqnormBench.time_sqnorm": 1532040211000,
-        "analysis.rdf.SimpleRdfBench.time_interrdf": 1534451877000,
+        "analysis.rdf.SimpleRdfBench.time_interrdf": 1582918020000,
         "analysis.rms.RmsdTrajBench.time_RMSD": 1532040224000,
         "analysis.rms.RmsfTrajBench.time_RMSF": 1557539884000,
         "analysis.rms.SimpleRmsBench.time_rmsd": 1532040238000,
@@ -2564,27 +2564,46 @@
         "ag_methods.FragmentFinding.time_find_fragments": {
             "params": [
                 [
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/adk_oplsaa.tpr'",
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/adk_oplsaa.xtc'"
-                ],
-                [
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/adk.psf'",
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/adk_dims.dcd'"
-                ],
-                [
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/trz_psf.psf'",
-                    "'/home/microway/MDA/repositories/mdanalysis/benchmarks/env/491757a14a3783160c2e9816e3ecb44c/lib/python2.7/site-packages/MDAnalysisTests/data/trzfile.trz'"
+                    "'large_fragment_small_solvents'",
+                    "'large_fragment'",
+                    "'polymer_chains'"
                 ]
             ],
             "result": [
                 null,
+                7.324409312766635e-07,
+                0.11615655450000001
+            ],
+            "stats": [
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
+                {
+                    "ci_99": [
+                        7.273103448275863e-07,
+                        7.390265373796085e-07
+                    ],
+                    "max": 7.390265373796085e-07,
+                    "mean": 7.325008033867992e-07,
+                    "min": 7.273103448275863e-07,
+                    "n": 6,
+                    "q_25": 7.308004212541216e-07,
+                    "q_75": 7.332596010544159e-07,
+                    "std": 3.538226004693605e-09,
+                    "systematic": 0.0
+                },
+                {
+                    "ci_99": [
+                        0.11580447050000003,
+                        0.11731872250000008
+                    ],
+                    "max": 0.11778279800000013,
+                    "mean": 0.11635918200000003,
+                    "min": 0.1157443680000001,
+                    "n": 8,
+                    "q_25": 0.11591730025000005,
+                    "q_75": 0.11649797549999996,
+                    "std": 0.0006290616411092229,
+                    "systematic": 0.0
+                }
             ]
         },
         "analysis.distances.DistancesBench.time_between": {
@@ -5116,7 +5135,7 @@
         "ag_methods.AtomGroupMethodsBench.time_translate": 1534387933000,
         "ag_methods.AtomGroupMethodsBench.time_union": 1534387943000,
         "ag_methods.AtomGroupMethodsBench.time_wrap": 1534387946000,
-        "ag_methods.FragmentFinding.time_find_fragments": 1573917506000,
+        "ag_methods.FragmentFinding.time_find_fragments": 1582917979000,
         "analysis.distances.DistancesBench.time_between": 1532039961000,
         "analysis.distances.DistancesBench.time_contact_matrix": 1532039964000,
         "analysis.distances.DistancesBench.time_contact_matrix_sparse": 1532039974000,
@@ -5137,7 +5156,7 @@
         "analysis.psa.PSA_metricBench.time_hausdorff_neighbors": 1532040158000,
         "analysis.psa.PSA_metricBench.time_hausdorff_wavg": 1532040159000,
         "analysis.psa.PSA_sqnormBench.time_sqnorm": 1532040161000,
-        "analysis.rdf.SimpleRdfBench.time_interrdf": 1534451841000,
+        "analysis.rdf.SimpleRdfBench.time_interrdf": 1582917984000,
         "analysis.rms.RmsdTrajBench.time_RMSD": 1532040223000,
         "analysis.rms.RmsfTrajBench.time_RMSF": 1557539880000,
         "analysis.rms.SimpleRmsBench.time_rmsd": 1532040229000,
