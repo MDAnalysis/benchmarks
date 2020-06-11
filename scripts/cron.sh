@@ -62,7 +62,9 @@ asv run -e --config ${ASV_CONFIG} NEW || true
 
 # kill after 20h so that it does not interfere with a new run (and other cron jobs)
 # (even if killed, this task will keep working on missing commits, night after night)
-timeout 20h asv run -e -j 4 --config ${ASV_CONFIG} "release-0.11.0..HEAD --merges" --skip-existing || true
+## For Python 2.7: start at release-0.11.0
+## For Python 3.6: start at release-0.17.0
+timeout 20h asv run -e -j 4 --config ${ASV_CONFIG} "release-0.17.0..HEAD --merges" --skip-existing || true
 
 # We split the benchmarks from the results benchmarks are with the main code,
 # results are in separate repo.
