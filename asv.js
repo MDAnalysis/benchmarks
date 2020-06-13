@@ -3,6 +3,7 @@
 $(document).ready(function() {
     /* GLOBAL STATE */
     /* The index.json content as returned from the server */
+    var master_timestamp = '';
     var master_json = {};
     /* Extra pages: {name: show_function} */
     var loaded_pages = {};
@@ -38,6 +39,14 @@ $(document).ready(function() {
         ['C', 'centuries', 60 * 60 * 24 * 7 * 52 * 100]
     ];
 
+    var mem_units = [
+        ['', 'bytes', 1],
+        ['k', 'kilobytes', 1000],
+        ['M', 'megabytes', 1000000],
+        ['G', 'gigabytes', 1000000000],
+        ['T', 'terabytes', 1000000000000]
+    ];
+
     function pretty_second(x) {
         for (var i = 0; i < time_units.length - 1; ++i) {
             if (Math.abs(x) < time_units[i+1][2]) {
@@ -46,6 +55,33 @@ $(document).ready(function() {
         }
 
         return 'inf';
+    }
+
+    function pretty_byte(x) {
+        for (var i = 0; i < mem_units.length - 1; ++i) {
+            if (Math.abs(x) < mem_units[i+1][2]) {
+                break;
+            }
+        }
+        if (i == 0) {
+            return x + '';
+        }
+        return (x / mem_units[i][2]).toFixed(3) + mem_units[i][0];
+    }
+
+    function pretty_unit(x, unit) {
+        if (unit == "seconds") {
+            return pretty_second(x);
+        }
+        else if (unit == "bytes") {
+            return pretty_byte(x);
+        }
+        else if (unit && unit != "unit") {
+            return '' + x.toPrecision(3) + ' ' + unit;
+        }
+        else {
+            return '' + x.toPrecision(3);
+        }
     }
 
     function pad_left(s, c, num) {
@@ -230,6 +266,9 @@ $(document).ready(function() {
         parts.sort();
         parts.splice(0, 0, "graphs");
         parts.push(sanitize_filename(benchmark_name));
+
+        /* Escape URI components */
+        parts = $.map(parts, function (val) { return encodeURIComponent(val); });
         return parts.join('/') + ".json";
     }
 
@@ -245,9 +284,9 @@ $(document).ready(function() {
         }
         else {
             $.ajax({
-                url: url,
+                url: url + '?timestamp=' + $.asv.master_timestamp,
                 dataType: "json",
-                cache: false
+                cache: true
             }).done(function(data) {
                 if (Object.keys(graph_cache).length > graph_cache_max_size) {
                     $.each(Object.keys(graph_cache), function (i, key) {
@@ -287,7 +326,7 @@ $(document).ready(function() {
                 if (part.length != 2) {
                     continue;
                 }
-                var key = part[0];
+                var key = decodeURIComponent(part[0].replace(/\+/g, " "));
                 var value = decodeURIComponent(part[1].replace(/\+/g, " "));
                 if (value == '[none]') {
                     value = null;
@@ -324,7 +363,7 @@ $(document).ready(function() {
                     if (value === null) {
                         value = '[none]';
                     }
-                    str = str + key + '=' + encodeURIComponent(value);
+                    str = str + encodeURIComponent(key) + '=' + encodeURIComponent(value);
                     first = false;
                 });
             });
@@ -398,13 +437,13 @@ $(document).ready(function() {
         return rev;
     }
 
-    function init() {
+    function init_index() {
         /* Fetch the master index.json and then set up the page elements
            based on it. */
         $.ajax({
-            url: "index.json",
+            url: "index.json" + '?timestamp=' + $.asv.master_timestamp,
             dataType: "json",
-            cache: false
+            cache: true
         }).done(function (index) {
             master_json = index;
             $.asv.master_json = index;
@@ -424,6 +463,21 @@ $(document).ready(function() {
             $('#summarylist-display').hide();
 
             hashchange();
+        }).fail(function () {
+            $.asv.ui.network_error();
+        });
+    }
+
+    function init() {
+        /* Fetch the info.json */
+        $.ajax({
+            url: "info.json",
+            dataType: "json",
+            cache: false
+        }).done(function (info) {
+            master_timestamp = info['timestamp'];
+            $.asv.master_timestamp = master_timestamp;
+            init_index();
         }).fail(function () {
             $.asv.ui.network_error();
         });
@@ -449,12 +503,14 @@ $(document).ready(function() {
     this.get_commit_hash = get_commit_hash;
     this.get_revision = get_revision;
 
+    this.master_timestamp = master_timestamp; /* Updated after info.json loads */
     this.master_json = master_json; /* Updated after index.json loads */
 
     this.format_date_yyyymmdd = format_date_yyyymmdd;
     this.format_date_yyyymmdd_hhmm = format_date_yyyymmdd_hhmm;
-    this.pretty_second = pretty_second;
+    this.pretty_unit = pretty_unit;
     this.time_units = time_units;
+    this.mem_units = mem_units;
 
     this.colors = colors;
 
