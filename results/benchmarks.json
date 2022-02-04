@@ -1147,6 +1147,94 @@
         "version": "e17b327697d267cf044412cc544be3b2e309edad29b10d0ab5af64a7b847d269",
         "warmup_time": -1
     },
+    "ag_methods.CompoundSplitting.time_center_compounds": {
+        "code": "class CompoundSplitting:\n    def time_center_compounds(self, *args):\n        self.u.atoms.center(None, compound='residues')\n\n    def setup(self, n_atoms, n_compounds, homogeneous, contiguous):\n        rg = np.random.Generator(np.random.MT19937(3000))\n    \n        # some parameter screening for nonsensical combinations.\n        if n_compounds > n_atoms:\n            raise NotImplementedError\n    \n        if n_compounds == 1 and not (homogeneous and contiguous):\n            raise NotImplementedError\n    \n        if n_compounds == n_atoms:\n            if not (homogeneous and contiguous):\n                raise NotImplementedError\n            compound_indices = np.arange(n_compounds)\n        elif homogeneous:\n            ats_per_compound, remainder = divmod(n_atoms, n_compounds)\n            if remainder:\n                raise NotImplementedError\n            compound_indices = np.tile(np.arange(n_compounds),\n                                       (ats_per_compound, 1)).T.ravel()\n        else:\n            compound_indices = np.sort(np.floor(rg.random(n_atoms)\n                                                * n_compounds).astype(np.int))\n    \n        unique_indices = np.unique(compound_indices)\n        if len(unique_indices) != n_compounds:\n            raise RuntimeError\n    \n        if not contiguous:\n            rg.shuffle(compound_indices)\n    \n        self.u = MDAnalysis.Universe.empty(n_atoms,\n                                           n_residues=n_compounds,\n                                           n_segments=1,\n                                           atom_resindex=compound_indices,\n                                           trajectory=True)\n        self.u.atoms.positions = rg.random((n_atoms, 3),\n                                           dtype=np.float32) * 100\n        self.u.dimensions = [50, 50, 50, 90, 90, 90]",
+        "min_run_count": 2,
+        "name": "ag_methods.CompoundSplitting.time_center_compounds",
+        "number": 0,
+        "param_names": [
+            "param1",
+            "param2",
+            "param3",
+            "param4"
+        ],
+        "params": [
+            [
+                "100",
+                "10000",
+                "1000000"
+            ],
+            [
+                "1",
+                "10",
+                "100"
+            ],
+            [
+                "True",
+                "False"
+            ],
+            [
+                "True",
+                "False"
+            ]
+        ],
+        "processes": 2,
+        "repeat": 0,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "1a2731a96f06d85a503ae24d79262851ff5c7c0755d17baf7819456d54075f17",
+        "warmup_time": -1
+    },
+    "ag_methods.FragmentCaching.time_find_cached_fragments": {
+        "code": "class FragmentCaching:\n    def time_find_cached_fragments(self, universe_type):\n        frags = self.u.atoms.fragments\n\n    def setup(self, universe_type):\n        super(FragmentCaching, self).setup(universe_type)\n        frags = self.u.atoms.fragments  # Priming the cache",
+        "min_run_count": 2,
+        "name": "ag_methods.FragmentCaching.time_find_cached_fragments",
+        "number": 0,
+        "param_names": [
+            "universe_type"
+        ],
+        "params": [
+            [
+                "'large_fragment_small_solvents'",
+                "'large_fragment'",
+                "'polymer_chains'"
+            ]
+        ],
+        "processes": 2,
+        "repeat": 0,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "e10a712eaf0f8c9a2489bc4f2dbc9677be29528aa3314aa5bcb814b05e4c5cd8",
+        "warmup_time": -1
+    },
+    "ag_methods.FragmentCaching.time_find_fragments": {
+        "code": "class FragmentFinding:\n    def time_find_fragments(self, universe_type):\n        frags = self.u.atoms.fragments\n\nclass FragmentCaching:\n    def setup(self, universe_type):\n        super(FragmentCaching, self).setup(universe_type)\n        frags = self.u.atoms.fragments  # Priming the cache",
+        "min_run_count": 2,
+        "name": "ag_methods.FragmentCaching.time_find_fragments",
+        "number": 0,
+        "param_names": [
+            "universe_type"
+        ],
+        "params": [
+            [
+                "'large_fragment_small_solvents'",
+                "'large_fragment'",
+                "'polymer_chains'"
+            ]
+        ],
+        "processes": 2,
+        "repeat": 0,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "9ee4ba9d30022cba05eab57475bff54164b9f4ffc8a37286663ae8befdd78225",
+        "warmup_time": -1
+    },
     "ag_methods.FragmentFinding.time_find_fragments": {
         "code": "class FragmentFinding:\n    def time_find_fragments(self, universe_type):\n        frags = self.u.atoms.fragments\n\n    def setup(self, universe_type):\n        if universe_type == 'large_fragment_small_solvents':\n            univ = (TPR, XTC)\n        elif universe_type == 'large_fragment':\n            univ = (PSF, DCD)\n        else:\n            univ = (TRZ_psf, TRZ)\n        self.u = MDAnalysis.Universe(*univ)",
         "min_run_count": 2,
