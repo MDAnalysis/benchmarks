@@ -12,6 +12,8 @@ ASV_RUN_DIR="${REPO}/benchmarks"
 ASV_CONFIG="${ASV_RUN_DIR}/asv_c3potato.conf.json"
 CONDA_BIN="${HOME}/MDA/miniconda3/bin"
 CONDA_ENV=benchmark
+# when cron is enabled, set TIMEOUT to 20h
+TIMEOUT="20h"
 
 
 export PATH="${CONDA_BIN}:${PATH}"
@@ -65,7 +67,7 @@ asv run -e --config ${ASV_CONFIG} NEW || true
 ## For Python 2.7: start at release-0.11.0
 ## For Python 3.6: start at release-0.17.0
 ## For Python 3.8: start at release-1.0.1
-timeout 20h asv run -e -j 4 --config ${ASV_CONFIG} "release-1.0.1..HEAD --merges" --skip-existing || true
+timeout ${TIMEOUT} asv run -e -j 4 --config ${ASV_CONFIG} "release-1.0.1..HEAD --merges" --skip-existing || true
 
 # We split the benchmarks from the results benchmarks are with the main code,
 # results are in separate repo.
