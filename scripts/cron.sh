@@ -15,9 +15,13 @@ CONDA_ENV=benchmark
 # when cron is enabled, set TIMEOUT to 20h
 TIMEOUT="20h"
 
-
+# clean path
+PATH="${HOME}/bin:/usr/local/bin:/usr/bin:/bin"
 export PATH="${CONDA_BIN}:${PATH}"
 source activate ${CONDA_ENV}
+
+# check that we have asv
+test -n "$(asv --version)" || { echo "Could not find asv. Aborting."; exit $?; }
 
 # Make sure to be in ASV_RUN_DIR in case relative paths are used
 cd ${ASV_RUN_DIR}
