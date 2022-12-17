@@ -71,7 +71,8 @@ asv run -e --config ${ASV_CONFIG} NEW || true
 ## For Python 2.7: start at release-0.11.0
 ## For Python 3.6: start at release-0.17.0
 ## For Python 3.8: start at release-1.0.1
-timeout ${TIMEOUT} asv run -e -j 4 --config ${ASV_CONFIG} "release-1.0.1..HEAD --merges" --skip-existing || true
+## For Python 3.11: start at release-2.4.0
+timeout ${TIMEOUT} asv run -e -j 4 --config ${ASV_CONFIG} "release-2.4.0..HEAD --merges" --skip-existing || true
 
 # We split the benchmarks from the results benchmarks are with the main code,
 # results are in separate repo.
