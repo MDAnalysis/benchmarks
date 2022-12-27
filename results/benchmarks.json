@@ -1260,7 +1260,7 @@
         "warmup_time": -1
     },
     "analysis.distances.DistancesBench.time_between": {
-        "code": "class DistancesBench:\n    def time_between(self, num_atoms):\n        \"\"\"Benchmark determination of subgroup\n        of atomgroup that is within a specific\n        distance of two other atomgroups.\n        \"\"\"\n        distances.between(group=self.ag3,\n                          A=self.ag1,\n                          B=self.ag2,\n                          distance=15.0)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "code": "class DistancesBench:\n    def time_between(self, num_atoms):\n        \"\"\"Benchmark determination of subgroup\n        of atomgroup that is within a specific\n        distance of two other atomgroups.\n        \"\"\"\n        distances.between(\n            group=self.ag3, A=self.ag1, B=self.ag2, distance=15.0\n        )\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
         "min_run_count": 2,
         "name": "analysis.distances.DistancesBench.time_between",
         "number": 0,
@@ -1281,11 +1281,86 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "eb885148f4da07fe9037d6f5c72f6730a0389638e247a928686fcbd8a19214da",
+        "version": "06923b19f8f155c8ef51227176b95f08c0b87f7f7f81ff6a72eaebe8b2927bca",
+        "warmup_time": -1
+    },
+    "analysis.distances.DistancesBench.time_calc_angles": {
+        "code": "class DistancesBench:\n    def time_calc_angles(self, num_atoms):\n        \"\"\"Benchmark calculation of angles between\n        atoms in three atomgroups.\n        \"\"\"\n        mda.lib.distances.calc_angles(\n            self.coords_1, self.coords_2, self.coords_3\n        )\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "min_run_count": 2,
+        "name": "analysis.distances.DistancesBench.time_calc_angles",
+        "number": 0,
+        "param_names": [
+            "num_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "1000",
+                "10000"
+            ]
+        ],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "3bf2d6564e727c2553e682fe2f6290e199915ad8f0ea5bd8d0dc8e6a35c8c193",
+        "warmup_time": -1
+    },
+    "analysis.distances.DistancesBench.time_calc_bonds": {
+        "code": "class DistancesBench:\n    def time_calc_bonds(self, num_atoms):\n        \"\"\"Benchmark calculation of bonds between\n        atoms in two atomgroups.\n        \"\"\"\n        mda.lib.distances.calc_bonds(self.coords_1, self.coords_2)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "min_run_count": 2,
+        "name": "analysis.distances.DistancesBench.time_calc_bonds",
+        "number": 0,
+        "param_names": [
+            "num_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "1000",
+                "10000"
+            ]
+        ],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "c82f8a3b8b73aa472c1b332c89f7225cdc60f0a35fc6f526d818427e0c0f4260",
+        "warmup_time": -1
+    },
+    "analysis.distances.DistancesBench.time_calc_dihedrals": {
+        "code": "class DistancesBench:\n    def time_calc_dihedrals(self, num_atoms):\n        \"\"\"Benchmark calculation of dihedrals between\n        atoms in four atomgroups.\n        \"\"\"\n        mda.lib.distances.calc_dihedrals(\n            self.coords_1, self.coords_2, self.coords_3, self.coords_4\n        )\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "min_run_count": 2,
+        "name": "analysis.distances.DistancesBench.time_calc_dihedrals",
+        "number": 0,
+        "param_names": [
+            "num_atoms"
+        ],
+        "params": [
+            [
+                "10",
+                "100",
+                "1000",
+                "10000"
+            ]
+        ],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "8e267b78a21ada5eaa0968be8444c971d3b72cdb1f245bdc8bdb0a8b41b66c65",
         "warmup_time": -1
     },
     "analysis.distances.DistancesBench.time_contact_matrix": {
-        "code": "class DistancesBench:\n    def time_contact_matrix(self, num_atoms):\n        \"\"\"Benchmark calculation of contacts within\n        a single numpy array using the default arguments\n        to contact_matrix.\n        \"\"\"\n        distances.contact_matrix(coord=self.coords_1,\n                                 cutoff=15.0,\n                                 returntype='numpy',\n                                 box=None)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "code": "class DistancesBench:\n    def time_contact_matrix(self, num_atoms):\n        \"\"\"Benchmark calculation of contacts within\n        a single numpy array using the default arguments\n        to contact_matrix.\n        \"\"\"\n        distances.contact_matrix(\n            coord=self.coords_1, cutoff=15.0, returntype=\"numpy\", box=None\n        )\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
         "min_run_count": 2,
         "name": "analysis.distances.DistancesBench.time_contact_matrix",
         "number": 0,
@@ -1306,11 +1381,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "6e4d4f50f6cb85908c188ebfd6de7c40fa3d3df6afef146e01518c709445ccd0",
+        "version": "c91c137bba8896a5e5f082a89a5f74a4250cd550276f5c0dd7e67099a3e4ce27",
         "warmup_time": -1
     },
     "analysis.distances.DistancesBench.time_contact_matrix_sparse": {
-        "code": "class DistancesBench:\n    def time_contact_matrix_sparse(self, num_atoms):\n        \"\"\"Benchmark calculation of contacts within\n        a single numpy array using the slower reduced\n        memory implementation of contact_matrix intended\n        for larger systems.\n        \"\"\"\n        distances.contact_matrix(coord=self.coords_1,\n                                 cutoff=15.0,\n                                 returntype='sparse',\n                                 box=None)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "code": "class DistancesBench:\n    def time_contact_matrix_sparse(self, num_atoms):\n        \"\"\"Benchmark calculation of contacts within\n        a single numpy array using the slower reduced\n        memory implementation of contact_matrix intended\n        for larger systems.\n        \"\"\"\n        distances.contact_matrix(\n            coord=self.coords_1, cutoff=15.0, returntype=\"sparse\", box=None\n        )\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
         "min_run_count": 2,
         "name": "analysis.distances.DistancesBench.time_contact_matrix_sparse",
         "number": 0,
@@ -1331,11 +1406,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "4e6d14cd551f572db95de56c5260a5490105139c9c439440473639dcac59bf56",
+        "version": "90afc393d0d08334fd0a603ceb4c1a30e1d495c974d7fbf3e902b3d87afa19d1",
         "warmup_time": -1
     },
     "analysis.distances.DistancesBench.time_dist": {
-        "code": "class DistancesBench:\n    def time_dist(self, num_atoms):\n        \"\"\"Benchmark calculation of distances between\n        atoms in two atomgroups with no offsets\n        to resids.\n        \"\"\"\n        distances.dist(A=self.ag1,\n                       B=self.ag2,\n                       offset=0)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "code": "class DistancesBench:\n    def time_dist(self, num_atoms):\n        \"\"\"Benchmark calculation of distances between\n        atoms in two atomgroups with no offsets\n        to resids.\n        \"\"\"\n        distances.dist(A=self.ag1, B=self.ag2, offset=0)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
         "min_run_count": 2,
         "name": "analysis.distances.DistancesBench.time_dist",
         "number": 0,
@@ -1356,11 +1431,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "1e316d102d15001127985bbeadcda61a289f6b0c49edf8beb7c8ac292fc70883",
+        "version": "3663b232cc72f4cdece318f342aa8287da2493eca63495991d9421aab0dbb4a9",
         "warmup_time": -1
     },
     "analysis.distances.DistancesBench.time_dist_offsets": {
-        "code": "class DistancesBench:\n    def time_dist_offsets(self, num_atoms):\n        \"\"\"Benchmark calculation of distances between\n        atoms in two atomgroups with offsets\n        to resids.\n        \"\"\"\n        distances.dist(A=self.ag1,\n                       B=self.ag2,\n                       offset=20)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "code": "class DistancesBench:\n    def time_dist_offsets(self, num_atoms):\n        \"\"\"Benchmark calculation of distances between\n        atoms in two atomgroups with offsets\n        to resids.\n        \"\"\"\n        distances.dist(A=self.ag1, B=self.ag2, offset=20)\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
         "min_run_count": 2,
         "name": "analysis.distances.DistancesBench.time_dist_offsets",
         "number": 0,
@@ -1381,11 +1456,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "0766fec1b0ea981f2f91bc7b592c2c7faa4c27e5821747d0e3f7f27ad30f22e6",
+        "version": "87ed1892f89d366f02c57b9aa83c6fa277a3f9bec85750e08ef2ba0c5a385709",
         "warmup_time": -1
     },
     "analysis.distances.DistancesBench.time_distance_array": {
-        "code": "class DistancesBench:\n    def time_distance_array(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        between two numpy arrays of coordinates,\n        using default arguments to distance_array.\n        \"\"\"\n        distances.distance_array(reference=self.coords_1,\n                                 configuration=self.coords_2,\n                                 box=None,\n                                 result=None,\n                                 backend='serial')\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "code": "class DistancesBench:\n    def time_distance_array(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        between two numpy arrays of coordinates,\n        using default arguments to distance_array.\n        \"\"\"\n        distances.distance_array(\n            reference=self.coords_1,\n            configuration=self.coords_2,\n            box=None,\n            result=None,\n            backend=\"serial\",\n        )\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
         "min_run_count": 2,
         "name": "analysis.distances.DistancesBench.time_distance_array",
         "number": 0,
@@ -1406,11 +1481,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "6b47aceaee90f91587947029fdaef396adac215eb2ef3057c85f9e410a3e5fa7",
+        "version": "423bb13d31eacb2b6e5d3f261552b10be8a2e7388ff95d71dc782c0c8731a23b",
         "warmup_time": -1
     },
     "analysis.distances.DistancesBench.time_distance_array_pre_allocated": {
-        "code": "class DistancesBench:\n    def time_distance_array_pre_allocated(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        between two numpy arrays of coordinates,\n        using distance_array with a preallocated\n        result array.\n        \"\"\"\n        distances.distance_array(reference=self.coords_1,\n                                 configuration=self.coords_2,\n                                 box=None,\n                                 result=self.allocated_array_2D,\n                                 backend='serial')\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "code": "class DistancesBench:\n    def time_distance_array_pre_allocated(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        between two numpy arrays of coordinates,\n        using distance_array with a preallocated\n        result array.\n        \"\"\"\n        distances.distance_array(\n            reference=self.coords_1,\n            configuration=self.coords_2,\n            box=None,\n            result=self.allocated_array_2D,\n            backend=\"serial\",\n        )\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
         "min_run_count": 2,
         "name": "analysis.distances.DistancesBench.time_distance_array_pre_allocated",
         "number": 0,
@@ -1431,11 +1506,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "3988cf77ee5eccd5483b603b31c7c25b63f73aa81b757689f2c8bdd9f062ae82",
+        "version": "46dcac9910323321beb5396d4e413bb5975d6fa512b22bf0df6bcd873672d43e",
         "warmup_time": -1
     },
     "analysis.distances.DistancesBench.time_self_distance_array": {
-        "code": "class DistancesBench:\n    def time_self_distance_array(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        within a single numpy array of coordinates\n        using default parameters to self_distance_array.\n        \"\"\"\n        distances.self_distance_array(reference=self.coords_1,\n                                      box=None,\n                                      result=None,\n                                      backend='serial')\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "code": "class DistancesBench:\n    def time_self_distance_array(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        within a single numpy array of coordinates\n        using default parameters to self_distance_array.\n        \"\"\"\n        distances.self_distance_array(\n            reference=self.coords_1, box=None, result=None, backend=\"serial\"\n        )\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
         "min_run_count": 2,
         "name": "analysis.distances.DistancesBench.time_self_distance_array",
         "number": 0,
@@ -1456,11 +1531,11 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "c6dbef3ff4b6c03b07405740d628a4dbd6c5e558b910137a157196ed94020286",
+        "version": "5c8f51df8cbca15ce193bc4c18e14d5772ad7e53fc9f565cdc096b24308e6f3f",
         "warmup_time": -1
     },
     "analysis.distances.DistancesBench.time_self_distance_array_pre_allocated": {
-        "code": "class DistancesBench:\n    def time_self_distance_array_pre_allocated(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        within a single numpy array of coordinates\n        using self_distance_array with preallocated\n        result array.\n        \"\"\"\n        distances.self_distance_array(reference=self.coords_1,\n                                      box=None,\n                                      result=self.allocated_array_1D,\n                                      backend='serial')\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(np.float32)\n        self.allocated_array_2D = np.empty((num_atoms, num_atoms),\n                                            dtype=np.float64)\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.)\n        self.allocated_array_1D = np.empty(self.array_shape_1D,\n                                           dtype=np.float64)\n        self.u = MDAnalysis.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
+        "code": "class DistancesBench:\n    def time_self_distance_array_pre_allocated(self, num_atoms):\n        \"\"\"Benchmark calculation of all distances\n        within a single numpy array of coordinates\n        using self_distance_array with preallocated\n        result array.\n        \"\"\"\n        distances.self_distance_array(\n            reference=self.coords_1,\n            box=None,\n            result=self.allocated_array_1D,\n            backend=\"serial\",\n        )\n\n    def setup(self, num_atoms):\n        np.random.seed(17809)\n        self.coords_1 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(9008716)\n        self.coords_2 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(15809)\n        self.coords_3 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n        np.random.seed(871600)\n        self.coords_4 = np.random.random_sample((num_atoms, 3)).astype(\n            np.float32\n        )\n    \n        self.allocated_array_2D = np.empty(\n            (num_atoms, num_atoms), dtype=np.float64\n        )\n        self.array_shape_1D = int(num_atoms * (num_atoms - 1) / 2.0)\n        self.allocated_array_1D = np.empty(\n            self.array_shape_1D, dtype=np.float64\n        )\n        self.u = mda.Universe(GRO)\n        self.ag1 = self.u.atoms[:num_atoms]\n        self.ag2 = self.u.atoms[num_atoms: 2 * num_atoms]\n        self.ag3 = self.u.atoms[-num_atoms:]",
         "min_run_count": 2,
         "name": "analysis.distances.DistancesBench.time_self_distance_array_pre_allocated",
         "number": 0,
@@ -1481,7 +1556,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "252de8a508db72096fb84cad267be871be5133ab5e2a35ea5b1dbf4d610c3f4e",
+        "version": "216345f414efc996a92de0ab4f74763fe20124827e2a57adf0e9bcc93ea05530",
         "warmup_time": -1
     },
     "analysis.leaflet.LeafletBench.time_leafletfinder": {
@@ -1921,7 +1996,7 @@
         "warmup_time": -1
     },
     "analysis.rms.SimpleRmsBench.time_rmsd": {
-        "code": "class SimpleRmsBench:\n    def time_rmsd(self, num_atoms, weights, center, superposition):\n        \"\"\"Benchmark rmsd function using a setup similar to\n        its docstring example code along with several possible\n        permutations of parameters.\n        \"\"\"\n        rms.rmsd(a=self.A,\n                 b=self.B,\n                 weights=weights,\n                 center=center,\n                 superposition=superposition)\n\n    def setup(self, num_atoms, weights, center, superposition):\n        # mimic rmsd docstring example code\n        self.u = MDAnalysis.Universe(PSF, DCD)\n        # ag.positions is the new syntax\n        # but older commit hashes will need to use\n        # ag.coordinates()\n        try:\n            self.A = self.u.atoms.positions.copy()[:num_atoms]\n            self.u.trajectory[-1]\n            self.B = self.u.atoms.positions.copy()[:num_atoms]\n        except:\n            self.A = self.u.atoms.coordinates().copy()[:num_atoms]\n            self.u.trajectory[-1]\n            self.B = self.u.atoms.coordinates().copy()[:num_atoms]",
+        "code": "class SimpleRmsBench:\n    def time_rmsd(self, num_atoms, weights, center, superposition):\n        \"\"\"Benchmark rmsd function using a setup similar to\n        its docstring example code along with several possible\n        permutations of parameters.\n        \"\"\"\n        rms.rmsd(a=self.A,\n                 b=self.B,\n                 weights=weights,\n                 center=center,\n                 superposition=superposition)\n\n    def setup(self, num_atoms, weights, center, superposition):\n        # mimic rmsd docstring example code\n        self.u = MDAnalysis.Universe(PSF, DCD)\n        # ag.positions is the new syntax\n        # but older commit hashes will need to use\n        # ag.coordinates()\n        try:\n            self.A = self.u.atoms.positions.copy()[:num_atoms]\n            self.u.trajectory[-1]\n            self.B = self.u.atoms.positions.copy()[:num_atoms]\n        except:\n            self.A = self.u.atoms.positions.copy()[:num_atoms]\n            self.u.trajectory[-1]\n            self.B = self.u.atoms.positions.copy()[:num_atoms]",
         "min_run_count": 2,
         "name": "analysis.rms.SimpleRmsBench.time_rmsd",
         "number": 0,
@@ -1956,7 +2031,7 @@
         "timeout": 60.0,
         "type": "time",
         "unit": "seconds",
-        "version": "3730cce32247fa610cb1fcb58e054dc42bd0d1dd6ee55a5d19e01cff3ade58d1",
+        "version": "bda0e78ff13a61dce070b3eddef389263aef31ccdd42ddb3a643bfacf8264b02",
         "warmup_time": -1
     },
     "import.ImportBench.time_import": {
@@ -2042,6 +2117,31 @@
         "type": "time",
         "unit": "seconds",
         "version": "3d7336e8388a8daf7d76bc3faec4ee662f2ddce17529d2b322ec539be91758c3",
+        "warmup_time": -1
+    },
+    "topology.BondsBench.time_bonds": {
+        "code": "class BondsBench:\n    def time_bonds(self, num_bonds):\n        \"\"\"Benchmark for calculating bonds\"\"\"\n        self.u.bonds\n\n    def setup(self, num_bonds):\n        self.u = MDAnalysis.Universe.empty(2*num_bonds)\n        bonds = np.arange(2*num_bonds).reshape(num_bonds, 2)\n        self.u.add_bonds(bonds)",
+        "min_run_count": 2,
+        "name": "topology.BondsBench.time_bonds",
+        "number": 0,
+        "param_names": [
+            "num_bonds"
+        ],
+        "params": [
+            [
+                "1000",
+                "10000",
+                "100000",
+                "1000000"
+            ]
+        ],
+        "repeat": 0,
+        "rounds": 2,
+        "sample_time": 0.01,
+        "timeout": 60.0,
+        "type": "time",
+        "unit": "seconds",
+        "version": "53f46341b02a43024f5c677dcdfef05390e63757bfb308dc62104475abb08dc9",
         "warmup_time": -1
     },
     "topology.TopologyGuessBench.time_guessbonds": {
