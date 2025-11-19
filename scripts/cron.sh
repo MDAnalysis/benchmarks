@@ -10,7 +10,7 @@
 REPO="${HOME}/MDA/repositories/mdanalysis"
 ASV_RUN_DIR="${REPO}/benchmarks"
 ASV_CONFIG="${ASV_RUN_DIR}/asv_c3potato.conf.json"
-CONDA_BIN="${HOME}/MDA/miniconda3/bin"
+CONDA_BIN="${HOME}/MDA/miniforge3/bin"
 CONDA_ENV=benchmark
 # when cron is enabled, set TIMEOUT to 20h
 TIMEOUT="20h"
